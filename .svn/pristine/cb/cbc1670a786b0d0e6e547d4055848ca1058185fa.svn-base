@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎植物净颜系列</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/xptj.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+        <p><a href="/index">主页</a>>希思黎植物净颜系列</p>
+    </div>
+</div>
+<div id="zwjy">
+    <div>
+        <img src="../images/gwzx_0214/zwjy/0718_jy_01_1.jpg" alt="">
+        <img src="../images/gwzx_0214/zwjy/0718_jy_02.jpg" alt="">
+    </div>
+    <%data.forEach((item)=>{%>
+    <div class="">
+            <a href="details?id=<%=item.d_id%>">
+            <img src="../images/gwzx_0214/zwjy/<%=item.xptj_imgSrc%>" alt="#">
+            </a>
+    </div>
+    <%})%>
+    <div>
+        <img src="../images/gwzx_0214/zwjy/0718_jy_08.jpg" alt="">
+    </div>
+</div>
+<%- include("common/footer.ejs")%>
+</body>
+</html>

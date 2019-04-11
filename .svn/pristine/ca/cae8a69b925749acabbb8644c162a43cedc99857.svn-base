@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎抗皱修活御致眼唇霜–新品上市</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/kzxh.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+        <p>主页>希思黎抗皱修活御致眼唇霜–新品上市</p>
+    </div>
+</div>
+<div id="kzxh">
+    <div>
+        <img src="../images/gwzx_0214/kzxh/0832_laa_01.jpg" alt="">
+        <img src="../images/gwzx_0214/kzxh/1009_laa_02.jpg" alt="">
+        <img src="../images/gwzx_0214/kzxh/1009_laa_03.jpg" alt="">
+    </div>
+    <a href="details?id=<%=item.d_id%>"><div class="kzxh_img">
+            <%data.forEach((item)=>{%>
+            <img src="../images/gwzx_0214/kzxh/<%=item.xptj_imgSrc%>" alt="#">
+            <%})%>
+    </div></a>
+    <div>
+        <img src="../images/gwzx_0214/kzxh/0832_laa_05.jpg" alt="">
+        <img src="../images/gwzx_0214/kzxh/0832_laa_06.jpg" alt="">
+        <img src="../images/gwzx_0214/kzxh/0832_laa_07.jpg" alt="">
+    </div>
+</div>
+
+<%- include("common/footer.ejs")%>
+</body>
+</html>

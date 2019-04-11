@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/lhy_gwzx.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%>
+<div id="gwzx">
+    <div id="title1">
+        <span class="title_gwzx">官网专享</span>
+    </div>
+    <div id="new_product">
+        <img src="../images/gwzx_0214/0121_pc_01.png">
+        <div id="Sales">
+            <img src="../images/gwzx_0214/0121_pc_17.jpg" alt="">
+            <%data.forEach(function(item){%>
+            <div class="tz_gwzx">
+                <a href="details?id=<%=item.d_id%>">
+                    <img src="../images/gwzx_0214/<%=item.tz_imgSrc%>" alt="">
+                </a>
+            </div>
+            <%})%>
+        </div>
+    </div>
+    <div id="botton_more">
+        <a href="/caizhuang"><img src="../images/gwzx_0214/0121_pc_42.jpg" alt=""></a>
+    </div>
+</div>
+<%- include("common/footer.ejs")%>
+</body>
+</html>

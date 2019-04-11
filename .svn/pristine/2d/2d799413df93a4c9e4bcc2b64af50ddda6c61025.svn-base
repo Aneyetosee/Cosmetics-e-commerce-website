@@ -1,0 +1,202 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: "Microsoft YaHei UI";
+}
+.myAccount_login,.mySms_login{
+    width: 30%;
+    margin:auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.myAccount_login input:nth-of-type(1),
+.myAccount_login input:nth-of-type(2),
+.mySms_login input:nth-of-type(1),
+.mySms_login input:nth-of-type(2){
+    outline: none;
+    width: 70%;
+    height: 40px;
+    margin: 10px auto;
+    text-indent: 10px;
+    border: 1px #c6c6c6 solid;
+    color: rgb(114, 113, 113);
+}
+.mySms_login input:nth-of-type(2){
+    width: 50%;
+    float: left;
+    margin-left: 15%;
+}
+.myAccount_login input:nth-of-type(3){
+    float: left;
+    margin-left: 15%;
+}
+.myAccount_login span{
+    float: left;
+    margin-left: 1%;
+    font-size: 12px;
+    color: rgb(114, 113, 113);
+}
+.myAccount_login span:nth-of-type(1){
+    margin-left: 15%;
+}
+
+#login,
+#loginPhone,
+.myregister #reg,
+.myregister #return{
+    width: 70%;
+    height: 40px;
+    margin: 30px auto 0px auto;
+    border: 1px #c6c6c6 solid;
+    background-color: #0ac62e;
+    color: white;
+    font-size: 16px;
+    line-height: 40px;
+}
+.myregister #return{
+    background-color: red;
+}
+
+.myinput:after{
+     content: '';
+     clear: both;
+     height: 0px;
+     display: none;
+     visibility: hidden;
+ }
+.myinput span:nth-of-type(2){
+    float: right;
+    margin-right: 15%;
+    color: rgb(114, 113, 113);
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.myinput{
+    text-align: center;
+    width: 90%;
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow:2px 2px 10px #909090;
+    margin: 30px auto;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    padding-bottom: 40px;
+}
+.myinput p{
+    font-size: 12px;
+    color: rgb(114, 113, 113);
+    float: right;
+    margin-right: 15%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.mySms_login,.myregister{
+    display: none;
+}
+.mySms_login span{
+    color: rgb(114, 113, 113);
+    font-size: 12px;
+    background-color: #299ac6;
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: -15%;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.myregister{
+    width:30%;
+    margin: auto;
+}
+.myregister input[type="text"],.myregister input[type="password"]{
+    outline: none;
+    width: 90%;
+    height: 34px;
+    margin: 4px auto;
+    text-indent: 10px;
+    border: 1px #c6c6c6 solid;
+    color: rgb(114, 113, 113);
+}
+.myregister tr:nth-of-type(1) input{
+    margin-top: 20px;
+}
+.myregister tr:nth-last-of-type(1) button,
+.myregister tr:nth-last-of-type(1) input{
+    margin-bottom: 20px;
+}
+.myregister button{
+    width: 60%;
+    margin: 0px;
+}
+.myregister label{
+    font-size: 14px;
+    color: rgb(114, 113, 113);
+}
+#mytable{
+    margin-left: 5%;
+    width:90%;
+}
+#mytable td{
+    width: 50%;
+    margin: auto;
+    height: 45px;
+}
+#mytable span{
+    color: rgb(114, 113, 113);
+    font-size: 12px;
+    background-color: #299ac6;
+    width: 20%;
+    height: 34px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    line-height: 34px;
+    cursor: pointer;
+}
+#verification{
+    width: 70%;
+}
+#emailTestTd,
+#phoneTestTd,
+#pwdTestTd{
+    position: relative;
+}
+#emailTestBox,
+#phoneTestBox,
+#pwdTestBox{
+    position: absolute;
+    top: -8px;
+    left: 85%;
+    width: 16px;
+    height: 20px;
+    overflow: hidden;
+}
+.icon-zhengque{
+    color: #0ac62e;
+}
+.icon-cuowuguanbi-{
+    color: red;
+}
+#loginDiv{
+    display: none;
+    position: absolute;
+    z-index: 99;
+    margin: auto;
+    left: 0px;
+    right: 0px;
+    top: 150px;
+    bottom: 0px;
+}
+#emailTishi,#phoneTishi{
+    color: red;
+    text-align: center;
+    position: absolute;
+    top: -5px;
+    left: 60%;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("view/common/header.ejs")%>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" style="width: 100%">
+        <div class="item active">
+            <img src="images/PC_KV-_final.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/Hair_Rituel_PC_KV_.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/_PC_KV-_-V2.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <img src="images/2345_image_file_copy_1.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="best_list">
+    <span id="best_list_title">畅销榜单</span>
+    <div class="best_list_item">
+        <div>
+            <img src="images/200x250.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="best_list_item">
+        <div>
+            <img src="images/3473311320001_4-min.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="best_list_item">
+        <div>
+            <img src="images/3473311540508_4.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="best_list_item">
+        <div>
+            <img src="images/3473311623003_4-min.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+</div>
+<div class="news">
+    <span class="news_title">最新资讯</span>
+    <div class="news_item">
+        <div>
+            <img src="images/2345_image_file_copy_2.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="news_item">
+        <div>
+            <img src="images/2345_image_file_copy_3.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="news_item">
+        <div>
+            <img src="images/2345_image_file_copy_4.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+    <div class="news_item">
+        <div>
+            <img src="images/2345_image_file_copy_5.jpg" alt="">
+        </div>
+        <p>希思黎全能乳液</p>
+        <p>平衡养护</p>
+        <p>￥1720.00</p>
+        <span>了解更多<i class="glyphicon glyphicon-play"></i></span>
+        <span>快速购买<i class="glyphicon glyphicon-play"></i></span>
+    </div>
+</div>
+
+<!--tab-->
+<div class="container" id="container">
+    <div class="row" id="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="tab" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Section21" aria-controls="home" role="tab" data-toggle="tab" >美丽期刊</a></li>
+                    <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">美丽订阅</a></li>
+                    <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">星品推荐</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content tabs" id="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+                        <p>发现更多杂志</p>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <p>每月如约送达待您美丽蜕变</p>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="Section3">
+                        <p>.......</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("view/common/footer.ejs")%>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<script src="lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+
+<%- include("view/common/header.ejs")%>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox" style="width: 100%">
+        <div class="item active">
+            <div class="text_fyp">
+                <h2><em>
+                        HAIRCARE IS THE NEW SKINCARE
+                        </em></h2>
+                <p>法国希思黎护发 肌肤保养新概念
+                    立即探索 </p>
+            </div>
+            <img src="images/PC_KV-_final.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <div class="text_fyp">
+                <h2><em>BEAUTY SUBSCRIPTION
+                    </em></h2>
+                <p>美丽订阅·回到爱开始的地方
+                    每月精选5件免费明星体验装
+                    立即订阅 </p>
+            </div>
+            <img src="images/Hair_Rituel_PC_KV_.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <div class="text_fyp" style="color: rgba(255,255,255,0.69)">
+                <h2><em>
+                        ECOLOGICAL COMPOUND
+                    </em></h2>
+                <p>全能乳液
+                    法国希思黎殿堂级奢养经典
+                    了解详情</p>
+            </div>
+            <img src="images/_PC_KV-_-V2.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+            <div class="text_fyp">
+                <h2><em>SISLEY LE PHYTO ROUGE
+                    </em></h2>
+                <p>法国希思黎全新魅惑口红 优雅上市
+                    挚“红”魅力 邂逅浪漫臻礼
+                    了解详情</p>
+            </div>
+            <img src="images/2345_image_file_copy_1.jpg" />
+            <div class="carousel-caption">
+            </div>
+        </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="best_list">
+    <span id="best_list_title">全新上市</span>
+    <%data[0].forEach((item)=>{%>
+        <div class="best_list_item">
+            <div>
+                <a href="details?id=<%=item.d_id%>" onfocus="this.blur()"><img src="./images/<%=item.d_smallSrc%>" alt=""></a>
+            </div>
+            <p><%=item.g_name%></p>
+            <p><%=item.g_descript%></p>
+            <p>￥<%=item.d_price%></p>
+            <span><a href="details?id=<%=item.d_id%>"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+        </div>
+    <%})%>
+</div>
+<div class="news">
+    <span class="news_title">畅销榜单</span>
+    <%data[1].forEach((item)=>{%>
+    <div class="news_item">
+        <div>
+            <a href="details?id=<%=item.d_id%>" onfocus="this.blur()"><img src="./images/<%=item.d_smallSrc%>" alt=""></a>
+        </div>
+        <p><%=item.g_name%></p>
+        <p><%=item.g_descript%></p>
+        <p style="color: red">￥<%=item.d_price%></p>
+        <span><a href="details?id=<%=item.d_id%>"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+    </div>
+    <%})%>
+</div>
+<%- include("view/common/footer.ejs")%>
+<script>
+
+</script>
+</body>
+</html>

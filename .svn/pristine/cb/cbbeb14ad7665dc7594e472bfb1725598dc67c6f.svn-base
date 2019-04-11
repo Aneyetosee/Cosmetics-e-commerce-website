@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎金钻晚霜</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/zwjy.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+        <p>主页>希思黎金钻晚霜</p>
+    </div>
+</div>
+<div id="zwjy">
+    <div>
+        <img src="../images/gwzx_0214/jzws/0901_longevity_01.jpg" alt="">
+        <img src="../images/gwzx_0214/jzws/0901_longevity_02.jpg" alt="">
+        <img src="../images/gwzx_0214/jzws/0901_longevity_03.jpg" alt="">
+        <img src="../images/gwzx_0214/jzws/0901_longevity_04.jpg" alt="">
+        <img src="../images/gwzx_0214/jzws/0901_longevity_05.jpg" alt="">
+    </div>
+    <a href="details?d_id=<%=item.d_id%>"><div class="">
+            <%data.forEach((item)=>{%>
+            <img src="../images/gwzx_0214/jzws/<%=item.xptj_imgSrc%>" alt="#">
+            <%})%>
+        </div></a>
+    <div>
+        <img src="../images/gwzx_0214/jzws/0901_longevity_07.jpg" alt="">
+    </div>
+</div>
+<%- include("common/footer.ejs")%>
+</body>
+</html>

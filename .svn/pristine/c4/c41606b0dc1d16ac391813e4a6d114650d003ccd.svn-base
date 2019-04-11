@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <style>
+        body{
+            moz-user-select: -moz-none;
+            -moz-user-select: none;
+            -o-user-select:none;
+            -khtml-user-select:none;
+            -webkit-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .item{
+            margin: 50px 4px;
+            text-align: center;
+            width: 24%;
+            float: left;
+            padding-bottom: 35px;
+            background-color: white;
+        }
+        .item>span{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 3px 6px;
+            background-color: rgba(31, 67, 115, 0.9);
+        }
+        .item>span:hover{
+            background-color: rgba(168, 7, 21, 0.9);
+        }
+        .item>span a{
+            color: white;
+            text-decoration: none;
+        }
+        .item p:nth-of-type(1){
+            font-size: 16px;
+        }
+        .item p:nth-of-type(2){
+            font-size: 14px;
+        }
+        .item p:nth-of-type(3){
+            font-size: 16px;
+            color: red;
+        }
+        .item img{
+            width: 200px;
+            height: 250px;
+        }
+        .item:hover{
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow:2px 2px 10px #909090;
+        }
+        #content{
+            width: 70%;
+            margin: auto;
+        }
+        #content>h3{
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        #content:after{
+            content: '';
+            clear: both;
+            height: 0px;
+            display: block;
+            visibility: hidden;
+        }
+        #page{
+            width: 40%;
+            margin: 20px auto;
+
+        }
+        #pre,#next,#pageNum>span{
+            height: 30px;
+            line-height: 30px;
+            float: left;
+            border: 1px #4296ff solid;
+            text-align: center;
+        }
+        #pre,#next{
+            padding: auto 5px;
+        }
+        #pageNum>span{
+            width: 40px;
+        }
+        .clear:after{
+            content: '';
+            clear: both;
+            height: 0px;
+            display: block;
+            visibility: hidden;
+        }
+        .active{
+            background-color: rgba(123, 141, 255, 0.81);
+            color: white;
+        }
+        #content>p:nth-of-type(1){
+            float: left;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+<%- include("common/header.ejs")%>
+<div id="content" class="clear">
+    <p><a href="/index"><span>主页</span></a>>搜索结果</p>
+    <%if(!data.mydata){%>
+    <p>搜索到<span id="dataNum">0</span>条数据</p>
+        <h3>没有该产品，请选择其他产品</h3>
+    <%}else if(data.mydata.length>=4){ %>
+    <p>搜索到<span id="dataNum"><%=data.mydata.length%></span>条数据</p>
+    <div class="clear" id="dataContext">
+        <% for(var i=0;i<4;i++){%>
+        <div class="item">
+            <div>
+                <a href="details?id=<%=data.mydata[i].d_id%>" onfocus="this.blur()"><img src="./images/<%=data.mydata[i].d_smallSrc%>" alt=""></a>
+            </div>
+            <p><%=data.mydata[i].g_name%></p>
+            <p><%=data.mydata[i].g_descript%></p>
+            <p style="color: red">￥<%=data.mydata[i].d_price%></p>
+            <span><a href="details?id=<%=data.mydata[i].d_id%>"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+        </div>
+        <%}%>
+    </div>
+    <div id="page" class="clear">
+        <div onclick="prePage()" id="pre">上一页</div>
+        <div id="pageNum"></div>
+        <div onclick="nextPage()" id="next">下一页</div>
+    </div>
+    <%}else if (data.mydata.length<4&&data.mydata.length>0) {%>
+    <p>搜索到<span id="dataNum"><%=data.mydata.length%></span>条数据</p>
+    <div class="clear" id="dataContext">
+        <%data.mydata.forEach((item)=>{%>
+        <div class="item">
+            <div>
+                <a href="details?id=<%=item.d_id%>" onfocus="this.blur()"><img src="./images/<%=item.d_smallSrc%>" alt=""></a>
+            </div>
+            <p><%=item.g_name%></p>
+            <p><%=item.g_descript%></p>
+            <p style="color: red">￥<%=item.d_price%></p>
+            <span><a href="details?id=<%=item.d_id%>"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+        </div>
+        <%})%>
+    </div>
+    <div id="page">
+        <div onclick="prePage()" id="pre">上一页</div>
+        <div id="pageNum"></div>
+        <div onclick="nextPage()" id="next">下一页</div>
+    </div>
+    <%}%>
+</div>
+
+<%- include("common/footer.ejs")%>
+</body>
+<script>
+    window.onload=function() {
+        for (var i=1;i<="<%=data.pageNum%>";i++){
+            $("#pageNum").append(`<span onclick='choosePage(${i},this)' class="mypage">${i}</span>`)
+        }
+        $("#pageNum span:nth-of-type(1)").addClass("active")
+    }
+    var searTxt='<%=ser%>'
+    var maxPage='<%=data.pageNum%>'
+    var pageNum=1;
+    function choosePage(num,obj){
+        $(obj).addClass("active").siblings("span").removeClass("active");
+        pageNum=num
+        $.ajax({
+            url:"/chooseData.do",
+            type:'post',
+            data: {
+                pageNum:num,
+                pageDataNum:4,
+                searTxt
+            },
+            success:function(data){
+                $(".item").remove()
+            data.forEach((item)=>{
+                $("#dataContext").append(`
+                <div class="item">
+                    <div>
+                        <a href="details?id=${item.d_id}" onfocus="this.blur()"><img src="./images/${item.d_smallSrc}" alt=""></a>
+                    </div>
+                    <p>${item.g_name}</p>
+                    <p>${item.g_descript}</p>
+                    <p style="color: red">￥${item.d_price}</p>
+                    <span><a href="details?id=${item.d_id}"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+                </div>`)
+            })
+    }});
+    }
+    //上一页
+    function prePage() {
+        console.log(pageNum)
+        if (pageNum>1) {
+            choosePage(pageNum-1,this)
+            $(".mypage").eq(pageNum-1).addClass("active").siblings("span").removeClass("active");  //第二个li
+        }
+    }
+    //下一页
+    function nextPage() {
+        if (pageNum<maxPage){
+            choosePage(pageNum+1,this)
+            $(".mypage").eq(pageNum-1).addClass("active").siblings("span").removeClass("active");
+        }
+    }
+</script>
+</html>

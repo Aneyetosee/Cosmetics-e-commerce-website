@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js" type="text/javascript"></script>
+    <script src="../js/birthday.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <h1><em>sisley法国希思黎</em></h1>
+        <!--账号登录-->
+        <form action="/login.do" method="post" class="myAccount_login">
+            <div class="myinput">
+                <p onclick="sms()">短信验证码登录</p>
+                <input type="text" name="userName" placeholder="Phone/Email">
+                <input type="password" name="pwd" placeholder="Password"><br>
+                <%console.log(data)%>
+                <%if(!data){%>
+                <p style="color:red;font-size:12px;">账户或密码输入有误，请重新输入</p>
+                <%}%>
+                <input type="checkbox"><span>记住我</span>
+                <span onclick="register()">立即注册</span>  <!--注册-->
+                <button>登录</button>
+            </div>
+        </form>
+        <!--验证码登录-->
+        <form action="/sms.do" method="post" class="mySms_login">
+            <div class="myinput">
+                <p onclick="account()">账号密码登录</p>
+                <input type="text" name="phone" placeholder="Phone">
+                <input type="text" name="verification" placeholder="Verification_code"><br>
+                <span>获取验证码</span>
+                <button>登录</button>
+            </div>
+        </form>
+        <!--注册-->
+        <form action="/register.do" method="post" class="myregister">
+            <div class="myinput">
+                <table id="mytable">
+                    <tr>
+                        <td><input type="text" name="userName" placeholder="账号"></td>
+                        <td><input type="password" name="pwd" placeholder="密码"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="email" placeholder="邮箱"></td>
+                        <td><input type="text" name="nickname" placeholder="昵称"><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>性别：</label>
+                            <input type="radio" name="sex" id="nan"><label for="nan">男</label>&nbsp;
+                            <input type="radio" name="sex" id="nv"><label for="nv">女</label>
+                        </td>
+                        <td>
+                            <label>出生日期</label>
+                            <select id="sel_year" rel="2000"></select><label for="sel_year">年</label>
+                            <select id="sel_month" rel="2"></select><label for="sel_month">月</label>
+                            <select id="sel_day" rel="14"></select><label for="sel_day">日</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button>注册</button></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script>
+        /*背景图片*/
+        $(".container").css({
+            height:`${window.innerHeight}`
+        })
+        /*出生日期下拉框*/
+        $(function () {
+            $.ms_DatePicker({
+                YearSelector: ".sel_year",
+                MonthSelector: ".sel_month",
+                DaySelector: ".sel_day"
+            });
+            $.ms_DatePicker();
+        });
+        /*短信登录*/
+        function sms() {
+            $(".myAccount_login").css({
+                display:"none"
+            })
+            $(".myregister").css({
+                display:"none"
+            })
+            $(".mySms_login").css({
+                display:"block"
+            })
+        }
+        /*账号登录*/
+        function account() {
+            $(".mySms_login").css({
+                display:"none"
+            })
+            $(".myAccount_login").css({
+                display:"block"
+            })
+            $(".myregister").css({
+                display:"none"
+            })
+        }
+        /*注册*/
+        function register() {
+            $(".mySms_login").css({
+                display:"none"
+            })
+            $(".myAccount_login").css({
+                display:"none"
+            })
+            $(".myregister").css({
+                display:"block"
+            })
+        }
+    </script>
+</body>
+</html>

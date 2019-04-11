@@ -1,0 +1,30 @@
+const userDao = require("../dao/userDao")
+
+module.exports={
+    gwzx(req,resp){
+        userDao.userDao().then(function (connection) {
+            var gwzxData = [];
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+            }
+            connection.query('SELECT tz_imgSrc FROM tz_gwzx' ,[])
+                .then(function (data) {
+                    var gwzxNew = data;
+                    gwzxData.push(gwzxNew)
+                    resp.render("view/gwzx",{data:gwzxData,user:user})
+                })
+        })
+    }
+
+
+}

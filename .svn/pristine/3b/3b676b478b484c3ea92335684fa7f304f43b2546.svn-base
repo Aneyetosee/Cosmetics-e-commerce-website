@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../lib/jq22jqzoom2444201801040045/jqzoom/style/jqzoom.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../font/font_6lrec6saxjt/font_6lrec6saxjt/iconfont.css">-->
+
+</head>
+<body>
+<a href="details?id=1">图片1</a>
+<a href="details?id=2">图片2</a>
+<a href="details?id=3">图片3</a>
+<a href="details?id=4">图片4</a>
+<a href="details?id=5">图片5</a>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+     //渲染页面函数
+    details(req,resp){
+        let deatilsItem = req.query.id
+
+        userDao.userDao().then(function (connection) {
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+            }
+            connection.query("SELECT * FROM t_details WHERE d_id=?",[deatilsItem])
+                .then(function (data) {
+                    //将字符串中的asd替换成<br/>换行    在ejs文件中要显示html标签不能用<%=  %> 要用<%- %>
+                    data[0].d_describe=data[0].d_describe.replace(/asd/g," <br/>")
+                   /* console.log(data[0].d_describe)*/
+                 resp.render("view/details",{details:data,user:user})
+                })
+        })
+
+    },
+
+    //立即支付验证是否登录
+    verification(req,resp){
+
+        let {buyId,buyNumber} = req.body
+        let mySeccion  = req.session.data
+        /*console.log(buyId,buyNumber,mySeccion.u_nickname)*/
+        if(mySeccion){
+            var mytime = new Date();
+            mytime.toLocaleString( )
+         /* let mytime = myDate.toLocaleDateString()*/
+            let t2 = new Date().getTime()
+            userDao.userDao().then(function (connection) {
+                connection.query("INSERT INTO t_order VALUES (NULL,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10)",[mySeccion.u_phone,t2])
+                    .then(function (data) {
+                        connection.query("INSERT INTO order_detail VALUES (NULL,?,0,?,?,?)",[buyId,mytime,t2,buyNumber])
+                            .then(function (data) {
+                                if(data){
+                                    resp.send('1')
+                                }
+                            })
+                        /* console.log(mySeccion.u_nickname)*/
+
+                    })
+            })
+        }else{
+            resp.send("0")
+        }
+    },
+    //登录过后渲染立即支付页面
+        lijizhifu(req,resp){
+        let zhifu = []
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+            }
+            if(user.dataType){
+               let id = req.query.id
+                userDao.userDao().then(function(connection){
+                    connection.query('SELECT a_province,a_city,a_area,a_address,a_people,a_phone,a_phone2,setDefault,zipCode FROM t_user JOIN t_address  ON a_u_id = u_id WHERE u_phone = ?',[user.u_phone])
+                        .then(function(data){
+                            var ittn = data
+                            zhifu.push(ittn)
+
+                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                            console.log(data)
+                                //1代表从支付页面跳转过来的函数
+                                if(id==1){
+                                    connection.query(sql,[])
+                                        .then(function (data) {
+                                            var ittn = data
+                                            zhifu.push(ittn)
+                                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                                        })
+                                 //0代表从购物车页面过来的函数
+                                }else if(id==0){
+
+                                    connection.query(sql,[])
+                                        .then(function (data) {
+                                            var ittn = data
+                                            zhifu.push(ittn)
+                                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                                        })
+                                }
+                        }).catch(function(err){
+                        console.log(err)
+                    })
+                })
+               /* resp.render("view/lijizhifu",{user:user})*/
+            }/*else{
+
+            }*/
+        },
+
+
+
+
+    //点击购物车   验证函数
+    deailsGou(req,resp){
+
+        let {buyId,buyNumber} = req.body
+        let mySeccion  = req.session.data
+
+        /*console.log(buyId,buyNumber,mySeccion.u_nickname)*/
+        if(mySeccion){
+
+            userDao.userDao().then(function (connection) {
+                connection.query("INSERT INTO order_cart VALUES (NULL,?,?,?)",[buyId,mySeccion.u_phone,buyNumber])
+                    .then(function (data) {
+
+                       /* console.log(mySeccion.u_nickname)*/
+                        if(data){
+                            resp.send('加入购物车成功')
+                        }else{
+                            resp.send("加入购物车失败")
+                        }
+                    })
+            })
+        }else{
+           resp.send("1")
+        }
+    },
+    //渲染pinglun
+    comment_cont(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+
+
+        let {buyId} = req.body
+        userDao.userDao().then(function (connection) {
+            connection.query("SELECT * FROM t_comment_t WHERE comment_id=?",[buyId])
+                .then(function (data) {
+                    /* console.log(mySeccion.u_nickname)*/
+                    if(data){
+                        resp.send(data)
+                    }
+                })
+        })
+    }
+
+
+
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="../lib/masonry-docs/masonry.pkgd.min.js"></script>
+    <script src="../../js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <style>
+        .box1{
+            text-align: center;
+            width: 300px;
+            float: left;
+            margin-right: 50px;
+        }
+        .box{
+            width: inherit;
+        }
+        .box img{
+            width: inherit;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.6s;
+        }
+        .box img:hover{
+            transform: scale(0.9); 
+        }
+        a{
+            cursor: pointer;
+            text-decoration:none;
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: black
+        }
+        a:hover{
+            text-decoration:underline;
+            color: blue
+        }
+        .read{
+            width: 100px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 10px;
+            border: 1px solid #c0bebe;
+            cursor: pointer;
+            margin-left: 100px;
+            color: black;
+            margin-bottom: 100px
+        }
+        .read:hover{
+            background-color: #c0bebe;
+        }
+
+         * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei UI";
+        }
+        .footer{
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .footer_context{
+            width: 70%;
+            margin: auto;
+        }
+        .footer_icon{
+            overflow: hidden;
+        }
+        .footer_icon span{
+            margin: 20px;
+            float: left;
+            text-align: center;
+        }
+        .footer_icon i{
+            display: block;
+        }
+        .footer_icon span .iconfont{
+            font-size: 26px;
+            padding: 10px 44.3px;
+        }
+        .footer_icon span a{
+            text-decoration: none;
+            color: black;
+        }
+        #icon{
+            font-size: 12px;
+        }
+        .footer_icon a:hover{
+            color: rgba(1,1,1,0.53);
+        }
+        .help{
+            border-top: 1px silver solid;
+            border-bottom: 1px silver solid;
+        }
+        .help:after{
+            content: '';
+            clear: both;
+            height: 0px;
+            display: block;
+            visibility: hidden;
+        }
+        .help dl{
+            float: left;
+            width: 25%;
+            margin: 30px auto;
+        }
+        .help dl dd{
+            margin: 10px auto;
+        }
+        .help dl dd a{
+            text-decoration: none;
+            font-size: 12px;
+            color: rgba(1,1,1,0.53);
+        }
+        .contact{
+            margin: 30px auto;
+            width: 25%;
+            float: right;
+        }
+        .phone{
+            width: 100%;
+            border: 1px silver solid;
+        }
+        .phone_context{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+        .phone_context p:nth-of-type(1){
+            border-bottom: 1px silver solid;
+            font-size: 16px;
+            margin: 8px auto;
+        }
+        .phone_context em{
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+        .phone_context p{
+            font-size: 12px;
+            margin: 0px auto;
+        }
+        .phone_context p:nth-last-of-type(1){
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row" id="nav_one">
+        <div class="col-md-3 vip">希思黎会员</div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4 list">
+            <ul>
+                <li><i class="glyphicon glyphicon-envelope"></i>订阅电子邮件 |</li>
+                <li>专柜导航 |</li>
+                <li>激活线下会员 |</li>
+                <li>客服咨询热线</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="search">
+            <i class="glyphicon glyphicon-search"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 vip"></div>
+        <div class="col-md-4 logo">
+            <img src="../../images/logo.jpg" alt="">
+        </div>
+        <div class="col-md-4 login">
+            <span><a href="/login">登录 | 注册</a></span>
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            <span>您的购物车</span>
+            <span>￥0.00</span>
+        </div>
+    </div>
+    <nav>
+        <div class="nav_two">
+            <ul class="menu">
+                <li>
+                    <a href="#">护肤</a>
+                    <ul class="submenu">
+                        <li><a href="#">面部</a></li>
+                        <li><a href="#">身体护理</a></li>
+                        <li><a href="#">防嗮</a></li>
+                        <li><a href="#">肌肤问题</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">彩妆</a>
+                    <ul class="submenu">
+                        <li><a href="#">脸部彩妆</a></li>
+                        <li><a href="#">唇部</a></li>
+                        <li><a href="#">眼部彩妆</a></li>
+                        <li><a href="#">妆容问题</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="#s2">香氛</a>
+                    <ul class="submenu">
+                        <li><a href="#">女士香氛</a></li>
+                        <li><a href="#">情侣香水</a></li>
+                        <li><a href="#">男士</a></li>
+                        <li><a href="#">香氛蜡烛</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">男士</a>
+                    <ul class="submenu">
+                        <li><a href="#">脸部保养</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">官网专享</a></li>
+                <li><a href="#">美丽期刊</a></li>
+                <li><a href="#">美丽订阅</a></li>
+                <li><a href="#">星品推荐</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="masonry" class="container">
+
+        <!-- 第一张 -->
+        <div class="box1">
+            <div class="box" onclick="window.location.href='periodical-page1.html'">
+                <img src="../images/beauty/b4.png">
+            </div>
+            <a href="../view/periodical-page1.html">如何辨别自己肌肤性质</a>
+            <div class="read" onclick="window.location.href='periodical-page1.html'">点击阅读</div>
+        </div>
+        
+        <!-- 第二张 -->
+        <div class="box1">
+            <div class="box" onclick="window.location.href='nursing.html'">
+                <img src="../images/beauty/b10.png">
+            </div>
+            <a href="../page/nursing.html">教您如何正确护肤</a>
+            <div class="read" onclick="window.location.href='nursing.html'">点击订阅</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="footer_context">
+            <div class="footer_icon">
+                <span>
+                    <a href="/service">
+                        <i class="iconfont" id="icon">MY<br>SISLEY</i>
+                        满意或退款
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <i class="iconfont icon-suo"></i>
+                            安全支付
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <i class="iconfont icon-c-huoche"></i>
+                        发货
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <i class="iconfont icon-fanhui"></i>
+                        退换货条款
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <i class="iconfont icon-gantanhao"></i>
+                        免费试用装
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <i class="iconfont icon-lihe"></i>
+                        尊贵礼盒
+                    </a>
+                </span>
+            </div>
+            <div class="help">
+                <dl>
+                    <dt>我们的服务</dt>
+                    <dd><a href="">专柜导航</a></dd>
+                    <dd><a href="">会员</a></dd>
+                    <dd><a href="">官网专享</a></dd>
+                    <dd><a href="">个性化小样</a></dd>
+                    <dd><a href="">礼品定制</a></dd>
+                </dl>
+                <dl>
+                    <dt>需要帮助</dt>
+                    <dd><a href="">常见问题</a></dd>
+                    <dd><a href="">网站地图</a></dd>
+                    <dd><a href="">忘记密码</a></dd>
+                </dl>
+                <dl>
+                    <dt>有用信息</dt>
+                    <dd><a href="">条款和条件</a></dd>
+                    <dd><a href="">法律声明</a></dd>
+                    <dd><a href="">隐私条款</a></dd>
+                </dl>
+                <div class="contact"><!--联系方式-->
+                    <div class="phone">
+                        <div class="phone_context">
+                            <p>客服咨询热线</p>
+                            <em>400 821 1280</em>
+                            <p>周一到周五：9:00-21:00</p>
+                            <p>周六：9:00-18:00</p>
+                            <p>法定节假日除外</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+    
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            var $container = $('#masonry');
+            $container.imagesLoaded(function() {
+                $container.masonry({
+                        itemSelector: '.box',
+                        gutter: 20,
+                        isAnimated: true,
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>

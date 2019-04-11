@@ -1,0 +1,9 @@
+const controller = require("../controller/lijizhifuCtrl")
+const express = require("express")
+const router = express.Router()
+
+
+//点击立即登录成功跳转的路由
+router.get("/lijizhifu",controller.lijizhifu)
+
+module.exports = router

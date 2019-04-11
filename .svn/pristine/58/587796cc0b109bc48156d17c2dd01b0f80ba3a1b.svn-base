@@ -1,0 +1,173 @@
+    <link rel="stylesheet" href="../../font/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei UI";
+        }
+        .footer{
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .footer_context{
+            width: 70%;
+            margin: auto;
+        }
+        .footer_icon{
+            overflow: hidden;
+        }
+        .footer_icon span{
+            margin: 20px;
+            float: left;
+            text-align: center;
+        }
+        .footer_icon i{
+            display: block;
+        }
+        .footer_icon span .iconfont{
+            font-size: 26px;
+            padding: 10px 44.3px;
+        }
+        .footer_icon span a{
+            text-decoration: none;
+            color: black;
+        }
+        #icon{
+            font-size: 12px;
+        }
+        .footer_icon a:hover{
+            color: rgba(1,1,1,0.53);
+        }
+        .help{
+            border-top: 1px silver solid;
+            border-bottom: 1px silver solid;
+        }
+        .help:after{
+            content: '';
+            clear: both;
+            height: 0px;
+            display: block;
+            visibility: hidden;
+        }
+        .help dl{
+            float: left;
+            width: 25%;
+            margin: 30px auto;
+        }
+        .help dl dd{
+            margin: 10px auto;
+        }
+        .help dl dd a{
+            text-decoration: none;
+            font-size: 12px;
+            color: rgba(1,1,1,0.53);
+        }
+        .contact{
+            margin: 30px auto;
+            width: 25%;
+            float: right;
+        }
+        .phone{
+            width: 100%;
+            border: 1px silver solid;
+        }
+        .phone_context{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+        .phone_context p:nth-of-type(1){
+            border-bottom: 1px silver solid;
+            font-size: 16px;
+            margin: 8px auto;
+        }
+        .phone_context em{
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+        .phone_context p{
+            font-size: 12px;
+            margin: 0px auto;
+        }
+        .phone_context p:nth-last-of-type(1){
+            margin-bottom: 10px;
+        }
+    </style>
+<div class="footer">
+    <div class="footer_context">
+        <div class="footer_icon">
+            <span>
+                <a href="/service">
+                    <i class="iconfont" id="icon">MY<br>SISLEY</i>
+                    满意或退款
+                </a>
+            </span>
+            <span>
+                <a href="">
+                    <i class="iconfont icon-suo"></i>
+                     安全支付
+                </a>
+            </span>
+            <span>
+                <a href="">
+                    <i class="iconfont icon-c-huoche"></i>
+                    发货
+                </a>
+            </span>
+            <span>
+                <a href="">
+                    <i class="iconfont icon-fanhui"></i>
+                    退换货条款
+                </a>
+            </span>
+            <span>
+                <a href="">
+                    <i class="iconfont icon-gantanhao"></i>
+                    免费试用装
+                </a>
+            </span>
+            <span>
+                <a href="">
+                    <i class="iconfont icon-lihe"></i>
+                    尊贵礼盒
+                </a>
+            </span>
+        </div>
+        <div class="help">
+            <dl>
+                <dt>我们的服务</dt>
+                <dd><a href="">专柜导航</a></dd>
+                <dd><a href="">会员</a></dd>
+                <dd><a href="">官网专享</a></dd>
+                <dd><a href="">个性化小样</a></dd>
+                <dd><a href="">礼品定制</a></dd>
+            </dl>
+            <dl>
+                <dt>需要帮助</dt>
+                <dd><a href="">常见问题</a></dd>
+                <dd><a href="">网站地图</a></dd>
+                <dd><a href="">忘记密码</a></dd>
+            </dl>
+            <dl>
+                <dt>有用信息</dt>
+                <dd><a href="">条款和条件</a></dd>
+                <dd><a href="">法律声明</a></dd>
+                <dd><a href="">隐私条款</a></dd>
+            </dl>
+            <div class="contact"><!--联系方式-->
+                <div class="phone">
+                    <div class="phone_context">
+                        <p>客服咨询热线</p>
+                        <em>400 821 1280</em>
+                        <p>周一到周五：9:00-21:00</p>
+                        <p>周六：9:00-18:00</p>
+                        <p>法定节假日除外</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+
+        </div>
+    </div>
+</div>

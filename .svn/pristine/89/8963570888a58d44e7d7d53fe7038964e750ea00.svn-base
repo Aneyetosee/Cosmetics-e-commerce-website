@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美丽期刊</title>
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/beauty.css">
+    
+</head>
+<body>
+    <section class="container">
+        <!-- 分享按钮 -->
+        <div class="bdsharebuttonbox right">
+            <a href="#" class="bds_more" data-cmd="more"></a>
+            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        </div>
+
+        <header>
+            <h1>如何辨别皮肤类型，你的护肤方法对了吗?</h1>
+            <h3>肌肤的保养非常重要，不同类型的肌肤保养方法各不相同，找对类型則事半功倍！那么该怎么分辨肌肤的类型呢？下面由我来告诉大家！</h3>
+        </header>
+        <div class="banner">
+            <img src="../images/beauty/banner.png" alt="banner图">
+        </div>
+
+        
+        <!-- 中性皮肤 -->
+        <section class="neutral clear">
+            <!-- 中性肌肤图片 -->
+            <p class="titles">中性肌肤</p>
+            <div class="neutral-img">
+                <img src="../images/beauty/neutral1.png" alt="中性肌肤">
+            </div>
+            <!-- <div class="center">
+                <h2> <span>中性肌肤</span> 的表现特征</h2>
+                <p>1.洗完脸后，皮肤会觉得干涩、紧绷</p>
+                <p>2.皮肤的纹理看起来细致、柔嫩</p>
+                <p>3.很少长青春痘、粉刺。</p>
+                <p>4.皮肤在夏天会严重出油</p>
+                <p>5.照镜子时，是否需要看得很仔细才看得到毛孔</p>
+                <p>6.皮肤几乎不会过敏</p>
+            </div> -->
+            <!-- 文字描述 -->
+            <div class="neutral-text">
+                <h3> <span>如何保养</span> 面部肌肤：</h3>
+                <h5>1.清洁工作。一般每天清洗脸部两次为宜,将洗面奶用手以画圆圈的动作涂抹于脸上,一定要冲洗干净</h5>
+                <h5>2.选择合适的洁面产品。中性皮肤选择洁面产品的范围比较大,水凝胶、固态或者液态的洁肤乳都可以。</h5>
+                <h5>3.注意卸妆。</h5>
+                <h5>4.滋润工作。中性皮肤平时只需注意油分和水分的调理,使其达到平衡就可以了。</h5>
+                <h5>5.日常保养工作。早晨洗脸后,可用收敛性化妆水收紧皮肤,涂上营养霜,再涂粉底霜;晚霜可以选择较为清爽的乳液状产品。另外,晚上一定要用眼霜或眼部凝胶。</h5>
+                <!--  <p>中性皮肤可说是最好的肤质！其特点是皮肤构造细腻、油脂及水分分泌均衡的弱酸性皮肤，毛孔细致，富有光泽和弹性。</p>
+                    <h5>1、平常只要生活作息正常、睡眠充足。</h5> 
+                    <h5>2、做好清洁工作及基本保养，并注意选择滋润及营养成分不太高的护肤品，就足以保持皮肤的最佳状态，造就最令人羡慕的皮肤 了。</h5> -->
+                <!--  <div class="neutral-but">
+                    <h3>
+                        <span>搭配</span>使用产品
+                    </h3>
+                    <div>
+                        <img src="../img/beauty/water3.png" alt="">
+                    </div>
+                </div> -->
+            </div>
+        </section>
+       
+        <!-- 油性肌肤 -->
+        <section class="neutral clear">
+           <!--  <p class="titles">油性肌肤</p> -->
+            <!-- 中性肌肤图片 -->
+            <div class="neutral-img">
+                <img src="../images/beauty/oil.png" alt="中性肌肤">
+            </div>
+           <!--  <div class="center">
+                <h2> <span>油性肌肤</span> 的表现特征</h2>
+                <p>1.毛孔粗大</p>
+                <p>2.面部泛油光</p>
+                <p>3.容易长青春痘和脱妆。</p>
+                <p>4.皮肤在夏天会严重出油</p>
+            </div> -->
+            <!-- 文字描述 -->
+            <div class="neutral-text">
+                <h3> <span>如何保养</span> 面部肌肤：</h3>
+                <h5>1.清洁工作油性的肌肤保养步骤中，彻底清洁是第一步，也是最重要的一步。</h5>
+                <h5>2.补水工作。补水往往油性皮肤人士容易忽略的步骤，肌肤缺水也会导致油脂过分分泌，造成恶性循环。</h5>
+                <h5>3.清除角质。每天例行的洁面程序只能去除一部分浮在表皮上的死细胞，所以要定期给皮肤大扫除。</h5>
+                <h5>4.使用面膜。其实使用针对去除多余皮脂污垢的面膜，会让肌肤更清爽舒适。</h5>
+                <h5>5.规律生活。要熬夜、减少油炸食物、高脂食物的摄取量、多一点运动等。</h5>
+               
+            </div>
+        </section>
+
+        <!-- 干性肌肤 -->
+        <section class="neutral clear">
+            <!-- 中性肌肤图片 -->
+            <div class="neutral-img">
+                <img src="../images/beauty/dry.png" alt="中性肌肤">
+            </div>
+           <!--  <div class="center">
+                <h2> <span>干性肌肤</span> 的表现特征</h2>
+                <p>1.毛孔细小</p>
+                <p>2.皮肤紧绷绷，干燥的时候容易脱皮</p>
+                <p>3.皱纹比较明显</p>
+                <p>4.很少有粉刺和痘痘。</p>
+            </div> -->
+            <!-- 文字描述 -->
+            <div class="neutral-text">
+                <!-- <h3> <span>如何保养</span> 面部肌肤：</h3> -->
+                <div class="dry">
+                    <img src="../images/beauty/dry1.png" alt="">
+                </div>
+               <!--  <h5>1.补充水分。要有充足的饮水，并多吃水果，并适当的用保湿护肤剂，不使用含有酒精的化妆水。</h5>
+                <h5>2.选择适合的洁面乳</h5>
+                <h5>3.温和清洁皮肤</h5>
+                <h5>4.早晚护肤。早晨用冷霜或者乳液滋润皮肤，晚上用修复乳液、营养性化妆水保养。</h5>
+                <h5>5.注意饮食。多食用维生素、脂肪含量高的食物，如牛奶、鸡蛋、香菇、鱼类等。</h5> -->
+                
+            </div>
+        </section>
+
+        <!-- 混合肌肤 -->
+        <section class="neutral clear">
+            <!-- 中性肌肤图片 -->
+            <div class="neutral-img">
+                <img src="../images/beauty/hybrid.png" alt="中性肌肤">
+            </div>
+            <!-- <div class="center">
+                <h2> <span>混合性肌肤</span> 的表现特征</h2>
+                <p>1.皮肤不太粗厚，也不太薄。</p>
+                <p>2.毛孔只在鼻侧、鼻头、额际略为明显。</p>
+                <p>3.洗脸后两颊微有绷紧现象，但很快就会恢复正常。</p>
+                <p>4.脸部的妆，每隔数小时便需要在额头，鼻头，鼻侧补妆。</p>
+                <p>5.夏天时，偶尔不擦护肤品，也不会明显感觉不适。</p>
+            </div> -->
+            <!-- 文字描述 -->
+            <div class="neutral-text">
+                <h3> <span>如何保养</span> 面部肌肤：</h3>
+                <h5>1.清洁。每天护肤的开始，早晚各一次，如果化妆的话晚上要先卸妆。</h5>
+                <h5>2.去角质。混合性皮肤去角质一周最多两次。</h5>
+                <h5>3.补水。爽肤水一天两次。</h5>
+                <h5>4.隔离保护。隔离是早上护肤的最后一步，晚上不用。</h5>
+            </div>
+        </section>
+
+        <!-- 敏感肌肤 -->
+        <section class="neutral clear">
+            <!-- 中性肌肤图片 -->
+            <div class="neutral-img">
+                <img src="../images/beauty/sensitive.png" alt="中性肌肤">
+            </div>
+            <!-- <div class="center">
+                <h2> <span>敏感性肌肤</span></h2>
+                <p>1.皮肤表皮层较薄,有红血丝。</p>
+                <p>2.皮肤比较白,因而缺少适当的黑色素保护。</p>
+                <p>3.皮肤干燥,常会有刺痒的感觉,并且总是红红的。</p>
+            </div> -->
+            <!-- 文字描述 -->
+            <div class="neutral-text">
+                <h3> <span>如何保养</span> 面部肌肤：</h3>
+                <h5>1.不要去角质。角质薄和角质损伤是造成敏感的主要原因，因而保养的首要原则就是维护角质不受伤害</h5>
+                <h5>2.加强防护。敏感性肌肤的表皮层较薄，缺乏对紫外线的防御能力。</h5>
+                <h5>3.充分保湿。爽肤水一天两次。</h5>
+                <h5>4.滋养减半。隔离是早上护肤的最后一步，晚上不用。</h5>
+                <h5>5.减少刺激</h5>
+            </div>
+        </section>
+
+        <!-- 结束语-->
+        <h1>您学会鉴定自己肌肤类别了吗？</h1>
+    </section>
+    
+    <script>
+        window._bd_share_config={
+            "common":{
+                "bdSnsKey":{},
+                "bdText":"",
+                "bdMini":"2",
+                "bdPic":"",
+                "bdStyle":"0",
+                "bdSize":"16"
+            },
+            "share":{}}
+            ;with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</body>
+</html>

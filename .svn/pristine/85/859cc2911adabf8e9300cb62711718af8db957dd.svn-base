@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul> li {
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .goods_jiesao{
+            margin-top: 100px;
+            height: 200px;
+            display: table-cell;
+            vertical-align:middle;
+            text-align:center;
+        }
+        .goods_footer_biaoti{
+            text-align: center;
+        }
+        .footer_image1{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .goods_mingxing{
+            text-align: center;
+        }
+        .goods_jiage1{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .footer_image1 img{
+            height: 200px;
+        }
+        .goods_mingxing img {
+            width: 190px;
+            height: 250px;
+        }
+        .section{
+            margin-top: 20px;
+        }
+        .section>ul {
+            margin-bottom: 20px;
+        }
+        #mingxing{
+            border:#E0E0E0 solid 8px ;
+            margin-top: 30px;
+
+        }
+    </style>
+
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>脸部彩妆</a></h4>
+                <li><a href="gelidishuang">隔离底霜</a></li>
+                <li><a href="gelidishuang">粉底</a></li>
+                <li><a href="gelidishuang">粉饼</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>眼部彩妆</a></h4>
+                <li><a href="gelidishuang">遮瑕</a></li>
+                <li><a href="gelidishuang">眉笔</a></li>
+                <li><a href="gelidishuang">眼线</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>唇部</a></h4>
+                <li><a href="gelidishuang">唇线</a></li>
+                <li><a href="gelidishuang">唇膏</a></li>
+                <li><a href="gelidishuang">唇蜜</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>妆容问题</a></h4>
+                <li><a href="gelidishuang"> 控油持妆</a></li>
+                <li><a href="gelidishuang">细致立体妆容</a></li>
+                <li><a href="gelidishuang">丰盈双唇</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h2>彩妆</h2>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4 footer_image1">
+                    <img src="../images/maquillage_categorie.jpg" class="col-lg-12">
+                </div>
+                <div class="col-lg-8 goods_jiesao">
+                    <div>为了更好地保护肌肤，使之更加良好地抵御外界坏境的侵害，并且维持
+                    肌肤自身的舒适度，法国希思黎使用最先进的技术，开创性地研发出一
+                    系列品类丰富，色彩绚丽，妆效卓越，质地贴合的植物彩妆。</div>
+                </div>
+            </div>
+            <div class="row"  id="mingxing">
+                <div class="col-lg-12 goods_footer_biaoti">
+                    法国希思黎明星产品
+                </div>
+                <%data[4].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing">
+                    <img src="../images/<%=item.d_smallSrc%>">
+                    <div><%=item.g_name%></div>
+                    <div class="goods_jiage1">明星产品</div>
+                    <div class="goods_jiage1">￥<%=item.d_price%></div>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                </div>
+                <%})%>
+            </div>
+            <div class="row section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">脸部彩妆</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">眼部彩妆</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">唇部</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">妆容问题</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="row" id="xuanranGoods">
+                        <%data[0].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <div class="row" id="xuanranGoods">
+                        <%data[1].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    <div class="row" id="xuanranGoods">
+                        <%data[2].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    <div class="row" id="xuanranGoods">
+                        <%data[3].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                            <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+            </div>
+        </div>.
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+</body>
+</html>

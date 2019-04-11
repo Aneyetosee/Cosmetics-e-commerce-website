@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/question.css">
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <%- include("common/header.ejs")%>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="index">首页</a></li>
+                    <li class="active">常见问题</li>
+                </ol>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="questionContact"><!--联系方式-->
+                    <p>需要帮助？ <em>400 821 1280</em></p>
+                    <p>联系我们 我们的希思黎客户服务代表会在</p>
+                    <p>周一到周五：9:00-21:00</p>
+                    <p>周六：9:00-18:00</p>
+                    <p>法定节假日除外为您服务</p>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="aboutTitle">
+                    <div class="questionIcon">
+                        <div><i class="glyphicon glyphicon-question-sign"></i></div>
+                        <div><p>常见问题</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="section_title">
+                    <hr class="line_ornament">
+                    <p class="onlinetext">常见问题</p>
+                </div>
+                <div class="questionContent">
+                    <ul>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>1</span>联系我们</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>1.1</span>
+                                    <span> 想咨询更多推荐产品或其他问题，下面是如何联系我们： </span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            1. 咨询热线：400 821 1280；工作时间：周一到周五：9:00-21:00；周六：9:00-18:00 法定节假日除外为您服务。我们的专家团队会回答您关于产品及使用方法的问题。
+                                            <br>
+                                            <br>
+                                            2. 通过电子邮件联系我们：cs@sisley.com.cn 
+                                            <br>
+                                            <br>
+                                            3. 面对面咨询：我们的专柜有专业美容顾问恭候您的到来。点击本页上方的“专柜地址”，选择您所在的城市，查找离您最近的专柜。
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>2</span>本网站使用方法</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>2.1</span>
+                                    <span>如果忘记密码，该如何重新登录账号？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            如果您忘记密码，请点击页面下方的“忘记密码？”按钮，输入您的手机号码，您将通过验证码，重设密码，保护您的个人信息安全。
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="evernQuestionContentTitle">
+                                    <span>2.2</span>
+                                    <span> 如何修改个人信息？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            您能在“我的账号”下的“个人资料”中修改。
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="evernQuestionContentTitle">
+                                    <span>2.3</span>
+                                    <span>如何修改配送地址？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            您可在“您的账户”信息列表中修改配送地址。
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="evernQuestionContentTitle">
+                                    <span>2.4 </span>
+                                    <span> 如何在线购买？ </span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            在希思黎网站购物非常简单、快速、安全。
+                                            <br>
+                                            <br>
+                                            第一步：首先选择您想购买的产品，选择购买数量（每款产品最多选择4件）。在下拉框中选择型号、颜色、尺寸。 
+                                            <br>
+                                            第二步：点击“放入购物袋”，点击“继续购物”或“查看购物车”确认想购买的产品并提交订单。 
+                                            <br>
+                                            第三步：当产品已被放入购物袋，点击“确认并选择体验装”并选择您喜欢的体验装，之后您需要登录或创建新账号以最终确认订单。
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="evernQuestionContentTitle">
+                                    <span>2.5 </span>
+                                    <span>  如何在线查找产品？  </span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            您可在每一页的搜索栏中输入产品名称，来快捷搜索产品。 
+                                            <br>
+                                            如果您没有具体想要查找的产品名，您可以输入关键词，比如“抗老”。  
+                                            <br>
+                                            所有的希思黎产品都能在线购买，如果某一产品暂时缺货，您可先选择该产品，但不能立刻放入购物袋，直到产品重新有库存后才能购买。 
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>3</span>配送</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>3.1</span>
+                                    <span>有哪几种送货选择，费用分别是多少？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            本网站所有订单都可享受免运费服务。中国大陆的订单将会通过顺丰速递为您送达。（特殊要求及新疆，西藏，海南地区除外）。
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="evernQuestionContentTitle">
+                                    <span>3.2</span>
+                                    <span>能跨国发送产品吗？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            我们无法将产品送往中国大陆以外的地址，也无法送往诸如邮政信箱之类的虚拟地址。
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>4</span>支付</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>4.1</span>
+                                    <span>在网上使用信用卡/借记卡是否安全？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            安全支付 
+                                            <br>
+                                            <br>
+                                            在www.sisley.com.cn官方商城上的付款时非常安全的。感谢SSL加密模式，您在网上的银行信息是加密不可见的，这使您能在网上安全传送隐私信息。 
+                                            <br>
+                                            我们提供“一键支付”的快捷支付方式。这个安全的支付方式能够保存您的网上银行信息，以便下次使用，但不会保存您的支付密码，每次支付您都必须输入支付密码。 
+                                            <br>
+                                            <br>
+                                            当您的信用卡被授权后，该笔款项会暂时冻结直至转账完成。当产品发货后，付款将被继续进行下去。 
+                                            <br>
+                                            www.sisley.com.cn官方商城不接受个人支票。 
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>5</span>退货及退款</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>5.1</span>
+                                    <span> 我该如何退货？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            签收之日起的7天内可无条件退换货。为了节约您的时间，请您首先致电我们的客户服务部门400-821-1280，告知客服服务专员您所遇到的问题和购买产品的订单号，然后根据我们客户服务代表的指示和进行退换货；（在希思黎未受理您的退货申请时，请不要把货品寄回。） 
+                                            <br>
+                                            请注意，所有退回的产品必须是完整并状态良好，用原包装退回。 
+                                            <br>
+                                            <br>
+                                            满足退货条件的顾客请将退货寄至以下地址： 希思黎（中国）上海配送中心地址信息： 收件人：John.Gong 退货地址：上海市宝山区铁力路388号 联系电话：021-33794900*608 
+                                            <br>
+                                            <br>
+                                            如果退货订单中有免费赠品或打折套装，则您必须将这些也连同退货产品一同退回。 
+                                            <br>
+                                            <br>
+                                            请您保留退货时的发货凭证。万一我们没有收到您的退货时，请您出示。 
+                                            <br>
+                                            <br>
+                                            退货产品必须有良好完整的状态，消费者有责任保存好产品。
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>6</span>发票</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>6.1</span>
+                                    <span>我要如何获得发票？</span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            为了使您能够体验到更好更优质的服务体验，Sisley为在官网购买产品的顾客提供免费开票服务。 
+                                            <br>
+                                            当您购买产品时勾选您的开票要求后，我们会马上备注并提交你的开票申请。 
+                                            <br>
+                                            <br>
+                                            Sisley希思黎的开票遵循一定的时间循环原则，公司根据规定统一在每月20号处理上一个月20号起至当月19号的所有开票申请并开具发票。开票后，一般寄出时间为发票开出后的4-5天。 
+                                            <br>
+                                            请您耐心等待，我们非常感谢您的理解与支持。 
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="questionAbout">
+                            <p class="questionTitle"><span>7</span>希思黎产品</p>
+                            <ul>
+                                <li class="evernQuestionContentTitle">
+                                    <span>7.1</span>
+                                    <span> 我要如何得到希思黎体验装？ </span>
+                                    <div class="evernQuestionContent">
+                                        <p>
+                                            只要您在www.sisley.com.cn官方商城购买产品，即有机会获得您所喜爱的体验装。
+                                            <br>
+                                            <br>
+                                            非常抱歉，我们不提供普通邮寄试用装的服务。
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("common/footer.ejs")%>
+    <script src="../js/question.js"></script>
+</body>
+</html>

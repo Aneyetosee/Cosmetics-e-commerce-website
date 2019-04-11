@@ -1,0 +1,16 @@
+const express = require('express')
+const router = express.Router()
+const userCtrl = require('../controller/userCtrl')
+
+//模拟登陆
+router.get('/login.ejs',userCtrl.login)
+router.get('/login',userCtrl.login)
+router.post('/login.do',userCtrl.loginDo)
+
+
+router.get('/personalCenter',userCtrl.personalCenter)
+router.get('/modify',userCtrl.modify)
+router.get('/order.html',userCtrl.order)
+
+
+module.exports = router

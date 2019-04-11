@@ -1,0 +1,121 @@
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row perIndexContent">
+            <h2>您好，<%=data[0][0].u_nickname%>
+                <%if(data[0][0].u_sex=="男"){%>
+                    先生
+                <%}else{%>
+                    女士
+                <%}%></h2>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allContent">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstContent">
+                    <div class="top-head"></div>
+                    <div class="myInfo clear">
+                        <p class="fl">我的信息</p>
+                        <p class="fr" class="myInfoEd">编辑</p>
+                        <div class="fl myInfoContent">
+                            <p><%=data[0][0].u_nickname%>
+                                <%if(data[0][0].u_sex=="男"){%>
+                                    先生
+                                <%}else{%>
+                                    女士
+                                <%}%></p>
+                            <p>邮箱：<%=data[0][0].u_email%></p>
+                            <p>手机号码：<%=data[0][0].u_phone%></p>
+                            <p>性别：<%=data[0][0].u_sex%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 firstContent">
+                    <div class="top-head"></div>
+                    <div class="myInfo clear">
+                        <p class="fl">我的订单</p>
+                        <div class="fl myInfoContent">
+                            <%if(data[data.length-1]==false){%>
+                                <a href="#" class="myInfoOr">查看我的历史订单</a>
+                                <div class="backIndexBtn">立即购物</div>
+                            <%}else{%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>订单号</th>
+                                                <th>商品名称</th>
+                                                <th>状态</th>
+                                                <th>查看详情</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><%=data[data.length-1][data[data.length-1].length-1].o_sn%></td>
+                                                <td>
+                                                    <%data[data.length-1].forEach((item,index)=>{%>
+                                                        <%if(data[data.length-1][index].o_sn==data[data.length-1][data[data.length-1].length-1].o_sn){%>
+                                                            <%=data[data.length-1][index].o_g_name%>
+                                                        <%}%>
+                                                    <%})%>
+                                                </td>
+                                                <td><%=data[data.length-1][data[data.length-1].length-1].order_status%></td>
+                                                <td class="orderDetails">详情</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 secondContent">
+                    <div class="top-head"></div>
+                    <div class="myAddress">
+                        <p>收货地址</p>
+                        <div class="myAddressContent">
+                            <%if(data[1]==false){%>
+                                <p>未添加收货地址</p>
+                            <%}else{%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>地址</th>
+                                                <th>收货人</th>
+                                                <th>联系电话</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%data[1].forEach((item,index)=>{%>
+                                            <tr>
+                                                <td><%=data[1][index].a_province%><%=data[1][index].a_city%><%=data[1][index].a_area%><%=data[1][index].a_address%></td>
+                                                <td><%=data[1][index].a_people%></td>
+                                                <td><%=data[1][index].a_phone%></td>
+                                            </tr>
+                                            <%})%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 thirdContent">
+                    <div class="top-head"></div>
+                    <div class="myScore">
+                        <p>我的积分</p>
+                        <div class="myScoreContent">
+                            <p>您好，会员，您已累计积分为
+                                <%if(data[2]==false){%>
+                                    0
+                                <%}else{%>
+                                    <%=data[2][0].l_score%>
+                                <%}%>积分。</p>
+                            <p>第一步：在本站购买商品，即可累计积分。<a href="#" >开始购物</a></p>
+                            <p>第二步：凭积分可在本站微信公众号上兑换多种积分商品。</p>
+                            <p>第三步：查看更多会员权益。<a href="#" >积分说明</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

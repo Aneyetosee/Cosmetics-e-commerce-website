@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+      .address,.order{
+          font-size: 25px;
+          font-family: "Droid Sans Mono";
+      }
+      .addressTable,
+      .orderTable{
+          background-color: #fff;
+      }
+    </style>
+</head>
+<body>
+    <%console.log(data)%>
+<%-include("common/header.ejs")%>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-1 address">
+            <p>请选择收获地址:</p>
+        </div>
+        <div class="col-lg-2">添加收货地址</div>
+    </div>
+    <!--渲染地址、、、、、、、、、、、、、、、、-->
+    <div class="row">
+        <div class="col-lg-12 addressTable">
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="dizhiHead">
+                        <th>选中</th>
+                        <th>地址</th>
+                        <th>收货人</th>
+                        <th>联系电话</th>
+                        <th>邮编</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%data[0].forEach((item,index)=>{%>
+                    <tr>
+                        <td><input type="radio" name="zx"></td>
+                        <td>
+                            <span><%=data[0][index].a_province%></span>
+                            <span><%=data[0][index].a_city%></span>
+                            <span><%=data[0][index].a_area%></span>
+                            <span><%=data[0][index].a_address%></span>
+                        </td>
+                        <td><%=data[0][index].a_people%></td>
+                        <td><%=data[0][index].a_phone%></td>
+                        <td><%=data[0][index].zipCode%></td>
+                    </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-1 order">
+            <p>请确认订单：</p>
+        </div>
+    </div>
+    <div class="col-lg-12 orderTable">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>商品信息</th>
+                    <th>单价(元)</th>
+                    <th>数量</th>
+                    <th>小计(元)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<%- include("common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

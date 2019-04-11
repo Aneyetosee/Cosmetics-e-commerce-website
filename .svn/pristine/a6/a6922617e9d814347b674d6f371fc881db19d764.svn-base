@@ -1,0 +1,64 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    shoppingCart(req,resp){
+        userDao.userDao().then(function (connection) {
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+                if (user.dataType) {
+                    let u_phone=user.u_phone
+                    connection.query("SELECT o_g_id,u_phone,d_smallSrc,d_chinese,d_Price,o_class_num FROM order_cart JOIN t_details ON o_g_id = d_id JOIN t_user ON o_u_id = u_phone WHERE o_g_id = d_id AND o_u_id = ?",[u_phone])
+                        .then(function (data) {
+                            // var itemNew = data
+                            console.log(data)
+                            resp.render('view/shoppingCart',{data,user:user})
+                            // user:user
+                        })
+                }else {
+                    resp.redirect("index")
+                }
+            }
+        })
+    },
+    myShoppingDelectCart(req,resp){
+        let {myCommodityId,userNameId} = req.body
+        userDao.userDao().then(function (connection) {
+            connection.query("delete from order_cart where o_g_id = ?",[myCommodityId,userNameId])
+                .then(function (data) {
+                    if (data){
+                        resp.send("1")
+                    }
+                    // console.log(myCommodityId)
+                })
+        })
+    },
+    myOrderformData(req,resp){
+        let {shangpingId,feemonev,mytime,time,myCheckQuantity,userPhone} = req.body
+        let zhaungtai = 10
+
+        userDao.userDao().then(function (connection) {
+            // insert into t_user values (null,?,?,?,?,?,?)
+            var mytime = new Date();
+            connection.query("insert into order_detail values (null,?,?,?,?,?)",[shangpingId,feemonev,mytime,time,myCheckQuantity])
+                .then(function (data) {
+                    connection.query("INSERT INTO t_order VALUES (NULL,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?)",[userPhone,time,zhaungtai])
+                        .then(function (data) {
+                            if (data){
+                                console.log(123)
+                            }
+                        })
+                })
+        })
+    }
+
+}

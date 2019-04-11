@@ -1,0 +1,132 @@
+/*星品推荐*/
+body{
+    background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+    background-size: 100% 100%;
+}
+.xptj_hufu{
+    width: 70%;
+    height: 550px;
+    margin-left: 15%;
+    border-top: 1px #b3b3b3 solid;
+    position: relative;
+
+}
+.xptj_text{
+    padding: 5px 20px;
+    position: absolute;
+    left: 44%;
+    font-size: 20px;
+    background-color: white;
+    top: -20px;
+}
+.xptjhf{
+    margin-top: 40px;
+    float: left;
+}
+.xptjhf:hover{
+    cursor: pointer;
+}
+.xptj_name{
+    font-size: 16px;
+    width: 228px;
+    margin: auto;
+    text-align: center;
+    line-height: 20px;
+    border: 1px lightgrey solid;
+}
+.xptjhf:hover .xptj_name{
+    transform: translateY(-5px);
+    transition: all 0.5ms linear 0.5ms ;
+}
+.xptjhf:hover .xptj_img{
+    transform: translateY(-5px);
+    transition: all 0.5ms linear 0.5ms ;
+}
+.xptj_img{
+    width: 228px;
+    margin: auto;
+    border: 1px lightgrey solid;
+    overflow: hidden;
+}
+     /*抗皱修活部分*/
+#kzxh{
+    width: 70%;
+    margin-left: 15%;
+}
+/*品牌故事*/
+#ppgs_bg{
+    width: 70%;
+    margin-left: 15%;
+    background-color: #dfd4ce;
+    border-top: 1px solid #dfc8c1;
+    border-bottom: 1px solid #dfc8c1;
+}
+#ppgs_title{
+    margin-top: 50px;
+    font-size: 32px;
+}
+.ppgs_text1{
+    font-size: 24px;
+    text-align: center;
+}
+#ppgs_pic1,.lhy{
+    width: 703px;
+    margin-left: 120.5px;
+    margin-top: 30px;
+}
+.carousel-inner{
+    margin-bottom: 60px;
+}
+.ppgs_t2 span{
+    font-size: 24px;
+}
+.ppgs_t1{
+    float: left;
+    width: 354px;
+    height: 212px;
+    text-align: center;
+    line-height: 200px;
+}
+.ppgs_t1 span{
+    font-size: 24px;
+}
+.ppgs_t2{
+    float: right;
+    width: 354px;
+    height: 212px;
+    text-align: center;
+    line-height: 200px;
+}
+.ppgs_part1{
+    overflow: hidden;
+    margin-left: 120.5px;
+    margin-top: 60px;
+}
+.ppgs_part1 img{
+    float: left;
+}
+.ppgs_part2{
+    overflow: hidden;
+    margin-right: 118px;
+    margin-top: 60px;
+}
+.ppgs_part2 img{
+    float: right;
+}
+.ppgs_part3{
+    overflow: hidden;
+    margin-left: 120.5px;
+    margin-top: 60px;
+}
+.ppgs_part3 img{
+    float: left;
+}
+#ppgs_part4{
+    margin-top: 60px;
+}
+/*植物净颜*/
+#zwjy{
+    width: 70%;
+    margin-left: 15%;
+}
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            text-align: center;
+            color: black;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .goods_mingxing{
+            text-align: center;
+            border:#E0E0E0 solid 8px;
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #wenzi{
+            margin-top: 50px;
+            padding-top: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            height: 300px;
+            background-color: #E9E9E9;
+            color: #B0A8A1;
+        }
+        #wenzi2{
+            padding-bottom: 20px;
+        }
+        .goods_mingxing2{
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>面部</a></h4>
+                <li><a href="huli">舒缓护理</a></li>
+                <li><a href="huli">净化护理</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-6 ">
+            <h4>
+                舒缓护理
+            </h4>
+            <div>
+                不论是卸妆水或洁肤乳，细心的法国希思黎都能满足您的需求，更为您柔嫩的眼部肌肤提供
+                了独特的卸妆需求
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[0].forEach((item)=>{%>
+                <div class="col-lg-6 goods_mingxing">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <p id="wenzi2">卸除彩妆，为干性和敏感性肌肤带来柔嫩体验。</p>
+                    <button type="button" class="btn">查看产品</button>
+                    <button type="button" class="btn ">快速购买</button>
+                </div>
+                <%})%>
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div id="wenzi">
+                        本品可谓为男士度身定制的多方位赋活抗衰老护肤产品。其配方旨在提高肌肤对抗日常有害影响（剃须、寒冷、压力、污染等）的抵抗力。
+                        它功效繁多，可紧致肌肤，抚平皱纹，深入补水，对抗须后刺激和疲惫痕迹。肌肤得到舒缓润泽，愈加柔嫩（白苦薄荷和野生紫罗兰精华、乳木果油）。
+                        肌肤抵抗力显著提高，疲惫痕迹减退（多种活性成分富含微量元素
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[1].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing2">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <button type="button" class="btn">查看产品</button>
+                    <button type="button" class="btn ">快速购买</button>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script>
+</script>
+</body>
+</html>

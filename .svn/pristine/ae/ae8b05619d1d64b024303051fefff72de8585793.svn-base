@@ -1,0 +1,35 @@
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/shippingAddress.css">
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>收货地址</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myShippingAddress">
+                    <div class="myShippingAddressHead clear">
+                        <div class="fl"><p>已有<span><%%>0</span>收货地址(最多添加10个收货地址)</p></div>
+                        <div class="addAddress fr">+ 添加收货地址</div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTable">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">地址</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">收货人</div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">联系电话</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">操作</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTableContent">
+                            <table class="table table-hover table-responsive">
+                                <tbody>
+                                </tbody>
+                            </table> 
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nulladdress">
+                            <p>暂无收货地址</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="../js/shippingAddress.js"></script>

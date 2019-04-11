@@ -1,0 +1,92 @@
+    <link rel="stylesheet" href="../css/shippingAddress.css">
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>收货地址</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myShippingAddress">
+                    <div class="myShippingAddressHead clear">
+                        <div class="fl">
+                            <p>已有<span>
+                                <%if(data[0]==false){%>
+                                    0
+                                <%}else{%>
+                                    <%=data[0].length%>
+                                <%}%>
+                            </span>收货地址(最多添加10个收货地址)</p></div>
+                        <div class="addAddress fr">+ 添加收货地址</div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTable">
+                        <%if(data[0]==false){%>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTableContent">
+                                <table class="table table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>地址</th>
+                                            <th>收货人</th>
+                                            <th>联系电话</th>
+                                            <th>邮编</th>
+                                            <th>固定电话</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <tbody>
+                                    <tr>
+                                        <td class="serialNumber"></td>
+                                    </tr>
+                                </tbody>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nulladdress">
+                                <p>暂无收货地址</p>
+                            </div>
+                        <%}else{%>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTableContent">
+                                <table class="table table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>地址</th>
+                                            <th>收货人</th>
+                                            <th>联系电话</th>
+                                            <th>邮编</th>
+                                            <th>固定电话</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%data[0].forEach((item,index)=>{%>
+                                            <tr>
+                                                <td class="serialNumber"><%=index+1%></td>
+                                                <td>
+                                                    <span><%=data[0][index].a_province%></span>
+                                                    <span><%=data[0][index].a_city%></span>
+                                                    <span><%=data[0][index].a_area%></span>
+                                                    <span><%=data[0][index].a_address%></span>
+                                                </td>
+                                                <td><%=data[0][index].a_people%></td>
+                                                <td><%=data[0][index].a_phone%></td>
+                                                <td><%=data[0][index].zipCode%></td>
+                                                <td><%=data[0][index].a_phone2%></td>
+                                                <td>
+                                                    <div class="modAddress">修改</div>
+                                                    <div class="delAddress">删除</div>
+                                                    <%if(data[0][index].setDefault==1){%>
+                                                        <div class="defAddress">默认地址</div>
+                                                    <%}else{%>
+                                                        <div class="setDefAddress">设为默认</div>
+                                                    <%}%>
+                                                </td>
+                                            </tr>
+                                        <%})%>
+                                    </tbody>
+                                </table> 
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/area.js"></script>
+    <script src="../js/shippingAddress.js"></script>

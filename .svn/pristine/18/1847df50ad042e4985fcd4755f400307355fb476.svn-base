@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎星品推荐</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/xptj.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2">
+            <p><a href="/index">主页</a>>希思黎星品推荐</p>
+        </div>
+    </div>
+    <div class="xptj_hufu">
+        <span class="xptj_text">护肤</span>
+        <div class="row">
+        <%data.forEach((item)=>{%>
+                <div class="xptjhf col-lg-4">
+                    <div class="xptj_img">
+                        <a href="cxbd?id=<%=item.c_xptj_id%>">
+                        <img src="../images/gwzx_0214/xptj/<%=item.c_xptj_imgSrc%>" alt="#">
+                        </a>
+                    </div>
+                    <div class="xptj_name">
+                        <p><%=item.c_xptj_name%></p>
+                    </div>
+                </div>
+       <%})%>
+        </div>
+    </div>
+<%- include("common/footer.ejs")%>
+</body>
+</html>

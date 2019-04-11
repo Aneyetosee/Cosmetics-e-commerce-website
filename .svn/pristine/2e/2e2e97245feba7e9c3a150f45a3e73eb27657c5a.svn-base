@@ -1,0 +1,134 @@
+//省市地区选择
+var province=$("#province"),city=$("#city"),town=$("#town");
+for(var i=0;i<provinceList.length;i++){
+    addEle(province,provinceList[i].name);
+}
+function addEle(ele,value){
+    var optionStr="";
+    optionStr="<option value="+value+">"+value+"</option>";
+    ele.append(optionStr);
+}
+function removeEle(ele){
+    ele.find("option").remove();
+    var optionStar="<option value="+"请选择"+">"+"请选择"+"</option>";
+    ele.append(optionStar);
+}
+var provinceText,cityText,cityItem;
+province.on("change",function(){
+    provinceText=$(this).val();
+    $.each(provinceList,function(i,item){
+        if(provinceText == item.name){
+            cityItem=i;
+            return cityItem
+        }
+    });
+    removeEle(city);
+    removeEle(town);
+    $.each(provinceList[cityItem].cityList,function(i,item){
+        addEle(city,item.name)
+    })
+});
+city.on("change",function(){
+    cityText=$(this).val();
+    removeEle(town);
+    $.each(provinceList,function(i,item){
+        if(provinceText == item.name){
+            cityItem=i;
+            return cityItem
+        }
+    });
+    $.each(provinceList[cityItem].cityList,function(i,item){
+        if(cityText == item.name){
+            for(var n=0;n<item.areaList.length;n++){
+                addEle(town,item.areaList[n])
+            }
+        }
+    });
+});
+
+//添加地址
+var whichBtn;
+$('.addAddress').on('click',function(){
+    console.log($('.serialNumber').last().text())
+    if($('.serialNumber').last().text()>='10'){
+        alert('超出地址编辑上限，请删除一个地址后再操作')
+    }else if($('.serialNumber').last().text()!='10'){
+        $('#addressModal').modal()
+        province.val('请选择')
+        city.val('请选择')
+        town.val('请选择')
+        $('.particularAddress').val('')
+        $('.addressee').val('')
+        $('.addresseePhone').val('')
+        $('.fixedTelephone').val('')
+        $('.setDefault').removeProp('checked','checked')
+        whichBtn = 'add';
+    }
+})
+//点击保存
+$('#saveAddressBtn').on('click',function(){
+    if(whichBtn == 'add'){
+        if(province.val()!='请选择'&&city.val()!='请选择'&&town.val()!='请选择'&&$('.particularAddress').val()!=''&&$('.addressee').val()!=''&&$('.addresseePhone').val()!=''){
+            $('.chooseAddressPrompt').css('opacity','0')
+            let phone = /^1(3|4|5|7|8)\d{9}$/
+            let fixedPhone = /0\d{2,3}-\d{7,8}/
+            if(phone.test($('.addresseePhone').val())){
+                $('.chooseAddressPrompt').css('opacity','0')
+                let userAddressAddArr =[]
+                userAddressAddArr.push(province.val())
+                userAddressAddArr.push(city.val())
+                userAddressAddArr.push(town.val())
+                userAddressAddArr.push($('.particularAddress').val())
+                userAddressAddArr.push($('.addressee').val())
+                userAddressAddArr.push($('.addresseePhone').val())
+                if(fixedPhone.test($('.fixedTelephone').val())&&$('.fixedTelephone').val()!=''){
+                    userAddressAddArr.push($('.zipCode').val())
+                }else if($('.fixedTelephone').val()!=''){
+                    $('.chooseAddressPrompt').css('opacity','1').text('固定号码输入有误，请重新输入') 
+                }else{
+                    userAddressAddArr.push('NULL')
+                }
+                if($('.setDefault').is(':checked')){
+                    userAddressAddArr.push('1')
+                }else{
+                    userAddressAddArr.push('0')
+                }
+                userAddressAddArr.push($('.fixedTelephone').val())
+                userAddressAddArr.push($('.serialNumber').last().text())
+                console.log(userAddressAddArr)
+                $.ajax({
+                    type:'post',
+                    url:'/shippingAddress.do',
+                    data:{
+                        userAddressAddArr
+                    },
+                    success(data){
+                        console.log(data)
+                    }
+                })
+            }else{
+                $('.chooseAddressPrompt').css('opacity','1').text('手机号码输入有误，请重新输入') 
+            }
+        }else{
+            $('.chooseAddressPrompt').css('opacity','1').text('资料未填完整，请填写完整')
+        }
+    }else if(whichBtn == 'mod'){
+
+    }
+})
+//修改地址
+$('.addressTable').on('click','.modAddress',function(){
+    $('#addressModal').modal()
+    $('.particularAddress').val($(this).parent().parent().children().eq(0).children().eq(3).text())
+    $('.addressee').val($(this).parent().parent().children().eq(1).text())
+    $('.zipCode').val($(this).parent().parent().children().eq(2).text())
+    $('.addresseePhone').val($(this).parent().parent().children().eq(3).text())
+    $('.fixedTelephone').val($(this).parent().parent().children().eq(4).text())
+    
+    if($(this).next().next().text()=='默认地址'){
+        $('.setDefault').prop('checked','checked')
+    }else if($(this).next().next().text()=='设为默认'){
+        $('.setDefault').removeProp('checked','checked')
+    }
+    whichBtn = 'mod';
+})

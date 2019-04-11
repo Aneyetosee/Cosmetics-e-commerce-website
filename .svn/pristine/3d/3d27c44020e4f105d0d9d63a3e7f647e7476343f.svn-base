@@ -1,0 +1,109 @@
+
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>我的订单</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear">
+                    <div class="searchOrderBox fl">
+                        <input type="text" id="searchOrder" name="searchOrder" placeholder="请输入查询的商品名称">
+                        <button id="searchOrderBtn"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myOrder">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myOrderContent">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nullOrder">
+                            <%if(data[0]==false){%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 orderTableContent">
+                                    <table class="table table-hover table-responsive table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>订单编号</th>
+                                                <th>商品详情</th>
+                                                <th>商品单价</th>
+                                                <th>数量</th>
+                                                <th>总金额</th>
+                                                <th>订单状态</th> 
+                                                <th>评论</th> 
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div>
+                                    <p>您还没有下订单哦！</p>
+                                    <div class="backIndex"><a href="index">立即开始购物</a></div>
+                                </div>
+                            <%}else{%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 orderTableContent">
+                                    <table class="table table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th class="orderNumber">订单编号</th>
+                                                <th>商品详情</th>
+                                                <th>商品单价</th>
+                                                <th>数量</th>
+                                                <th>总金额</th>
+                                                <th>订单状态</th> 
+                                                <th>评论</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%data[0].forEach((item,index)=>{%>
+                                                <tr class="orderTableTr">
+                                                    <%if(data[0][index].ord_ord_id){%>
+                                                        <td class="orderNumber" rowspan="<%=reNumArr[index]%>"><%=data[0][index].ord_ord_id%></td>
+                                                    <%}%>
+                                                    <td class="shipContent">
+                                                        <img src="/images/<%=data[0][index].d_smallSrc%>" alt="pic">
+                                                        <%=data[0][index].d_chinese%>
+                                                    </td>
+                                                    <td><%=data[0][index].d_price%>元</td>
+                                                    <td><%=data[0][index].order_class_num%></td>
+                                                    <%if(data[0][index].ord_ord_id){%>
+                                                        <td rowspan="<%=reNumArr[index]%>"><%=data[0][index].o_money%>元</td>
+                                                    <%}%>
+                                                    <%if(data[0][index].ord_ord_id){%>
+                                                        <td rowspan="<%=reNumArr[index]%>">
+                                                            <%if(data[0][index].order_status==10){%>
+                                                                <div class="unpaid">待支付</div>
+                                                                <div class="orderDetails" data-order='<%=data[0][index].ord_ord_id%>'>详情</div>
+                                                            <%}else if(data[0][index].order_status==20){%>
+                                                                <div class="toPaid">待发货</div>
+                                                                <div class="orderDetails" data-order='<%=data[0][index].ord_ord_id%>'>详情</div>
+                                                            <%}else if(data[0][index].order_status==30){%>
+                                                                <div class="sendGoods">已发货</div>
+                                                                <div class="orderDetails" data-order='<%=data[0][index].ord_ord_id%>'>详情</div>
+                                                                <div class="makeSure">确认收货</div>
+                                                            <%}else if(data[0][index].order_status==40){%>
+                                                                <div class="sendGoodsed">交易成功</div>
+                                                                <div class="orderDetails" data-order='<%=data[0][index].ord_ord_id%>'>详情</div>
+                                                            <%}else if(data[0][index].order_status==50){%>
+                                                                <div class="received">交易失败</div>
+                                                                <div class="orderDetails" data-order='<%=data[0][index].ord_ord_id%>'>详情</div>
+                                                            <%}%>
+                                                        </td>
+                                                    <%}%>
+                                                    <td>
+                                                        <%if(data[0][index].order_status==40){%>
+                                                            <div class="commentsOnTheGoods" data-index="<%=data[0][index].ord_o_id%>">评论商品</div>
+                                                        <%}%>
+                                                    </td>
+                                                </tr>
+                                            <%})%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="../js/order.js"></script>
+    

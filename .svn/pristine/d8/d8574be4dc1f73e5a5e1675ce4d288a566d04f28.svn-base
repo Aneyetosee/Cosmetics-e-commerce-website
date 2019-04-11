@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul> li {
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        h3{
+           padding-left: 30px;
+        }
+        .goods_jiesao{
+            margin-top: 100px;
+            height: 200px;
+            display: table-cell;
+            vertical-align:middle;
+            text-align:center;
+        }
+        .goods_footer_biaoti{
+            text-align: center;
+        }
+        .footer_image1{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 200px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing{
+            text-align: center;
+           margin-left: 0px;
+        }
+        .goods_jiage1{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .section{
+            margin-top: 20px;
+        }
+        .section>ul {
+            margin-bottom: 20px;
+        }
+        p{
+            margin-top: 50px;
+        }
+        #mingxing{
+            border:#E0E0E0 solid 8px !important;
+            margin-top: 30px;
+
+        }
+    </style>
+
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>面部</a></h4>
+                <li><a href="xiezhuang">卸妆</a></li>
+                <li><a href="xiezhuang">洁面</a></li>
+                <li><a href="xiezhuang">化妆水</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>身体护理</a></h4>
+                <li><a href="xiezhuang">最新动态</a></li>
+                <li><a href="xiezhuang">保湿滋润</a></li>
+                <li><a href="xiezhuang">去除角质</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>防嗮</a></h4>
+                <li><a href="xiezhuang">最新动态</a></li>
+                <li><a href="xiezhuang">面部防晒</a></li>
+                <li><a href="xiezhuang">身体防晒</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>肌肤问题</a></h4>
+                <li><a href="xiezhuang">抗皱御龄</a></li>
+                <li><a href="xiezhuang">紧致提拉</a></li>
+                <li><a href="xiezhuang">亮泽美白</a></li>
+
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h2>护肤</h2>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4 footer_image1">
+                    <img src="../images/categorie-soin-image_1.jpg" class="col-lg-12">
+                </div>
+                <div class="col-lg-8 goods_jiesao">
+                    <div>为满足不同的肌肤需求，解决各种复杂的肌肤问题，法国希思黎为您提
+                    供一系列周全的专属美容护肤产品：卸妆、清洁、补水、保湿、抗老、
+                    防晒以及头发护理等。法国希思黎的研发专家不仅深谙各种植物成分及
+                    其作用于肌肤的效果，还熟知皮肤机能的奥秘，将它们完美地结合在一
+                    起，融汇成了法国希思黎独树一帜的专业护肤理念。
+                    </div>
+                </div>
+            </div>
+            <div class="row " id="mingxing">
+                <div class="col-lg-12 goods_footer_biaoti">
+                    法国希思黎明星产品
+                </div>
+                <%data[4].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing">
+                    <img src="../images/<%=item.d_smallSrc%>">
+                    <div><%=item.g_name%></div>
+                    <div class="goods_jiage1">明星产品</div>
+                    <div class="goods_jiage1">￥<%=item.d_price%></div>
+                    <button type="button" class="btn ">查看产品</button>
+                    <button type="button" class="btn ">快速购买</button>
+                </div>
+                <%})%>
+            </div>
+            <div class="row section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">面部</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">身体护理</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">防嗮</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">肌肤问题</a></li>
+                </ul>
+                <div  class="col-lg-2">产品匹配您的搜索</div>
+                <div class="col-lg-2 col-lg-offset-8 dropdown">
+                    分类:
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        价格
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">价格 低至高</a></li>
+                        <li><a href="#">价格 高至低</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="row" id="xuanranGoods">
+                            <%data[0].forEach((item)=>{%>
+                            <div class="col-lg-4 goods_mingxing">
+                                <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                                <p><%=item.g_name%></p>
+                                <p><%=item.g_descript%></p>
+                                <p>￥<%=item.d_price%></p>
+                                <button type="button" class="btn ">查看产品</button>
+                                <button type="button" class="btn ">快速购买</button>
+                            </div>
+                            <%})%>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="row" id="xuanranGoods">
+                            <%data[1].forEach((item)=>{%>
+                            <div class="col-lg-4 goods_mingxing">
+                                <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                                <p><%=item.g_name%></p>
+                                <p><%=item.g_descript%></p>
+                                <p>￥<%=item.d_price%></p>
+                                <button type="button" class="btn ">查看产品</button>
+                                <button type="button" class="btn ">快速购买</button>
+                            </div>
+                            <%})%>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <div class="row" id="xuanranGoods">
+                            <%data[2].forEach((item)=>{%>
+                            <div class="col-lg-4 goods_mingxing">
+                                <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                                <p><%=item.g_name%></p>
+                                <p><%=item.g_descript%></p>
+                                <p>￥<%=item.d_price%></p>
+                                <button type="button" class="btn ">查看产品</button>
+                                <button type="button" class="btn ">快速购买</button>
+                            </div>
+                            <%})%>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <div class="row" id="xuanranGoods">
+                            <%data[3].forEach((item)=>{%>
+                            <div class="col-lg-4 goods_mingxing">
+                                <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                                <p><%=item.g_name%></p>
+                                <p><%=item.g_descript%></p>
+                                <p>￥<%=item.d_price%></p>
+                                <button type="button" class="btn ">查看产品</button>
+                                <button type="button" class="btn ">快速购买</button>
+                            </div>
+                            <%})%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script>
+</script>
+</body>
+</html>

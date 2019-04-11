@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/personalCenter.css">
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="../js/area.js"></script>
+</head>
+<body>
+    <%console.log(data)%>
+<%if(thisPage=='modify'){%>
+    <!-- modify的模态框 -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">请修改密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modifyPasswordContent">
+                        <p>原密码：</p>
+                        <div><input type="password" class="modifyPasswordInput" id="originalPassword"></div>
+                        <p>新密码：</p>
+                        <div><input type="password" class="modifyPasswordInput" id="newPassword"></div>
+                        <p>确认密码：</p>
+                        <div><input type="password" class="modifyPasswordInput" id="confirmNewPassword"></div>
+                    </div>
+                    <div>
+                        <p id="passwordPrompt"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="passwordClose">关闭</button>
+                    <button type="button" class="btn btn-primary" id = "passwordSave">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="phoneModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">请修改手机号</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="messageText" class="phoneLabel">请输入新手机号</label>
+                        <div class="clear">
+                            <div class="phoneVerification fl">
+                                <input class="phoneVerificationInput" id="messageText" maxlength="11"></input>
+                            </div>
+                            <div class="phoneVerificationContent fl">请获取验证码</div>
+                        </div>
+                        <div class="prompt"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessageText" class="phoneLabel">请输入验证码</label>
+                        <div class="phoneVerification">
+                            <input class="getVerificationInput" id="inputMessageText" maxlength="6"></input>
+                        </div>
+                    </div>
+                    <div>
+                        <p id="phonePrompt"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="newPhoneClose">关闭</button>
+                    <button type="button" class="btn btn-primary" id="newPhoneSave">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Small modal -->
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="modification">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <p id="modificationTitle"></p>
+            </div>
+        </div>
+    </div>
+<%}else if(thisPage=='shippingAddress'){%>
+    <div class="modal fade" id="addressModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加地址</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <span>*省：</span>
+                            <select name="province" id="province">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*市：</span>
+                            <select name="city" id="city">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*地区：</span>
+                            <select name="town" id="town">
+                                <option value="请选择">请选择</option>
+                            </select>
+                        </div>
+                        <div class="detailedAddress">
+                            <p>*详细地址：</p>
+                            <div><input type="text" class="particularAddress"></div>
+                        </div>
+                        <div class="recipientName clear">
+                            <div class="fl">
+                                <p>*收件人姓名：</p>
+                                <div><input type="text" class="addressee" maxlength="20"></div>
+                            </div>
+                            <div class="fl">
+                                <p>邮编：</p>
+                                <div><input type="text" value="000000" class="zipCode" maxlength="6"></div>
+                            </div>
+                        </div>
+                        <div class="recipientPhone">
+                            <p>*收件人手机号：</p>
+                            <div><input type="text" class="addresseePhone" maxlength="11"></div>
+                        </div>
+                        <div class="fixedPhone">
+                            <p>固定电话：</p>
+                            <div><input type="text" class="fixedTelephone" maxlength="13"></div>
+                        </div>
+                        <div class="defaultAdress">
+                            <input type="checkbox" class="setDefault">
+                            <span>设为默认地址</span>
+                        </div>
+                        <p class="chooseAddressPrompt">资料未填完整，请填完整</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="saveAddressBtn">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<%}%>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ol class="breadcrumb mybread">
+                        <li><a href="index">首页</a></li>
+                        <%if(thisPage=='modify'){%>
+                            <li><a href="personalCenter">您的账户</a></li>
+                            <li class="active">个人信息</li>
+                        <%}else if(thisPage=='order'){%>
+                            <li><a href="personalCenter">您的账户</a></li>
+                            <li class="active">历史订单</li>
+                        <%}else if(thisPage=='shippingAddress'){%>
+                            <li><a href="personalCenter">您的账户</a></li>
+                            <li class="active">地址管理</li>
+                        <%}else if(thisPage=='Integral'){%>
+                            <li><a href="personalCenter">您的账户</a></li>
+                            <li class="active">积分</li>
+                        <%}else{%>
+                            <li class="active">您的账户</li>
+                        <%}%>
+                    </ol>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="leftContent">
+                        <div class="top-head"></div>
+                        <div class="leftNav">
+                            <ul class="leftNavContent">
+                                <li class="leftNavTitle"><a href="modify"><span class="navText">个人信息</span></a></li>
+                                <li class="leftNavTitle"><a href="order"><span class="navText">我的订单</span></a></li>
+                                <li class="leftNavTitle"><a href="shippingAddress"><span class="navText">收货地址</span></a></li>
+                                <li class="leftNavTitle"><a href="Integral"><span class="navText">我的积分</span></a></li>
+                                <li class="backIndexNav"><a href="cancellation"><span class="navText">注销</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="leftHelp">
+                            <p>购物帮助指南</p>
+                            <p>美丽顾问和技术专家为您解疑</p>
+                            <p><span class="glyphicon glyphicon-phone"></span>400-820-8820</p>
+                        </div>
+                        <div class="quistion">
+                            <p>常见问题</p>
+                            <div><a href="#">如何下订单？</a></div>
+                            <div><a href="#">如何查看配送状况？</a></div>
+                            <div><a href="#">如何修改订单？</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <%if(thisPage=='modify'){%>
+                        <%- include("modify.ejs")%>
+                    <%}else if(thisPage=='order'){%>
+                        <%- include('order.ejs')%>
+                    <%}else if(thisPage=='shippingAddress'){%>
+                        <%- include('shippingAddress.ejs')%>
+                    <%}else if(thisPage=='Integral'){%>
+                        <%- include('Integral.ejs')%>
+                    <%}else{%>
+                        <%- include("userIndex.ejs")%>
+                    <%}%>
+                    <iframe src="" frameborder="0" name="myiframe" scrolling="auto" class="myiframe" id="mainIframe" allowtransparency="true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include("../view/common/footer.ejs")%>
+    <script src="../js/personalCenter.js"></script>
+    
+</body>
+</html>

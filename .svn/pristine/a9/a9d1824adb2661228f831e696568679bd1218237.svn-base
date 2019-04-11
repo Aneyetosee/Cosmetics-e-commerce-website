@@ -1,0 +1,31 @@
+const userDao = require("../dao/userDao")
+
+module.exports= {
+    index(req, resp) {
+        userDao.userDao().then(function (connection) {
+            var indexData = [];
+            connection.query('SELECT g_name,g_descript,d_price,d_smallSrc FROM t_goods JOIN t_details WHERE d_chinese=g_name AND d_type="全新上市" LIMIT 4', [])
+                .then(function (data) {
+                var itemNew = data;
+                indexData.push(itemNew)
+                connection.query('SELECT g_name,g_descript,d_price,d_smallSrc FROM t_goods JOIN t_details WHERE d_chinese=g_name AND d_type="畅销榜单" LIMIT 4',[])
+                    .then(function (data) {
+                    var itemSell=data;
+                    indexData.push(itemSell)
+                        console.log(indexData);
+                        resp.render("index", {data:indexData})
+                })
+                //
+            })
+        })
+    },
+    service(req, resp) {
+        resp.render("view/service")
+    },
+    login(req, resp) {
+        resp.render("userView/login")
+    },
+    safetyPay(req, resp) {
+        resp.render("view/safetyPay")
+    }
+}

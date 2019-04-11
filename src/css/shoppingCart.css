@@ -1,0 +1,26 @@
+body{
+    background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+    background-size: 100% 100%;
+}
+section{
+    background-color: rgb(216, 210, 210);
+    height: 620px;
+}
+h2{
+    margin:10px 0 20px;
+}
+.myShippingCart{
+    width:100%;
+    background-color: #fff;
+    padding:20px 0 0;
+}
+.myShippingCartBody>div:first-child,
+.myShippingCartBody>div:nth-child(2),
+.myShippingCartBody>div:nth-child(3),
+.myShippingCartBody>div:nth-child(4),
+.myShippingCartBody>div:nth-child(5),
+.myShippingCartBody>div:nth-child(6){
+    background-color: #b0a296;
+    height:25px;
+    line-height:25px;
+}

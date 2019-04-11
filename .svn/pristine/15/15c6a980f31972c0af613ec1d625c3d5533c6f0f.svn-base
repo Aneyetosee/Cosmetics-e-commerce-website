@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            text-align: center;
+            color: black;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .goods_mingxing{
+            text-align: center;
+            border:#E0E0E0 solid 8px;
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #wenzi{
+            margin-top: 50px;
+            padding-top: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            height: 300px;
+            background-color: #E9E9E9;
+            color: #B0A8A1;
+        }
+        #wenzi2{
+            padding-bottom: 20px;
+        }
+        .goods_mingxing2{
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>女士香氛</a></h4>
+                <li><a href="lvye">绿野芳踪</a></li>
+                <li><a href="lvye">沁香水</a></li>
+                <li><a href="lvye">热带奇幻香氛</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>情侣香水</a></h4>
+                <li><a href="lvye">夜幽情怀</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>男士</a></h4>
+                <li><a href="lvye">王者之跃</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>香氛蜡烛</a></h4>
+                <li><a href="lvye">清雅玫瑰</a></li>
+                <li><a href="lvye">暖馨夜来香</a></li>
+                <li><a href="lvye">蜡烛套装</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-6 ">
+            <h4>
+                绿野芳综
+            </h4>
+            <div>
+                绵绵悠扬、魅惑动人的香水只献给精致浪漫的女人……法国希思黎香水味道超凡脱俗，是高贵优雅与女人气味的完美融合。
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[0].forEach((item)=>{%>
+                <div class="col-lg-6 goods_mingxing">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <p id="wenzi2">西普香调、柑橘香调和草香之间的相互交织。</p>
+                    <button type="button" class="btn">查看产品</button>
+                    <button type="button" class="btn ">快速购买</button>
+                </div>
+                <%})%>
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div id="wenzi">
+                        一款中性淡香水。 清新，绿色，随性雅致。 自然精髓，其芬芳代表着法兰西生活艺术。
+                        柑橘和草香的完美和谐，又融入西普基香调。生机勃勃的清新花束，令人联想起幸福感和日常优雅风范。
+                        绿野芳踪蕴含罗勒、野生香草和柠檬的馥郁芳香。柑橘香调彰显了绿西红柿叶的独特气息，
+                        以及茉莉、梅花、铃兰和天竺葵的宜人花香。轻盈木香则流露着橡苔、麝香和广藿香的芬芳
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[1].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing2">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <button type="button" class="btn">查看产品</button>
+                    <button type="button" class="btn ">快速购买</button>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script>
+</script>
+</body>
+</html>

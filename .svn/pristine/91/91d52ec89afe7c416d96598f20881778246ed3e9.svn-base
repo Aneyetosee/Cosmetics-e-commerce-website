@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+
+    <link href="../lib/big/src/jquery.exzoom.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/big/css/normalize.css" />
+    <!--引入的icon-->
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        #exzoom {
+            width: 400px;
+            height: 400px;
+            /*margin: 30px auto;*/
+        }
+        /*img{
+            width: 400px;
+            height: 400px;
+        }*/
+        .clear:after{
+            content: "";
+            clear: both;
+            height: 0;
+            display: block;
+            visibility: hidden;
+        }
+        .butt{
+            background-color: #be9e3c;
+        }
+        .kuang,.kuang2{
+           /* border: 1px solid red;*/
+        }
+        .kuang{
+            margin-left: 20px;
+        }
+        .img1{
+            width: 300px;
+            height: 300px;
+        }
+        .my_total span{
+            display: inline-block;
+            margin-right: 40px;
+            padding: 3px 0px;
+            cursor: pointer;
+        }
+        .my_total span:hover{
+            border-bottom: 2px solid rgba(11, 9, 13, 0.99);
+        }
+        .my_one{
+            border-bottom: 2px solid rgba(11, 9, 13, 0.99);
+        }
+        .my_total{
+            height: 30px;
+        }
+        .my_function div{
+            font-size: 12px;
+            color: silver;
+        }
+        .my_function_one{
+            display: none;
+        }
+        .two{
+            display: block;
+        }
+        .xiantiao{
+            border: 1px solid #8b8b8b;
+        }
+        #money div:nth-child(1){
+            float: left;
+        }
+        /*/////////////////////////////////////////////////////////*/
+        #money div:nth-child(2){
+            float: right;
+            /*  border: 1px solid red;*/
+            /*background-color: black;*/
+           /* border-radius: 5px;*/
+            cursor: pointer;
+
+        }
+       /* #money div:nth-child(2):hover{
+            background-color: #535353;
+        }*/
+        #money div:nth-child(2)>p{
+            color: silver;
+            padding: 5px 20px;
+           /* display: table-cell;*/
+            vertical-align:middle;
+            margin-left: 5px;
+        }
+        #money div:nth-child(3){
+            float: right;
+            font-size: 20px;
+            color: #2a2a2a;
+            margin-right: 20px;
+        }
+        input{
+            width: 30px;
+        }
+        .xuanxiang>p{
+            float: right;
+            font-size: 12px;
+            color: silver;
+            border-bottom: 1px solid silver;
+            padding: 0;
+        }
+        #my_img>img{
+            width: 300px;
+            height: 300px;
+            padding-top: 40px;
+        }
+        .xiangguan{
+            text-align: center;
+        }
+       /*//////////icon的样式 /////////////*/
+        .footer{
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+        .footer_context{
+            width: 70%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .footer_icon{
+            overflow: hidden;
+            margin-top: 1px;
+        }
+        .foot_icon span{
+            margin: 10px;
+            float: left;
+            text-align: center;
+        }
+        .foot_icon i{
+            display: block;
+        }
+        .foot_icon span .iconfont{
+            font-size: 25px;
+            padding: 10px 10px;
+        }
+        .foot_icon span a{
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+        }
+        #icon{
+            font-size: 12px;
+        }
+        .foot_icon a:hover{
+            color: rgba(1,1,1,0.53);
+        }
+        .ont_icon{
+            padding-top: 10px;
+        }
+        .hengxian{
+            border-top: 1px solid #b9b9b9;
+        }
+        .zhifu{
+           background-color: red;
+            border-radius: 5px;
+            text-align: center;
+
+        }
+        .gouwu{
+            border-radius: 5px;
+            background: black;
+            margin-left: 5px;
+        }
+        #tianjiazhifu{
+            color: red;
+        }
+        #deailsGou{
+            text-align: center;
+        }
+        .ai{
+            margin-left: 30px;
+        }
+      /*  #myzhifu p:nth-child(3){
+            color: red;
+        }*/
+        .comment_li{
+            border-bottom: 1px solid  red;
+            background-color: #dfdfdf;
+            margin-bottom: 10px;
+        }
+        .comment_li>div>span{
+            margin-right: 40px;
+
+        }
+        .comment_li>p{
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+      <%-include("common/header.ejs")%>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2">
+            <p class="ai">主页><%=details[0].d_chinese%></p>
+        </div>
+        <div class=".col-lg-1 col-lg-offset-9">
+            <div class="bdsharebuttonbox right">
+                <a href="#" class="bds_more" data-cmd="more"></a>
+                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+            </div>
+           <!-- <p>分享</p>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-2 kuang2">
+            <!--<div class="jqzoom ">
+                <img src="../images/3473311141002-min.jpg" class="img1" alt="scarpa"  jqimg="../images/1063x1063_1.jpg">
+            </div>-->
+            <div class="htmleaf-container">
+
+                <div class="exzoom" id="exzoom">
+                    <!--大图区域-->
+                    <div class="exzoom_img_box">
+                        <ul class='exzoom_img_ul'>
+                            <li><img src="../images/<%=details[0].d_smallSrc%>"/></li>
+                            <li><img src="../images/<%=details[0].d_smallSrc%>"/></li>
+                            <li><img src="../images/<%=details[0].d_smallSrc%>"/></li>
+                            <li><img src="../images/<%=details[0].d_smallSrc%>"/></li>
+                            <li><img src="../images/<%=details[0].d_smallSrc%>"/></li>
+                           <!-- ../lib/big/images/photos/3473311141002-min.jpg-->
+                        </ul>
+                    </div>
+                    <div class="exzoom_nav"></div>
+                    <!--控制按钮-->
+                    <p class="exzoom_btn">
+                        <a href="javascript:void(0);" class="exzoom_prev_btn"> &lt; </a>
+                        <a href="javascript:void(0);" class="exzoom_next_btn"> &gt; </a>
+                    </p>
+                </div>
+            </div>
+            <!--<div id="my_img">
+                <img src="../images/vignette-video-emulsion-eco.jpg" alt="">
+            </div>-->
+        </div>
+        <div class="col-lg-4 kuang">
+            <div>
+                <button class="butt"><%=details[0].d_type%></button>
+                <h1><%=details[0].d_chinese%></h1>
+                <p><%=details[0].d_english%></p>
+                <p><%=details[0].d_brief%></p>
+                <div class="my_function">
+                    <div class="my_total">
+                        <span onclick="exhibition(this,0)" class="my_span my_one">描述</span>
+                        <span onclick="exhibition(this,1)" class="my_span">使用说明</span>
+                        <span onclick="exhibition(this,2)" class="my_span">功效</span>
+                        <span onclick="exhibition(this,3)" class="my_span">主要成分</span>
+                    </div>
+                    <div class="xiantiao"></div>
+                    <div>
+                        <div class="my_function_one two">
+                            <div>
+                                <%-details[0].d_describe%>
+                            </div>
+                        </div>
+                        <div class="my_function_one">
+                            <p><%=details[0].d_explain%>。</p>
+                        </div>
+                        <div class="my_function_one">
+                            <p> <%=details[0].d_effect%></p>
+                        </div>
+                        <div class="my_function_one">
+                            <p><%=details[0].d_component%></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>容量： <%=details[0].d_capacity%> 毫升</p>
+                </div>
+                <div id="money" class="clear">
+                    <div>
+                        <span>数量：</span>
+                        <select name="" id="my_select">
+                        </select>
+                    </div>
+
+                    <div id="myzhifu">
+                        <p class="zhifu" onclick="payment()">立即支付</p>
+                        <p class="gouwu" id="deailsGou" onclick="deailsGou()">加入购物篮</p>
+                        <p id="tianjiazhifu"></p>
+                    </div>
+
+                    <div>
+                        <p>￥<%=details[0].d_price%></p>
+                    </div>
+                </div>
+                <div class="clear xuanxiang">
+                    <p>加入您的选项</p>
+                </div>
+                <div class="clear xuanxiang">
+                    <p>购买此产品可获得 <%=details[0].d_price%> 积分</p>
+                </div>
+                <div class="hengxian"></div>
+                <div>
+                    <div class="foot_icon">
+            <span class="ont_icon">
+                <a href="/service">
+                    <i class="iconfont " id="icon">SISLEY</i>
+                    <span>满意或退款</span>
+                </a>
+            </span>
+                        <span>
+                <a href="">
+                    <i class="iconfont icon-suo"></i>
+                     安全支付
+                </a>
+            </span>
+                        <span>
+                <a href="">
+                    <i class="iconfont icon-c-huoche"></i>
+                    发货
+                </a>
+            </span>
+                        <span>
+                <a href="">
+                    <i class="iconfont icon-fanhui"></i>
+                    退换货条款
+                </a>
+            </span>
+                        <span>
+                <a href="">
+                    <i class="iconfont icon-gantanhao"></i>
+                    免费试用装
+                </a>
+            </span>
+                        <span>
+                <a href="">
+                    <i class="iconfont icon-lihe"></i>
+                    尊贵礼盒
+                </a>
+            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row contreplace">
+            <div class="col-lg-3 col-lg-offset-2 contreplace">
+                <%if(!user.dataType){%>
+                    <h4>如未登陆，请登陆后发表评论</h4>
+                <%}else{%>
+                        <h4> <span> <%=user.u_nickname%></span> 发表你的评论:</h4>
+                        <input type="text" style="width: 300px" id="cont_reple"><button onclick="con_butt()">发表</button>
+                <%}%>
+            </div>
+
+
+        </div>
+      <!--  <div class="row">
+            <div class="col-lg-3 col-lg-offset-2">
+                <h4>请发表你的评论</h4>
+                <input type="text" style="width: 300px" class="cont_reple"><button onclick="con_butt()">发表</button>
+            </div>
+
+        </div>-->
+        <div class="row">
+            <h1 class="col-lg-3 col-lg-offset-2">顾客评测</h1>
+
+        </div>
+        <div class="row">
+             <div class="col-lg-8 col-lg-offset-2 comment">
+
+             </div>
+        </div>
+    </div>
+</div>
+
+<%- include("common/footer.ejs")%>
+
+
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="../lib/big/src/jquery.exzoom.js"></script>
+<!--<script type="text/javascript" src="../lib/jq22jqzoom2444201801040045/jqzoom/js/jquery.jqzoom.js"></script>-->
+<script>
+    //放大镜插件
+    $(window).load(function () {
+        my_select()
+        $("#exzoom").exzoom({
+            autoPlay: false,
+        });//方法调用，务必在加载完后执行
+
+        //页面加载渲染评论
+        comment_cont()
+    })
+    //分享插件
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{},
+            "bdText":"",
+            "bdMini":"2",
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "share":{}}
+    ;with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+   //选项页描述  成分等
+    function exhibition(obj,num) {
+
+        let  my_span = document.getElementsByClassName(" my_span")
+        for(let i = 0;i<my_span.length;i++){
+            my_span[i].style. borderBottom="0px solid black"
+        }
+        obj.style. borderBottom="2px solid black"
+
+        let mydiv = document.getElementsByClassName("my_function_one")
+
+        for(let j = 0;j<mydiv.length;j++){
+            if(j!=num){
+                mydiv[j].style.display="none"
+            }else{
+                mydiv[j].style.display="block"
+            }
+
+        }
+    }
+    //数量 50
+    function my_select() {
+        for(let i =1;i<=50;i++){
+
+            $("#my_select").append(`
+        <option>${i}</option>>
+        `)
+
+        }
+    }
+    //点击购物车函数
+    function deailsGou() {
+        //  将数据当前的商品id  传递出去
+        //   当前商品的数量
+        let  buyNumber = $("#my_select").val()
+        //商品的id
+         let buyId = <%=details[0].d_id%>
+
+             //当前账户的id
+
+        $.ajax({
+            type:"post",
+            url:"deailsGou.do",
+            data:{
+                buyId,
+                buyNumber,
+            },
+            success(data){
+
+            let details = data
+             console.log(typeof details)
+             if(data==1){
+
+                 login()
+               /*  $(".contreplace").html(`
+
+              <div class="col-lg-3 col-lg-offset-2">
+                <h4> <span>    </span> 发表你的评论</h4>
+                <input type="text" style="width: 300px" id="cont_reple"><button onclick="con_butt()">发表</button>
+            </div>
+                 `)*/
+
+             }else if(data=="加入购物车成功"){
+                 $("#tianjiazhifu").text("")
+                 $("#tianjiazhifu").text("加入购物车成功")
+             }else if(data=="加入购物车失败"){
+                 $("#tianjiazhifu").text("")
+                 $("#tianjiazhifu").text("加入购物车失败")
+             }
+            }
+        })
+
+    }
+    //点击立即支付函数
+    function payment() {
+        let  buyNumber = $("#my_select").val()
+        //商品的id
+        let buyId = <%=details[0].d_id%>
+        $.ajax({
+            type:"post",
+            url:"verification",
+            data:{
+                buyNumber,
+                buyId,
+            },
+            success(data){
+                console.log(data)
+                if(data==0){
+                    login()
+                }else{
+                    tiaozhuan(data)
+
+                }
+
+            }
+        })
+    }
+    //跳转函数
+    function tiaozhuan(str) {
+        console.log(112233)
+        window.location.href = `lijizhifu?id=1&ord=${str}`
+    }
+    //评论函数
+    function comment_cont() {
+        let buyId = <%=details[0].d_id%>
+        $.ajax({
+            type:"post",
+            url:"comment_cont",
+            data:{
+                buyId,
+            },
+            success(data){
+                 console.log(data)
+                  data.forEach(function (item) {
+                       $(".comment").append(`
+                         <div class="comment_li">
+                       <p>${item.comment_content}</p>
+                    <div>
+                        <span><span>来自:</span> ${item.comment_name} </span>
+                        <span> <span>产品：</span> ${item.comment_chinese}</span>
+                        <span>  ${item.comment_time}</span>
+                    </div>
+                       </div>
+                       `)
+                  })
+            }
+        })
+    }
+    //评论提交到数据库
+    function con_butt() {
+
+    }
+
+
+
+</script>
+</body>
+</html>

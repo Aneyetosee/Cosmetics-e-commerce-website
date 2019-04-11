@@ -1,0 +1,194 @@
+body{
+    background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+    background-size: 100% 100%;
+}
+/* section{
+    background-color: #f5f5f5;
+} */
+.mybread{
+    margin-bottom: 10px;
+}
+.leftContent{
+    background-color: white;
+    /* border:1px solid #666; */
+    background-color: #eee;
+}
+.top-head{
+    width:100%;
+    height:6px;
+    background-color: #666;
+}
+
+.navText{
+    color:#999;
+}
+.leftNavContent>li{
+    width:100%;
+    height:40px;
+    line-height:40px;
+
+}
+.leftNavContent>li>a{
+    display: block;
+    width:100%;
+    height:100%;
+    padding-left:4%;
+}
+.leftNavContent>li>a:hover{
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.leftNavContent>li>a:hover>.navText{
+    color:#000;
+}
+.leftNavTitle.on{
+    background-color: #eee;
+}
+.navText.on{
+    color:#000;
+}
+.leftHelp,
+.quistion{
+    width:100%;
+    border-top:1px #666 solid;
+    padding-left:15px;
+}
+.leftHelp p:first-child,
+.quistion p:first-child{
+    color: #ff6699;
+    padding:10px 0 20px;
+}
+.leftHelp p:nth-child(2){
+    color:#A1A1A1;
+}
+.leftHelp p:last-child{
+    margin:20px 0;
+}
+.leftHelp p:last-child span{
+    display: inline-block;
+    font-size: 25px;
+    padding-right:20px; 
+}
+.quistion{
+    padding-bottom: 50px;
+}
+.quistion div{
+    padding:5px 0;
+}
+.myiframe{
+    display: none;
+    width:100%;
+    height:620px;
+    margin:0;
+}
+h2{
+    margin:10px 0;
+    padding-left:5%;
+}
+.allContent{
+    width:100%;
+    background-color: #f5f5f5;
+}
+.firstContent{
+    padding-top:5%;
+    padding-left:2%;
+    padding-right:5%;
+}
+.myInfo{
+    width:100%;
+    height:180px;
+    background-color: rgb(216, 210, 210);
+    padding:0 4%;
+}
+.myInfo>p{
+    margin:2% 0;
+}
+.myInfo>p:first-child{
+    color:#ff6699;
+}
+.myInfo>p:nth-child(2){
+    cursor: pointer;
+}
+.myInfoContent{
+    width:100%;
+    border-top:1px rgb(168, 167, 167) solid;
+}
+.myInfoContent>p{
+    padding:2% 0;
+    margin:0;
+}
+.myInfoOr{
+    display: inline-block;
+    padding:4% 0;
+    color:#000;
+}
+.myInfoOr:hover{
+    color:rgb(75, 75, 75);
+}
+
+.backIndexBtn{
+    margin-top:10%;
+    width:50%;
+    height:26px;
+    background-color: #000;
+    text-align:center;
+    line-height: 26px;
+    cursor: pointer;
+}
+.backIndexBtn>a{
+    color:#fff;
+}
+
+.secondContent,
+.thirdContent{
+    width: 96%;
+    margin:50px 0 0;
+}
+.myAddress,
+.myScore{
+    width:100%;
+    /* height:160px; */
+    background-color: rgb(216, 210, 210);
+    padding:0 4% 30px;
+}
+.myScore{
+    /* height:220px; */
+    margin-bottom: 50px; 
+    padding-bottom: 30px;
+}
+.myAddress>p,
+.myScore>p{
+    color:#ff6699;
+    padding:2% 0;
+}
+.myAddressContent,
+.myScoreContent{
+    border-top:1px rgb(168, 167, 167) solid;
+}
+.myAddressContent>p{
+    padding:2% 0;
+}
+.myScoreContent>p{
+    padding-bottom: 2%;
+}
+.myScoreContent>p:first-child{
+    padding:3% 0 2%;
+}
+td{
+    text-overflow: ellipsis; /* for IE */
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+    overflow: hidden;
+}
+
+.chooseAddressPrompt,
+#passwordPrompt,
+#phonePrompt,
+.prompt{
+    opacity: 0;
+    color:red;
+}
+
+#modificationTitle{
+    text-align: center;
+    padding:50px;
+}

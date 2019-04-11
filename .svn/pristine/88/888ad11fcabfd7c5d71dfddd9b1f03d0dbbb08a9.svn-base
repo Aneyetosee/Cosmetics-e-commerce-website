@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎品牌故事</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ppgs.css">
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+<div class="row">
+    <div class="col-lg-2 col-lg-offset-2">
+        <p><a href="/index">主页</a>>希思黎品牌故事</p>
+    </div>
+</div>
+<div id="ppgs_bg">
+    <div class="">
+        <p id="mytitle" class="mytext1">法国Sisley希思黎</p>
+    </div>
+    <div class="title2">
+        <p class="mytext1">自从我们开始使用天然植物精粹提取物，</p>
+        <p class="mytext1">我们惊叹于我们发现了令人难以置信的世界。</p>
+    </div>
+    <div>
+        <p class="mytext1" >——修伯特·多纳诺伯爵</p>
+        <p class="mytext1">法国希思黎创始人</p>
+    </div>
+    <div id="pic1">
+        <video width="703" height="381" controls>
+            <source src="../images/ppgs.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="part1">
+        <img src="../images/gwzx_0214/ppgs/brand_01.png" alt="">
+        <div class="t1"><span>大自然中蕴含着无限的可能</span></div>
+    </div>
+    <div class="part2">
+        <img src="../images/gwzx_0214/ppgs/brand_02.png" alt="">
+        <div class="t2"><span>我们相信植物世界的无限复杂性是无可比拟的</span></div>
+    </div>
+    <div class="part3">
+        <img src="../images/gwzx_0214/ppgs/brand_03.png" alt="">
+        <div class="t1"><span>坚持不惜时间、不计成本创造卓效完美的产品</span></div>
+    </div>
+    <div id="part4">
+        <p class="mytext1">每一天，在世界各地</p>
+        <p class="mytext1">每个希思黎门店，美容坊</p>
+        <p class="mytext1">精致呵护，为你留驻年轻</p>
+    </div>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner " role="listbox">
+            <div class="item active lhy">
+                <img src="../images/gwzx_0214/ppgs/carousel-01.jpg" alt="#">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item lhy">
+                <img src="../images/gwzx_0214/ppgs/carousel-02.jpg" alt="#">
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item lhy">
+                <img src="../images/gwzx_0214/ppgs/carousel-03.jpg" alt="#">
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+            <span class="sr-only">Previous</span>
+            <span class="sr-only">Next</span>
+    </div>
+</div>
+<%- include("common/footer.ejs")%>
+</body>
+</html>

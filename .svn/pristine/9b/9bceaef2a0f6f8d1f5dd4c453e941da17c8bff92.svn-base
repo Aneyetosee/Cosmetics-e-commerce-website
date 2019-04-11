@@ -1,0 +1,24 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+
+    details(req,resp){
+        let deatilsItem = req.query.id
+        console.log(deatilsItem)
+        userDao.userDao().then(function (connection) {
+
+            connection.query("SELECT * FROM t_details WHERE d_id=?",[deatilsItem])
+                .then(function (data) {
+                 console.log(data)
+                 resp.render("view/details",{details:data})
+                })
+
+        })
+
+    },
+    shiyong(req,resq){
+        resq.render("view/1",{})
+    },
+
+
+}

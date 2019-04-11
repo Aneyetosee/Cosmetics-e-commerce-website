@@ -1,0 +1,27 @@
+var shipId
+$('.commentsOnTheGoods').on('click',function(){
+    $('#messageBoard').modal()
+    $('#massageContent').val('')
+    shipId = $(this).data('index')
+})
+
+$('#sendMassage').on('click',function(){
+    let massageContent = $('#massageContent').val()
+    if(massageContent!=''){
+        $.ajax({
+            type:'post',
+            url:'/massageContent.do',
+            data:{shipId,massageContent},
+            success(data){
+                if(data=='1'){
+                    $('.massagePromptContent').text('发送成功')
+                    $('#massagePrompt').modal()
+                    $('#closeMo').click()
+                }else if(data=='0'){
+                    $('.massagePromptContent').text('发送失败，请稍后再试')
+                    $('#massagePrompt').modal()
+                }
+            }
+        })
+    }
+})

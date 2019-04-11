@@ -1,0 +1,14 @@
+const express = require("express")
+const pageCtrl = require("../controller/pageCtrl")
+
+const router = express.Router()
+
+router.get("/index",pageCtrl.index)
+router.get("/service",pageCtrl.service)
+router.post("/login.do",pageCtrl.loginDo)
+router.post("/logout.do",pageCtrl.logoutDo)
+router.get("/safetyPay",pageCtrl.safetyPay)
+
+
+
+module.exports = router

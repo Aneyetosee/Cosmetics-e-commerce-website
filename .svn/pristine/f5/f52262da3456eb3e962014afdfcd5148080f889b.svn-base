@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/header.css">
+</head>
+<body>
+<script src="../../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="../../js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+<div class="row" id="nav_one">
+    <div class="col-md-3 vip">希思黎会员</div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4 list">
+        <ul>
+            <li><i class="glyphicon glyphicon-envelope"></i>订阅电子邮件 |</li>
+            <li>专柜导航 |</li>
+            <li>激活线下会员 |</li>
+            <li>客服咨询热线</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="search">
+        <i class="glyphicon glyphicon-search"></i>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 vip"></div>
+    <div class="col-md-4 logo">
+        <img src="../../images/logo.jpg" alt="">
+    </div>
+    <div class="col-md-4 login">
+        <span><a href="/login">登录 | 注册</a></span>
+        <i class="glyphicon glyphicon-shopping-cart"></i>
+        <span>您的购物车</span>
+        <span>￥0.00</span>
+    </div>
+</div>
+<nav>
+    <div class="nav_two">
+        <ul class="menu">
+            <li>
+                <a href="#">护肤</a>
+                <ul class="submenu">
+                    <li><a href="#">面部</a></li>
+                    <li><a href="#">身体护理</a></li>
+                    <li><a href="#">防嗮</a></li>
+                    <li><a href="#">肌肤问题</a></li>
+                </ul>
+            </li>
+            <li><a href="#">彩妆</a>
+                <ul class="submenu">
+                    <li><a href="#">脸部彩妆</a></li>
+                    <li><a href="#">唇部</a></li>
+                    <li><a href="#">眼部彩妆</a></li>
+                    <li><a href="#">妆容问题</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="#s2">香氛</a>
+                <ul class="submenu">
+                    <li><a href="#">女士香氛</a></li>
+                    <li><a href="#">情侣香水</a></li>
+                    <li><a href="#">男士</a></li>
+                    <li><a href="#">香氛蜡烛</a></li>
+                </ul>
+            </li>
+            <li><a href="#">男士</a>
+                <ul class="submenu">
+                    <li><a href="#">脸部保养</a></li>
+                </ul>
+            </li>
+            <li><a href="#">官网专享</a></li>
+            <li><a href="#">美丽期刊</a></li>
+            <li><a href="#">美丽订阅</a></li>
+            <li><a href="#">星品推荐</a></li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    window.onscroll=function () {
+        var myScroll=document.documentElement.scrollTop||document.body.scrollTop;
+        if (myScroll>150){
+            $("nav").addClass("navbar-fixed-top")
+            $(".navbar-fixed-top").autoHidingNavbar();//向下滚动时隐藏导航条
+        }else {
+            $("nav").removeClass("navbar-fixed-top")
+        }
+    }
+</script>
+</body>
+</html>

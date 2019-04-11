@@ -1,0 +1,12 @@
+
+module.exports= {
+    index(req, resp) {
+        resp.render("index")
+    },
+    service(req, resp) {
+        resp.render("view/service")
+    },
+    login(req, resp) {
+        resp.render("userView/login")
+    }
+}

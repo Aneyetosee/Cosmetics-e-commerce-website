@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>官网专享</title>
+    <link rel="stylesheet" href="../css/lhy_gwzx.css">
+</head>
+<body>
+    <div id="title1">
+        <h1>官网专享</h1>
+    </div>
+    <!--<hr id="shuipingxian1">-->
+    <header id="new_product">
+        <img src="../images/gwzx_0214/0121_pc_01.png">
+        <a href=""><img src="../images/gwzx_0214/0121_pc_04_1_1.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_05_2_1.jpg" alt=""></a>
+    </header>
+    <section id="Sales">
+        <img src="../images/gwzx_0214/0121_pc_17.jpg" alt="">
+        <a href=""><img src="../images/gwzx_0214/0121_pc_18.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_19.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_20.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_21.jpg" alt=""></a>
+    </section>
+    <div id="optimization">
+        <img src="../images/gwzx_0214/0121_pc_22.jpg" alt="">
+        <a href=""><img src="../images/gwzx_0214/0121_pc_23.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_24.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_25.jpg" alt=""></a>
+        <a href=""><img src="../images/gwzx_0214/0121_pc_26.jpg" alt=""></a>
+    </div>
+    <div id="botton_more">
+        <a href=""><img src="../images/gwzx_0214/0121_pc_42.jpg" alt=""></a>
+    </div>
+</body>
+</html>

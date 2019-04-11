@@ -1,0 +1,57 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    //登录过后渲染立即支付页面
+    lijizhifu(req,resp){
+        let zhifu = []
+            if(!req.session.data){
+                var user = {
+                        dataType:false,
+                        u_nickname:undefined,
+                        u_phone:undefined
+                    }
+            }else{
+                var user = {
+                        dataType:req.session.data.dataType,
+                        u_nickname:req.session.data.u_nickname,
+                        u_phone:req.session.data.u_phone
+                    }
+            }
+            if(user.dataType){
+                let id = req.query.id
+                console.log(id)
+                userDao.userDao().then(function(connection){
+                    connection.query('SELECT a_province,a_city,a_area,a_address,a_people,a_phone,a_phone2,setDefault,zipCode FROM t_user JOIN t_address  ON a_u_id = u_id WHERE u_phone = ?',[user.u_phone])
+                        .then(function(data){
+                            var ittn = data
+                            zhifu.push(ittn)
+                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                            
+                                //1代表从支付页面跳转过来的函数
+                                if(id==1){
+                                    connection.query(sql,[])
+                                        .then(function (data) {
+                                            var ittn = data
+                                            zhifu.push(ittn)
+                                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                                        })
+                                    //0代表从购物车页面过来的函数
+                                }else if(id==0){
+
+                                    connection.query(sql,[])
+                                        .then(function (data) {
+                                            var ittn = data
+                                            zhifu.push(ittn)
+                                            resp.render("view/lijizhifu",{data:zhifu,user:user})
+                                        })
+                                }
+                        }).catch(function(err){
+                        console.log(err)
+                    })
+                })
+                /* resp.render("view/lijizhifu",{user:user})*/
+            }/*else{
+
+            }*/
+        }
+}

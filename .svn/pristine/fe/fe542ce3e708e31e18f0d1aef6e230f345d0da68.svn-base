@@ -1,0 +1,44 @@
+section{
+    background-color: #f5f5f5;
+}
+h2{
+    margin:10px 0 20px;
+}
+.myIntegral{
+    background-color: #fff;
+    padding:20px 0 0;
+}
+.allIntegral{
+    background-color: rgb(216, 210, 210);
+    padding:0 4%;
+}
+.allIntegral>p{
+    color:#ff6699;
+    padding:2% 0;
+}
+.myScoreContent{
+    border-top:1px rgb(168, 167, 167) solid;
+}
+.myScoreContent>p{
+    padding-bottom: 2%;
+}
+.myScoreContent>p:first-child{
+    padding:3% 0 2%;
+}
+
+.IntegralTable{
+    padding-top:20px;
+}
+
+.IntegralTable>div:first-child,
+.IntegralTable>div:nth-child(2),
+.IntegralTable>div:nth-child(3),
+.IntegralTable>div:nth-child(4),
+.IntegralTable>div:nth-child(5){
+    background-color: #b0a296;
+    height:25px;
+    line-height:25px;
+}
+.nullIntegral>p{
+    padding:10px 0 175px;
+}

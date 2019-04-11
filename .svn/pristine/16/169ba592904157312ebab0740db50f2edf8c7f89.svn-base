@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            text-align: center;
+            color: black;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .goods_mingxing{
+            text-align: center;
+            border:#E0E0E0 solid 8px;
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #wenzi{
+            margin-top: 50px;
+            padding-top: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            height: 300px;
+            background-color: #E9E9E9;
+            color: #B0A8A1;
+        }
+        #wenzi2{
+            padding-bottom: 20px;
+        }
+        .goods_mingxing2{
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>面部</a></h4>
+                <li><a href="xiezhuang">卸妆</a></li>
+                <li><a href="xiezhuang">洁面</a></li>
+                <li><a href="xiezhuang">化妆水</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>身体护理</a></h4>
+                <li><a href="xiezhuang">最新动态</a></li>
+                <li><a href="xiezhuang">保湿滋润</a></li>
+                <li><a href="xiezhuang">去除角质</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>防嗮</a></h4>
+                <li><a href="xiezhuang">最新动态</a></li>
+                <li><a href="xiezhuang">面部防晒</a></li>
+                <li><a href="xiezhuang">身体防晒</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>肌肤问题</a></h4>
+                <li><a href="xiezhuang">抗皱御龄</a></li>
+                <li><a href="xiezhuang">紧致提拉</a></li>
+                <li><a href="xiezhuang">亮泽美白</a></li>
+
+            </ul>
+        </div>
+        <div class="col-lg-6 ">
+            <h4>
+                卸妆
+            </h4>
+            <div>
+                卸妆是肌肤护理中非常重要的一个步骤。法国希思黎的卸妆产品在卸除彩妆污垢的同时，
+                轻柔呵护您的肌肤，保护肌肤不受伤害不受伤害。希思黎为您提供不同类型、不同质地的卸妆产品，
+                不论是卸妆水或洁肤乳，细心的法国希思黎都能满足您的需求，更为您柔嫩的眼部肌肤提供
+                了独特的卸妆需求
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[0].forEach((item)=>{%>
+                <div class="col-lg-6 goods_mingxing">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <p id="wenzi2">卸除彩妆，为干性和敏感性肌肤带来柔嫩体验。</p>
+                    <button type="button" class="btn"><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                </div>
+                <%})%>
+                <div class="col-lg-4 col-lg-offset-1">
+                    <div id="wenzi">
+                        本品质地柔滑，可有效溶解彩妆，同时为干性和敏感性肌肤保持平衡。其配方中富含白百合精华，快速营造出舒适感受。肌肤柔嫩有弹性，莹润明亮。
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[1].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing2">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <button type="button" class="btn"><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                </div>
+                <%})%>
+                </div>
+        </div>
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script>
+</script>
+</body>
+</html>

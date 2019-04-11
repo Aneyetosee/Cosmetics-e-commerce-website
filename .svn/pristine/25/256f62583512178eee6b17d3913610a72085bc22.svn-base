@@ -1,0 +1,30 @@
+
+//下拉框出现和消失
+$('.select_showbox').on('click',function(){
+    $('.select_option').slideToggle();
+});
+//下拉框hover效果
+$('.select_option li').hover(function(){
+    $(this).addClass('hover')
+},function(){
+    $(this).removeClass('hover')
+})
+//下拉框选择后文本
+$('.select_option li').on('click',function(){
+    $('.select_showbox').text($(this).text())
+    $('.select_option').slideToggle();
+})
+
+//基本资料修改保存按钮
+$('.savebtn').on('click',function(){
+
+})
+//密码修改相关
+$('.modifyPassword').on('click',function(){
+    $('#passwordModal').modal()
+})
+//手机号修改相关
+$('.modifyPhone').on('click',function(){
+    $('#phoneModal').modal()
+})
+

@@ -1,0 +1,21 @@
+body {
+    background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+    background-size: 100% 100%;
+}
+#title1{
+    width: 200px;
+    margin: auto;
+    padding: 30px;
+}
+.title_gwzx{
+    font-size: 30px;
+    color: black;
+}
+.tz_gwzx{
+    float: left;
+}
+#gwzx{
+    width: 70%;
+    margin-top: -30px;
+    margin-left: 15%;
+}

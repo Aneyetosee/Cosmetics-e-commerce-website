@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            text-align: center;
+            color: black;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .goods_mingxing{
+            text-align: center;
+            border:#E0E0E0 solid 8px;
+            margin-top: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #wenzi{
+            margin-top: 50px;
+            padding-top: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            height: 300px;
+            background-color: #E9E9E9;
+            color: #B0A8A1;
+        }
+        #wenzi2{
+            padding-bottom: 20px;
+        }
+        .goods_mingxing2{
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>脸部彩妆</a></h4>
+                <li><a href="gelidishuang">隔离底霜</a></li>
+                <li><a href="gelidishuang">粉底</a></li>
+                <li><a href="gelidishuang">粉饼</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>眼部彩妆</a></h4>
+                <li><a href="gelidishuang">遮瑕</a></li>
+                <li><a href="gelidishuang">眉笔</a></li>
+                <li><a href="gelidishuang">眼线</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>唇部</a></h4>
+                <li><a href="gelidishuang">唇线</a></li>
+                <li><a href="gelidishuang">唇膏</a></li>
+                <li><a href="gelidishuang">唇蜜</a></li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked">
+                <h4><a>妆容问题</a></h4>
+                <li><a href="gelidishuang">控油持妆</a></li>
+                <li><a href="gelidishuang">细致立体妆容</a></li>
+                <li><a href="gelidishuang">丰盈双唇</a></li>
+
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h4>
+                隔离底霜
+            </h4>
+            <div>
+                为了使肤色均匀，修饰瑕疵，让肌肤亮泽动人，法国希思黎为您提供所有适应您肌肤需求的粉底液。
+                法国希思黎粉底液质地丰富，从哑光到珠光，乳液质地到霜状质地，完美适应您所追求的所有妆容效果，
+                在呵护您脆弱肌肤的同时，使您肤色均匀，完美无瑕。
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[0].forEach((item)=>{%>
+                <div class="col-lg-6 goods_mingxing">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <p id="wenzi2">这款妆效持久的粉底液可助你打造均匀自然的明亮肤色。</p>
+                    <button type="button" class="btn"><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                </div>
+                <%})%>
+                <div class="col-lg-5 col-lg-offset-1">
+                    <div id="wenzi">
+                        本品妆效持久，质地轻盈。它能够确保肤色均匀自然，明亮动人。精致微粉配方，妆效宛如“第二层肌肤”。
+                        它易于上妆，覆盖力亦可灵活调整。其配方富含栀子花、锦葵和菩提花精粹，肌肤感受滋润柔嫩。
+                        无油配方不含致痘成分，适合各种肤质。
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="xuanranGoods">
+                <%data[1].forEach((item)=>{%>
+                <div class="col-lg-4 goods_mingxing2">
+                    <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                    <p><%=item.g_name%></p>
+                    <p><%=item.g_descript%></p>
+                    <p>￥<%=item.d_price%></p>
+                    <button type="button" class="btn"><a href="details?id=<%=item.d_id%>">查看产品</a></button>
+                    <button type="button" class="btn "><a href="details?id=<%=item.d_id%>">点击购买</a></button>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script>
+</script>
+</body>
+</html>

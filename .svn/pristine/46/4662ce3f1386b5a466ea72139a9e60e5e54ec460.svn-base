@@ -1,0 +1,8 @@
+#zwjy{
+    width: 70%;
+    margin-left: 15%;
+}
+body{
+    background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+    background-size: 100% 100%;
+}

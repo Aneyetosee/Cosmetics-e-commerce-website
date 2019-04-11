@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+
+    <style>
+      .address,.order{
+          font-size: 25px;
+          font-family: "Droid Sans Mono";
+      }
+        .dizhiHead th{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <%-include("common/header.ejs")%>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 address">
+            <p>请选择收获地址</p>
+        </div>
+    </div>
+    <!--渲染地址、、、、、、、、、、、、、、、、-->
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-2">
+
+            <table class="table table-hover table-responsive">
+                <thead>
+                <tr class="dizhiHead">
+                    <th>选中</th>
+                    <th>地址</th>
+                    <th>收货人</th>
+                    <th>联系电话</th>
+                    <th>邮编</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%data[0].forEach((item,index)=>{%>
+                <tr>
+                    <td><input type="radio" name="zx"></td>
+                    <td>
+                        <span><%=data[0][index].a_province%></span>
+                        <span><%=data[0][index].a_city%></span>
+                        <span><%=data[0][index].a_area%></span>
+                        <span><%=data[0][index].a_address%></span>
+                    </td>
+                    <td><%=data[0][index].a_people%></td>
+                    <td><%=data[0][index].a_phone%></td>
+                    <td><%=data[0][index].zipCode%></td>
+                    <td><%=data[0][index].a_phone2%></td>
+
+                </tr>
+                <%})%>
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 order">
+            <p>请确认订单</p>
+        </div>
+    </div>
+    <!--渲染数据、、、、、、、、、、、、、-->
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myShippingCart">
+                <table class="table table-responsive">
+                    <tbody id="myTotalPerItem">
+                    <tr class="myShippingCartBody cart">
+                        <td><input class="myCheck myChecks" type="checkbox">全选</td>
+                        <td>商品信息</td>
+                        <td>单价(元)</td>
+                        <td>数量</td>
+                        <td>小计(元)</td>
+                        <td>操作</td>
+                    </tr>
+                    <% data.forEach(function (item, index) { %>
+                    <tr class="cart">
+                        <td id="myConceal"><%=item.o_g_id%></td>
+                        <td class="col-lg-1 col-md-1 col-sm-1 col-xs-12"><input class="myCheck myCheckOne" type="checkbox"></td>
+                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-12 myShoppingCartPictures">
+                            <div class="clear">
+                                <img src="../images/<%= item.d_smallSrc %>" alt="">
+                                <p class="myCommodityName"><%= item.d_chinese %></p>
+                            </div>
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <span class="myPrice"><%= item.d_Price %></span>.00元
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12 myQuantity">
+                            <div class="glyphicon glyphicon-chevron-left myNumberSub"></div>
+                            <input class="myNewQuantity" type="text" value="<%= item.o_class_num %>">
+                            <div class="glyphicon glyphicon-chevron-right myNumberPlus"></div>
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <span class="myTotal"><%= parseInt(item.d_Price) * parseInt(item.o_class_num) %></span>.00元
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><span class="myShoppingDelect">删除</span></td>
+                    </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include("common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

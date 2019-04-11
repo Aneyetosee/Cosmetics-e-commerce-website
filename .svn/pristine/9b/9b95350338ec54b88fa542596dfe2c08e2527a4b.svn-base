@@ -1,0 +1,39 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    shoppingCart(req,resp){
+        userDao.userDao().then(function (connection) {
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+            }
+            connection.query("SELECT o_g_id,d_smallSrc,d_chinese,d_Price,o_class_num FROM order_cart JOIN t_details WHERE o_g_id = d_id",[])
+                .then(function (data) {
+                    // var itemNew = data
+                    // shoppingData.push(itemNew)
+                    resp.render('view/shoppingCart',{data,user:user})
+                    // user:user
+                })
+
+        })
+    },
+    myShoppingDelectCart(req,resp){
+        let {myCommodityId} = req.body
+        userDao.userDao().then(function (connection) {
+            connection.query("delete from order_cart where o_g_id = ?",[myCommodityId])
+             .then(function (data) {
+                 // console.log(myCommodityId)
+             })
+        })
+    }
+
+}

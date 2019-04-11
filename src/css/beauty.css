@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0
+}
+.clear:after{
+    content: '';
+    clear: both;
+    height: 0px;
+    display: block;
+    visibility: hidden; 
+}  
+/* 头部设置 */
+h1{
+    width: inherit;
+    font-family: 黑体,宋体;
+    text-align: center;
+    margin-bottom: 10px;
+}
+header>h3{
+    width: 600px;
+    text-align: center;
+    font-family: 仿宋;
+    margin-left: 250px;
+    margin-bottom: 30px;
+}
+.banner{
+    width: inherit;
+}
+.banner>img{
+    width: 100%
+}
+.titles{
+    font-size: 30px;
+    margin-top: 100px;
+    font-weight:800;
+}
+
+/* h1{
+    text-align: center;
+    margin-top: 50px;
+} */
+/* 中性肌肤 */
+.neutral{
+    margin-top: 30px;
+}
+.neutral-img>h2>span,
+.neutral-text>h3>span,
+.neutral-but>h3>span{
+    color: red
+}
+.neutral-img{
+    width: 600px;
+    float: left;
+    /* margin-top: 20px; */
+    margin-left: 50px;
+    margin-right: 70px
+}
+.neutral-img>img{
+    width: inherit
+}
+.center{
+    float: left;
+    width: 324px;
+    margin-top:30px;
+    margin-left: 50px;
+    background-color:coral;
+    color: white;
+    padding-left: 20px;
+}
+.neutral-text{
+    float: left;
+    width: 300px;
+    margin-top: 30px;
+    margin-right: 50px;
+}
+.dry{
+    width: 300px;
+    float: right;
+}
+.dry>img{
+    width: inherit;
+    margin-top: 100px;
+}
+h5{
+    font-family: 仿宋;
+    font-size: 20px;
+}
+.right{
+    float: right;
+}
+
+

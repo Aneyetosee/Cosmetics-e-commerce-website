@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/header.css">
+</head>
+<body>
+<script src="../../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="../../js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+<script src="../../js/birthday.js" type="text/javascript"></script>
+<script src="../../js/header.js"></script>
+<div class="row" id="nav_one">
+    <div class="col-md-3 vip"><a href="loginDoIt">希思黎会员</a></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4 list">
+        <ul>
+            <li><i class="glyphicon glyphicon-envelope"></i>订阅电子邮件 |</li>
+            <li>专柜导航 |</li>
+            <li>激活线下会员 |</li>
+            <li>客服咨询热线</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="search">
+        <i class="glyphicon glyphicon-search"onclick="searchBtn()"></i>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 vip"></div>
+    <div class="col-md-4 logo">
+        <a href="/index"onfocus="this.blur()"><img src="../../images/logo.jpg" alt=""></a>
+    </div>
+    <div class="col-md-4 login">
+        <%if(!user.dataType){%>
+            <span onclick="login()" id="mylogin">登录|注册</span>
+        <%}else{%>
+            <span id="logoutName"><em><a href="loginDoIt" style="text-decoration: none; color: #918e91; font-size: 20px"><%=user.u_nickname%></a></em>欢迎您！</span>
+            <span class="logout" onclick="mylogout()">&nbsp;注销</span>
+        <%}%>
+        <i class="glyphicon glyphicon-shopping-cart"></i>
+        <span><a href="shoppingCart">您的购物车</a></span>
+        <span>￥0.00</span>
+    </div>
+</div>
+<nav>
+    <div class="nav_two">
+        <ul class="menu">
+            <li>
+                <a href="goods">护肤</a>
+                <ul class="submenu">
+                    <li><a href="goods"onfocus="this.blur()">面部</a></li>
+                    <li><a href="goods"onfocus="this.blur()">身体护理</a></li>
+                    <li><a href="goods"onfocus="this.blur()">防嗮</a></li>
+                    <li><a href="goods"onfocus="this.blur()">肌肤问题</a></li>
+                </ul>
+            </li>
+            <li><a href="caizhuang">彩妆</a>
+                <ul class="submenu">
+                    <li><a href="caizhuang"onfocus="this.blur()">脸部彩妆</a></li>
+                    <li><a href="caizhuang"onfocus="this.blur()">唇部</a></li>
+                    <li><a href="caizhuang"onfocus="this.blur()">眼部彩妆</a></li>
+                    <li><a href="caizhuang"onfocus="this.blur()">妆容问题</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="#s2">香氛</a>
+                <ul class="submenu">
+                    <li><a href="#"onfocus="this.blur()">女士香氛</a></li>
+                    <li><a href="#"onfocus="this.blur()">情侣香水</a></li>
+                    <li><a href="#"onfocus="this.blur()">男士</a></li>
+                    <li><a href="#"onfocus="this.blur()">香氛蜡烛</a></li>
+                </ul>
+            </li>
+            <li><a href="#"onfocus="this.blur()">男士</a>
+                <ul class="submenu">
+                    <li><a href="#">脸部保养</a></li>
+                </ul>
+            </li>
+            <li><a href="/gwzx" onfocus="this.blur()">官网专享</a></li>
+            <li><a href="/periodicalIndex"onfocus="this.blur()">美丽期刊</a></li>
+            <li><a href="#"onfocus="this.blur()">美丽订阅</a></li>
+            <li><a href="/xptj" onfocus="this.blur()">星品推荐</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="loginDiv">
+    <i class="glyphicon glyphicon-remove" id="closeLoginDiv" onclick="closeLoginDiv()"></i>
+    <!--手机号邮箱登录-->
+    <form class="myAccount_login">
+        <div class="myinput">
+            <p onclick="message()">短信验证码登录</p>
+            <input type="text" name="userName" id="userName" placeholder="手机号/邮箱">
+            <input type="password" name="pwd" id="pwd" placeholder="密码"><br>
+            <span onclick="forgotPassword()" style="cursor: pointer">忘记密码？</span>
+            <span onclick="register()">立即注册</span>  <!--注册-->
+            <div id="login" onclick="myAccount_login()">登录</div>
+            <p style='color: red;' id="loginTishi"></p>
+        </div>
+    </form>
+    <!--忘记密码-->
+    <form class="forgotPassword">
+        <div class="myinput">
+            <p onclick="account()">账号密码登录</p>
+            <input type="text" name="userName" id="myuserName" placeholder="手机号/邮箱"  maxlength="11">
+            <input type="text" id="mycode" name="verification" placeholder="验证码"><br>
+            <span onclick="forgotPwdClick()" id="sendMsg">获取验证码</span>
+            <input type="password" name="pwd" id="mypwd" placeholder="密码"><br>
+            <div id="modify"onclick="modifyPwdClick()">修改</div>
+            <p style='color: red;' id="modifyTishi"></p>
+        </div>
+    </form>
+    <!--验证码登录-->
+    <form class="mySms_login">
+        <div class="myinput">
+            <p onclick="account()">账号密码登录</p>
+            <input type="text" id="phone" name="phone" placeholder="手机号" maxlength="11">
+            <input type="text" id="code" name="verification" placeholder="验证码"><br>
+            <span onclick="sendClick()" id="sendMsg">获取验证码</span>
+            <div id="loginPhone" onclick="mySms_login()">登录</div>
+            <p style='color: red;' id="loginPhoneTishi"></p>
+        </div>
+    </form>
+    <!--注册-->
+    <form class="myregister">
+        <div class="myinput">
+            <table id="mytable">
+                <tr><td colspan="2"><input type="text" id="nickname" name="nickname" placeholder="昵称"><br></td></tr>
+                <tr><td colspan="2" id="phoneTestTd"><input id="userPhone" type="text" name="userName" placeholder="手机号" onblur="registerPhoneTest()" maxlength="11">
+                        <p id="phoneTestBox"></p>
+                        <p id="phoneTishi"></p>
+                    </td></tr>
+                <tr><td colspan="2"><input id="verification" type="text" name="verification" placeholder="验证码" onblur="regPhone()"><span onclick="regsendClick()" id="getMsg">获取验证码</span></td></tr>
+                <tr><td colspan="2"><input type="password" id="pwd1" name="pwd" placeholder="密码"></td></tr>
+                <tr><td colspan="2" id="pwdTestTd"><input type="password" id="pwd2" name="pwd" placeholder="确认密码" onblur="ifPwd()">
+                        <p id="pwdTestBox"></p>
+                    </td></tr>
+                <tr>
+                    <td colspan="2" id="emailTestTd"><input id="email" type="text" name="email" placeholder="邮箱（注册后不可修改）" onblur="testEmail()">
+                        <p id="emailTestBox"></p>
+                        <p id="emailTishi"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>出生日期</label>
+                        <select id="sel_year" rel="2000"></select><label for="sel_year">年</label>
+                        <select id="sel_month" rel="2"></select><label for="sel_month">月</label>
+                        <select id="sel_day" rel="14"></select><label for="sel_day">日</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>性别：</label>
+                        <input type="radio" name="sex" value="1" id="nan" checked><label for="nan">男</label>&nbsp;
+                        <input type="radio" name="sex" value="2" id="nv"><label for="nv">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="reg" onclick="registerDo()">注册</span></td>
+                    <td><span id="return" onclick="returnLogin()">返回</span></td>
+                </tr>
+            </table>
+            <p id="regThishi" style="color: red"></p>
+        </div>
+    </form>
+</div>
+</body>
+</html>

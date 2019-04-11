@@ -1,0 +1,7 @@
+const express = require('express');
+const goodsCtrl= require('../controller/goodsCtrl')
+const goodsrouter = express.Router();
+goodsrouter.get('/goods',goodsCtrl.getGoods);
+goodsrouter.get('/caizhuang',goodsCtrl.getcaizhuang);
+goodsrouter.get('/xiezhuang',goodsCtrl.getxiezhuang);
+module.exports = goodsrouter;

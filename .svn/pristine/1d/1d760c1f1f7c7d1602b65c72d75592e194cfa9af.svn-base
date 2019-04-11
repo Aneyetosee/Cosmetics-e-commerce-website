@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/personalCenter.css">
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <%console.log(data)%>
+    
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ol class="breadcrumb mybread">
+                        <li><a href="#">首页</a></li>
+                        <li class="active">您的账户</li>
+                    </ol>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="leftContent">
+                        <div class="top-head"></div>
+                        <div class="leftNav">
+                            <ul class="leftNavContent">
+                                <li class="leftNavTitle"><a href="#"><span class="navText">个人信息</span></a></li>
+                                <li class="leftNavTitle"><a href="#"><span class="navText">我的订单</span></a></li>
+                                <li class="leftNavTitle"><a href="#"><span class="navText">收货地址</span></a></li>
+                                <li class="leftNavTitle"><a href="#"><span class="navText">我的积分</span></a></li>
+                                <li class="backIndex"><a href="#"><span class="navText">注销</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="leftHelp">
+                            <p>购物帮助指南</p>
+                            <p>美丽顾问和技术专家为您解疑</p>
+                            <p><span class="glyphicon glyphicon-phone"></span>400-820-8820</p>
+                        </div>
+                        <div class="quistion">
+                            <p>常见问题</p>
+                            <div><a href="#">如何下订单？</a></div>
+                            <div><a href="#">如何查看配送状况？</a></div>
+                            <div><a href="#">如何修改订单？</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <%- include("modify.ejs")%>
+                    <iframe src="" frameborder="0" name="myiframe" scrolling="auto" class="myiframe" id="mainIframe" allowtransparency="true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include("../view/common/footer.ejs")%>
+
+    <script src="../js/personalCenter.js"></script>
+</body>
+</html>

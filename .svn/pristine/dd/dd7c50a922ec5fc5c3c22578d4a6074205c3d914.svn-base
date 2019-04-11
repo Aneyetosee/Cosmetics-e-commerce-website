@@ -1,0 +1,68 @@
+#ppgs_bg{
+    width: 70%;
+    margin-left: 15%;
+    background-color: #dfd4ce;
+    border-top: 1px solid #dfc8c1;
+    border-bottom: 1px solid #dfc8c1;
+}
+#mytitle{
+    margin-top: 50px;
+    font-size: 32px;
+}
+.mytext1{
+    font-size: 24px;
+    text-align: center;
+}
+#pic1,.lhy{
+    width: 703px;
+    margin-left: 120.5px;
+    margin-top: 30px;
+}
+.carousel-inner{
+    margin-bottom: 60px;
+}
+span{
+    /*text-align: center;*/
+    font-size: 24px;
+}
+.t1{
+    float: left;
+    width: 354px;
+    height: 212px;
+    text-align: center;
+    line-height: 200px;
+}
+.t2{
+    float: right;
+    width: 354px;
+    height: 212px;
+    text-align: center;
+    line-height: 200px;
+}
+.part1{
+    overflow: hidden;
+    margin-left: 120.5px;
+    margin-top: 60px;
+}
+.part1 img{
+    float: left;
+}
+.part2{
+    overflow: hidden;
+    margin-right: 118px;
+    margin-top: 60px;
+}
+.part2 img{
+    float: right;
+}
+.part3{
+    overflow: hidden;
+    margin-left: 120.5px;
+    margin-top: 60px;
+}
+.part3 img{
+    float: left;
+}
+#part4{
+    margin-top: 60px;
+}

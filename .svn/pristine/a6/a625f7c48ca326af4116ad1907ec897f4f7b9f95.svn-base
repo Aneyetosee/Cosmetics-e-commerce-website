@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>希思黎畅销榜单</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/xptj.css">
+    <style>
+        #cxbd{
+            width: 70%;
+            margin-left: 15%;
+        }
+    </style>
+</head>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<%- include("common/header.ejs")%><!--引入头部-->
+<div class="row">
+    <div class="col-lg-2 col-lg-offset-2">
+        <p>主页>希思黎畅销榜单</p>
+    </div>
+</div>
+<div id="cxbd">
+    <img src="../images/gwzx_0214/cxbd/0122_bestseller_pc_01.jpg">
+    <div id="cxbd_list">
+        <%data.forEach((item)=>{%>
+        <div class="">
+            <a href="details?d_id=<%=item.d_id%>">
+                <img src="../images/gwzx_0214/cxbd/<%=item.xptj_imgSrc%>" alt="">
+            </a>
+        </div>
+        <%})%>
+    </div>
+    <img src="../images/gwzx_0214/cxbd/0122_bestseller_pc_12.jpg" alt="">
+</div>
+
+<%- include("common/footer.ejs")%>
+</body>
+</html>

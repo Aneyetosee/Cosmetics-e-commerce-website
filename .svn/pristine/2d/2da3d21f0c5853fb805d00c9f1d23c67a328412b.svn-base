@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <style>
+        .goods_footer{
+            margin-top: 30px;
+        }
+        ul{
+            list-style: none;
+            font-size: 16px;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .goods_jiesao{
+            margin-top: 100px;
+            height: 300px;
+            display: table-cell;
+            vertical-align:middle;
+            text-align:center;
+        }
+        .goods_footer_biaoti{
+            text-align: center;
+            font-size: 24px;
+        }
+        .footer_image1{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .goods_mingxing{
+            text-align: center;
+            font-size: 16px;
+        }
+        .goods_jiage1{
+            margin-top: 50px;
+        }
+        .footer_image1 img{
+            height: 300px;
+        }
+        .goods_mingxing img {
+            width: 200px;
+            height: 250px;
+        }
+        .section{
+            margin-top: 20px;
+        }
+        .section>ul {
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<%- include("./common/header.ejs")%>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-2 goods_footer" >
+            <div><span>主页</span><span> > 彩妆  </span></div>
+            <ul>
+                <h3>脸部彩妆</h3>
+                <li>最新动态</li>
+                <li>隔离底霜</li>
+                <li>粉底</li>
+                <li>粉饼</li>
+                <li>蜜粉</li>
+                <li>腮红修容</li>
+                <li>底妆配件</li>
+            </ul>
+            <ul>
+                <h3>眼部彩妆</h3>
+                <li>最新动态</li>
+                <li>遮瑕</li>
+                <li>眉笔</li>
+                <li>眼线</li>
+                <li>眼影</li>
+                <li>睫毛膏</li>
+                <li>眼部</li>
+            </ul>
+            <ul>
+                <h3>唇部</h3>
+                <li>最新动态</li>
+                <li>唇线</li>
+                <li>唇膏</li>
+                <li>唇蜜</li>
+            </ul>
+            <ul>
+                <h3>妆容问题</h3>
+                <li>遮盖黑眼圈与瑕疵</li>
+                <li> 均匀肤色</li>
+                <li> 控油持妆</li>
+                <li>细致立体妆容</li>
+                <li> 丰盈双唇</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h1>彩妆</h1>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4 footer_image1">
+                    <img src="../images/maquillage_categorie.jpg" class="col-lg-12">
+                </div>
+                <div class="col-lg-8 goods_jiesao">
+                    <p>为了更好地保护肌肤，使之更加良好地抵御外界坏境的侵害，并且维持</p>
+                    <p>肌肤自身的舒适度，法国希思黎使用最先进的技术，开创性地研发出一</p>
+                    <p>系列品类丰富，色彩绚丽，妆效卓越，质地贴合的植物彩妆。</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 goods_footer_biaoti">
+                    法国希思黎明星产品
+                </div>
+                <div class="col-lg-3 goods_mingxing">
+                    <img src="../images/3473311703156_4_1.jpg">
+                    <div>希思黎抗氧保湿唇膏</div>
+                    <div class="goods_jiage1">￥390.00</div>
+                </div>
+                <div class="col-lg-3 goods_mingxing">
+                    <img src="../images/3473311704016_9_3.jpg">
+                    <div>希思黎植物莹亮唇膏</div>
+                    <div class="goods_jiage1">￥390.00</div>
+                </div>
+                <div class="col-lg-3 goods_mingxing">
+                    <img src="../images/3473311876010_9_2.jpg">
+                    <div>希思黎轻柔粉底液</div>
+                    <div class="goods_jiage1">￥390.00</div>
+                </div>
+                <div class="col-lg-3 goods_mingxing">
+                    <img src="../images/0830_mf_1_200x250_3.png">
+                    <div>希思黎植物塑型眉笔</div>
+                    <div class="goods_jiage1">￥390.00</div>
+                </div>
+            </div>
+            <div class="row section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">脸部彩妆</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">眼部彩妆</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">唇部</a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">妆容问题</a></li>
+                </ul>
+                <div  class="col-lg-2">产品匹配您的搜索</div>
+                <div class="col-lg-2 col-lg-offset-8 dropdown">
+                    分类:
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        销量
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">价格 低至高</a></li>
+                        <li><a href="#">价格 高至低</a></li>
+                        <li><a href="#">最新上架</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="row" id="xuanranGoods">
+                        <%data[0].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn ">查看产品</button>
+                            <button type="button" class="btn ">快速购买</button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <div class="row" id="xuanranGoods">
+                        <%data[1].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn ">查看产品</button>
+                            <button type="button" class="btn ">快速购买</button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    <div class="row" id="xuanranGoods">
+                        <%data[2].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn ">查看产品</button>
+                            <button type="button" class="btn ">快速购买</button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    <div class="row" id="xuanranGoods">
+                        <%data[3].forEach((item)=>{%>
+                        <div class="col-lg-4 goods_mingxing">
+                            <div><img src="../images/<%=item.d_smallSrc%>"></div>
+                            <p><%=item.g_name%></p>
+                            <p><%=item.g_descript%></p>
+                            <p>￥<%=item.d_price%></p>
+                            <button type="button" class="btn ">查看产品</button>
+                            <button type="button" class="btn ">快速购买</button>
+                        </div>
+                        <%})%>
+                    </div>
+                </div>
+            </div>
+        </div>.
+    </div>
+</div>
+<%- include("./common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+</body>
+</html>

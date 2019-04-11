@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .item{
+            margin: 50px 4px;
+            text-align: center;
+            width: 24%;
+            float: left;
+            padding-bottom: 35px;
+            background-color: white;
+        }
+        .item>span{
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 3px 6px;
+            background-color: rgba(31, 67, 115, 0.9);
+        }
+        .item>span:hover{
+            background-color: rgba(168, 7, 21, 0.9);
+        }
+        .item>span a{
+            color: white;
+            text-decoration: none;
+        }
+        .item p:nth-of-type(1){
+            font-size: 18px;
+        }
+        .item p:nth-of-type(2){
+            font-size: 16px;
+        }
+        .item p:nth-of-type(3){
+            font-size: 16px;
+            color: red;
+        }
+        .item img{
+            width: 200px;
+            height: 250px;
+        }
+        .item:hover{
+            -moz-box-shadow: 2px 2px 10px #909090;
+            -webkit-box-shadow: 2px 2px 10px #909090;
+            box-shadow:2px 2px 10px #909090;
+        }
+        #content{
+            width: 70%;
+            margin: auto;
+        }
+        #content>h3{
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        #content:after{
+            content: '';
+            clear: both;
+            height: 0px;
+            display: block;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<%- include("common/header.ejs")%>
+<div id="content">
+    <%if(!data){%>
+        <h3>没有该产品，请选择其他产品</h3>
+    <%}else {%>
+        <%data.forEach((item)=>{%>
+        <div class="item">
+            <div>
+                <a href="details?id=<%=item.d_id%>" onfocus="this.blur()"><img src="./images/<%=item.d_smallSrc%>" alt=""></a>
+            </div>
+            <p><%=item.g_name%></p>
+            <p><%=item.g_descript%></p>
+            <p style="color: red">￥<%=item.d_price%></p>
+            <span><a href="details?id=<%=item.d_id%>"onfocus="this.blur()">点击购买<i class="glyphicon glyphicon-menu-right"></i></a></span>
+        </div>
+        <%})%>
+        <%}%>
+
+</div>
+
+<%- include("common/footer.ejs")%>
+</body>
+</html>

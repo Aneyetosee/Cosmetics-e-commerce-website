@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei UI";
+}
+#nav_one{
+    background-color: #f5f5f5;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    margin: 0px;
+}
+.vip{
+    text-align: center;
+}
+.list li{
+    list-style: none;
+    float: left;
+    padding-right: 10px;
+}
+.glyphicon-search{
+    margin-left: -30px;
+}
+#search{
+    outline: none;
+    height: 24px;
+    text-indent: 1em;
+}
+.row{
+    width: 100%;
+}
+.logo{
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+}
+.login{
+    line-height: 100px;
+    font-size: 16px;
+    color: #918e91;
+}
+.login a{
+    text-decoration: none;
+}
+nav:after{
+    content: '';
+    clear: both;
+    height: 0px;
+    display: block;
+    visibility: hidden;
+}
+.nav_two{
+    margin: 0 auto 50px auto;
+    width: 60%;
+    position: relative;
+    margin-bottom: 50px;
+    border-top: 2px solid #303030;
+    float: left;
+    margin-left: 20%;
+}
+.menu, .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu {
+    height: 30px;
+}
+.menu li {
+    background: linear-gradient(#292929, #252525);
+    text-align: center;
+    border-bottom: 2px black solid;
+    border-top: 2px;
+}
+.menu > li {
+    background: #ffffff;
+    display: block;
+    float: left;
+    position: relative;
+    width: 12.5%;
+}
+
+.menu a {
+    border-left: 3px solid rgba(0, 0, 0, 0);
+    color: #000000;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.menu>li>ul>li>a{
+    color: white;
+}
+.menu li:hover{
+    background-color: #1c1c1c;
+}
+.menu li:hover > a {
+    border-radius: 5px 0 0 0;
+    border-left: 3px solid #C4302B;
+    color: white;
+}
+
+.submenu{
+    left: 0;
+    max-height: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 999;
+    -webkit-perspective: 400px;
+    -moz-perspective: 400px;
+    -ms-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+}
+.submenu li {
+    opacity: 0;
+    width: 128%;
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    -webkit-transition: opacity .4s, -webkit-transform .5s;
+    -moz-transition: opacity .4s, -moz-transform .5s;
+    -ms-transition: opacity .4s, -ms-transform .5s;
+    -o-transition: opacity .4s, -o-transform .5s;
+    transition: opacity .4s, transform .5s;
+}
+.menu .submenu li:hover a {
+    background: #ffffff;
+    border-left: 3px solid #C4302B;
+    border-radius: 5px 0 0;
+    color: black;
+}
+.menu > li:hover .submenu, .menu > li:focus .submenu {
+    max-height: 2000px;
+    z-index: 999;
+}
+.menu > li:hover .submenu li, .menu > li:focus .submenu li {
+    opacity: 1;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+.menu li:hover .submenu li:nth-child(1) {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}
+.menu li:hover .submenu li:nth-child(2) {
+    -webkit-transition-delay: 50ms;
+    -moz-transition-delay: 50ms;
+    -ms-transition-delay: 50ms;
+    -o-transition-delay: 50ms;
+    transition-delay: 50ms;
+}
+.menu li:hover .submenu li:nth-child(3) {
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    -ms-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+.menu li:hover .submenu li:nth-child(4) {
+    -webkit-transition-delay: 150ms;
+    -moz-transition-delay: 150ms;
+    -ms-transition-delay: 150ms;
+    -o-transition-delay: 150ms;
+    transition-delay: 150ms;
+}
+.submenu li:nth-child(1) {
+    -webkit-transition-delay: 350ms;
+    -moz-transition-delay: 350ms;
+    -ms-transition-delay: 350ms;
+    -o-transition-delay: 350ms;
+    transition-delay: 350ms;
+}
+.submenu li:nth-child(2) {
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+}
+.submenu li:nth-child(3) {
+    -webkit-transition-delay: 250ms;
+    -moz-transition-delay: 250ms;
+    -ms-transition-delay: 250ms;
+    -o-transition-delay: 250ms;
+    transition-delay: 250ms;
+}
+.submenu li:nth-child(4) {
+    -webkit-transition-delay: 200ms;
+    -moz-transition-delay: 200ms;
+    -ms-transition-delay: 200ms;
+    -o-transition-delay: 200ms;
+    transition-delay: 200ms;
+}

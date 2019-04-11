@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ShoppingCart</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/shoppingCart.css">
+</head>
+<style>
+    .clear:after{
+        clear: both;
+        content: "";
+        display:block;
+        visibility: hidden;
+    }
+    #myConceal{
+        display: none;
+    }
+    .myQuantity input{
+        width: 40px;
+        height: 20px;
+    }
+    .myShoppingCartPictures:first-child div{
+        width: 50px;
+        height: 50px;
+        float: left;
+
+    }
+    .myShoppingCartPictures img{
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+    .myShoppingCartPictures p {
+        width: 150px;
+        float: left;
+        margin-left: 10px;
+    }
+    .myQuantity div{
+        line-height: 30px;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        color: #6F7374;
+    }
+
+    .myTotalprices{
+        width: 180px;
+        color: #8d9192;
+        float: left;
+
+    }
+    .myTotalprices p{
+        font-size: 12px;
+        margin:10px 5px;
+    }
+    .myPayment{
+        background-color: #e7261e;
+        color: #fffbf0;
+        float: left;
+        width: 120px;
+        height: 66px;
+        text-align: center;
+        line-height: 66px;
+        font-size: 20px;
+    }
+  
+
+</style>
+<body>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+
+
+<%- include("./common/header.ejs")%>
+
+<section>
+    <div class="container myShipping">
+        <div class="row">
+            <h2>购物袋</h2>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myShippingCart">
+                    <table class="table table-responsive">
+                        <tbody id="myTotalPerItem">
+                            <tr class="myShippingCartBody cart">
+                                <td><input class="myCheck myChecks" type="checkbox">全选</td>
+                                <td>商品信息</td>
+                                <td>单价(元)</td>
+                                <td>数量</td>
+                                <td>小计(元)</td>
+                                <td>操作</td>
+                            </tr>
+                        <% data.forEach(function (item, index) { %>
+                            <tr class="cart">
+                                <td id="myConceal"><%=item.o_g_id%></td>
+                                <td class="col-lg-1 col-md-1 col-sm-1 col-xs-12"><input class="myCheck myCheckOne" type="checkbox"></td>
+                                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-12 myShoppingCartPictures">
+                                    <div class="clear">
+                                        <img src="../images/<%= item.d_smallSrc %>" alt="">
+                                        <p class="myCommodityName"><%= item.d_chinese %></p>
+                                    </div>
+                                </td>
+                                <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <span class="myPrice"><%= item.d_Price %></span>.00元
+                                </td>
+                                <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12 myQuantity">
+                                    <div class="glyphicon glyphicon-chevron-left myNumberSub"></div>
+                                    <input class="myNewQuantity" type="text" value="<%= item.o_class_num %>">
+                                    <div class="glyphicon glyphicon-chevron-right myNumberPlus"></div>
+                                </td>
+                                <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <span class="myTotal"><%= parseInt(item.d_Price) * parseInt(item.o_class_num) %></span>.00元
+                                </td>
+                                <td class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><span class="myShoppingDelect">删除</span></td>
+                            </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="container myCommoditysummary">
+        <div class="row">
+            <div class="col-lg-offset-8 clear myShoppingPayment">
+                <div class="myTotalprices">
+                    <p>已选<span class="myTotalpricesOne"></span>件商品，合计:<span class="myTotalpricesTotal">0</span>.00元</p>
+                    <p>商品总额：<span class="myTotalpricesTotal">0</span>.00元</p>
+                </div>
+                <div class="myPayment">立即结算</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include("./common/footer.ejs")%>
+<script>
+
+
+    $(document).ready(function () {
+        // 代码加载完毕运行判断复选框是否为选中状态
+        mySelect()
+        // 数量加减
+        $(".myNumberSub").click(function () {
+            // 获取商品数量节点
+            let myNumber = $(this).parent().find('input[class*=myNewQuantity]')
+            // 获取每个商品的单价
+            let unitPrice = $(this).parent().parent().children("td").find('span[class*=myPrice]').text()
+            //获取小计节点
+            let subtotalMultiply = $(this).parent().next().children(".myTotal")
+            // console.log(subtotalMultiply)
+            // 如果当前数量大于一给当前数量的值 减一
+            if (myNumber.val()>1){
+                myNumber.val(parseInt(myNumber.val())-1)
+            }
+            //获得商品单价乘以数量的积
+            let  mySubtotal = parseInt(myNumber.val())*parseInt(unitPrice)
+            subtotalMultiply.text(mySubtotal)
+            myTotalPerItem()
+        })
+        $(".myNumberPlus").click(function () {
+            // 获取商品数量节点
+            var myNumber = $(this).parent().find('input[class*=myNewQuantity]')
+            // 获取每个商品的单价
+            // let unitPrice = $(this).parent().prev().children(".myPrice").text()
+            let unitPrice = $(this).parent().parent().children("td").find('span[class*=myPrice]').text()
+            //获取小计节点
+            let subtotalMultiply = $(this).parent().next().children(".myTotal")
+            // 给当前数量的值加一
+            myNumber.val(parseInt(myNumber.val())+1)
+            // console.log(myNumber.val())
+            // 获得商品单价乘以数量的积
+            let  mySubtotal = parseInt(myNumber.val())*parseInt(unitPrice)
+            subtotalMultiply.text(mySubtotal)
+            myTotalPerItem()
+
+        })
+
+        // 计算总价
+            var  cart = $(".myCheckOne")
+        function myTotalPerItem(){
+            // 总价
+            var myNum = 0
+            // 单计
+            var myTotal = 0
+            // 数量
+            var myNumber = 0
+            for(let i=0;i<cart.length;i++){
+                if(cart[i].checked){
+                    myTotal = parseInt($(cart[i]).parent().parent().find('span[class*=myPrice]').text())
+                    myNumber = parseInt($(cart[i]).parent().parent().find('input[class*=myNewQuantity]').val())
+                    myNum += myTotal*myNumber
+                }
+
+            }
+            $(".myTotalpricesTotal").text(myNum)
+            $(".myTotalpricesTotal").text(myNum)
+
+        }
+
+        // 判断是否选择商品
+        // 如果选择则改变总价
+        function mySelect() {
+            // 复选单选复选框
+            let check = $(".myCheck")
+            // 获取全选复选框
+            let checks = $(".myChecks")
+
+            // 循环遍历所有复选框
+            $(check).each(function () {
+                // 绑定点击事件
+                $(this).click(function () {
+                    // 如果当前复选框的class包含myChecks（全选复选框）那么所有单选框则变为选中状态
+                    if ($(this).hasClass("myChecks")) {
+                        for (var i = 0;i<check.length;i++){
+                            check[i].checked = this.checked
+                        }
+                    }
+                    // 如果当前单选复选框有一个不等于选中状态那么全选复选框为false（未选中状态）
+                    if (!this.checked) {
+                        $(checks).attr("checked",false)
+                    }
+                    myTotalPerItem()
+                })
+            })
+
+        }
+
+        $(".myShoppingDelect").click(function () {
+            // let myCommodityName = $(this).parent().parent().find('p[class*=myCommodityName]').text()
+            // let myCommodityPrice = $(this).parent().parent().find('span[class*=myPrice]').text()
+            // console.log()
+
+            let myCommodityId = parseInt($(this).parent().parent().find('td[id*=myConceal]').text())
+            console.log(myCommodityId)
+            $.ajax({
+                type:'post',
+                url:'/myShoppingDel.do',
+                dataType:'json',
+                data:{myCommodityId},
+                success(data){
+
+                }
+            })
+        })
+
+    })
+
+
+
+
+</script>
+</body>
+</html>

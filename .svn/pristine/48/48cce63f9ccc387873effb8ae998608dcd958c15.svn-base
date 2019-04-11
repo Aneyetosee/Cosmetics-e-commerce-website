@@ -1,0 +1,9 @@
+body {
+    /*border: 1px solid blue;*/
+    width: 945px;
+    margin-left: 192px;
+}
+#title1{
+    width: 150px;
+    margin: auto;
+}

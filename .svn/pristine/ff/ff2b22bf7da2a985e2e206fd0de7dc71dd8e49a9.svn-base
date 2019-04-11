@@ -1,0 +1,29 @@
+const userDao = require("../dao/userDao")
+
+module.exports={
+    xptj(req,resp){
+        userDao.userDao().then(function (connection) {
+            var xptjData = [];
+            if(!req.session.data){
+                var user = {
+                    dataType:false,
+                    u_nickname:undefined,
+                    u_phone:undefined
+                }
+            }else{
+                var user = {
+                    dataType:req.session.data.dataType,
+                    u_nickname:req.session.data.u_nickname,
+                    u_phone:req.session.data.u_phone
+                }
+            }
+            connection.query('SELECT xptj_imgSrc,xptj_name FROM t_xptj' ,[])
+                .then(function (data) {
+                    var xptjNew = data;
+                    xptjData.push(xptjNew)
+
+                    resp.render("view/xptj",{data:xptjData,user:user})
+                })
+        })
+    }
+}

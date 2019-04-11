@@ -1,0 +1,35 @@
+const sms = require("leancloud-storage")
+const app_id="wlbVp1trqOVSytqR7EdS9oDK-gzGzoHsz"
+const app_key="Xc5VoVR25JrT5BBeGeMxqX6X"
+sms.init({
+    appId:app_id,
+    appKey:app_key
+})
+module.exports = {
+    smsPhone(req,resp){
+        //拿到手机号，给第三方发送
+        let phone=req.body.userPhone
+        console.log(phone)
+        sms.Cloud.requestSmsCode({
+            mobilePhoneNumber:phone,
+            name:"三阶段项目",
+            code:"验证码",
+            ttl:1,//有效时间，需在1分钟之内输入验证码
+            op:"注册"
+        }).then(function (data) {
+            resp.send("短信发送成功")
+        }).catch(function (err) {
+            console.log(err)
+            resp.send("短信发送失败")
+        })
+    },
+    verifyCode(req,resp){
+        let {code,phone}=req.body
+        sms.Cloud.verifySmsCode(code,phone).then(function () {
+            resp.send("验证成功")
+        }).catch(function (err) {
+            console.log(err)
+            resp.send("验证码输入失败")
+        })
+    }
+}

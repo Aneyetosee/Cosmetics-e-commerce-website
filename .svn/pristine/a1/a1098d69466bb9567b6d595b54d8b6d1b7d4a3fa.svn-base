@@ -1,0 +1,14 @@
+const controller = require("../controller/detailsCont")
+const express = require("express")
+const router = express.Router()
+//渲染页面
+router.get("/details",controller.details)
+//点击立即支付验证登录
+router.post("/verification",controller.verification)
+//加入购物车
+router.post("/deailsGou.do",controller.deailsGou)
+//点击立即登录成功跳转的路由
+router.get("/lijizhifu",controller.lijizhifu)
+//渲染评论
+router.post("/comment_cont",controller.comment_cont)
+module.exports = router

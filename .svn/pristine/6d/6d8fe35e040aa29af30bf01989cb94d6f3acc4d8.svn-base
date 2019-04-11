@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/shippingAddress.css">
+</head>
+<body>
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>我的订单</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myShippingAddress">
+                    <div class="myShippingAddressHead clear">
+                        <div class="fl"><p>已有<span>0</span>收货地址(最多添加10个收货地址)</p></div>
+                        <div class="addAddress fr">+ 添加收货地址</div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTable">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12"><input type="checkbox"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">地址</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">收货人</div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">联系电话</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">操作</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 addressTableContent">
+                            <table class="table table-hover table-responsive">
+                                <tbody>
+                                </tbody>
+                            </table> 
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nulladdress">
+                            <p>暂无收货地址</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="addressModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加地址</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <span>*省：</span>
+                            <select name="province" id="province">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*市：</span>
+                            <select name="city" id="city">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*地区：</span>
+                            <select name="town" id="town">
+                                <option value="请选择">请选择</option>
+                            </select>
+                        </div>
+                        <div class="detailedAddress">
+                            <p>*详细地址：</p>
+                            <div><input type="text"></div>
+                        </div>
+                        <div class="recipientName clear">
+                            <div class="fl">
+                                <p>*邮编：</p>
+                                <div><input type="text"></div>
+                            </div>
+                            <div class="fl">
+                                <p>*收件人姓名：</p>
+                                <div><input type="text"></div>
+                            </div>
+                        </div>
+                        <div class="recipientPhone">
+                            <p>*收件人手机号：</p>
+                            <div><input type="text"></div>
+                        </div>
+                        <div class="fixedPhone">
+                            <p>固定电话：</p>
+                            <div><input type="text"></div>
+                        </div>
+                        <div class="defaultAdress">
+                            <input type="checkbox">
+                            <span>设为默认地址</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="../js/area.js"></script>
+    <script src="../js/shippingAddress.js"></script>
+</body>
+</html>

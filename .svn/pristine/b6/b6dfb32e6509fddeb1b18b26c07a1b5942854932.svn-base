@@ -1,0 +1,30 @@
+$('.leftNav').on('click','.leftNavTitle',function(){
+    let btnName = $(this).children().children().text()
+    //渲染数据时修改以下代码
+    $('.leftNavTitle').removeClass('on')
+    $('.leftNavTitle').children().children().removeClass('on')
+    $(this).addClass('on')
+    $(this).children().children().addClass('on')
+    console.log(btnName)
+    //隐藏显示需要修改
+    $('.perIndexContent').css('display','none')
+    $('#mainIframe').css('display','block')
+    //渲染数据后以下代码修改为跳转
+    if(btnName=='个人信息1'){
+        $('#mainIframe').prop('src','modify')
+    }else if(btnName=='我的订单2'){
+        $('#mainIframe').prop('src','order')
+    }else if(btnName=='收货地址3'){
+        $('#mainIframe').prop('src','shippingAddress.html')
+    }else if(btnName=='我的积分'){
+        $('#mainIframe').prop('src','Integral.html')
+    }
+})
+//个人信息编辑
+$('.myInfoEd').on('click',function(){
+    
+})
+//注销
+$('.leftNav').on('click','.backIndex',function(){
+    location.href = 'login'
+})

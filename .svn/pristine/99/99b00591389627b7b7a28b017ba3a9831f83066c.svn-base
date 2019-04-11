@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/Integral.css">
+</head>
+<body>
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>我的积分</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myIntegral">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 allIntegral">
+                        <p>我的积分</p>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myScoreContent">
+                            <p>您好，会员，您已累计积分为 0 积分。</p>
+                            <p>第一步：在本站购买商品，即可累计积分。<a href="#" >开始购物</a></p>
+                            <p>第二步：凭积分可在本站微信公众号上兑换多种积分商品。</p>
+                            <p>第三步：查看更多会员权益。<a href="#" >积分说明</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 IntegralTable">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">消费日期</div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">商品名称</div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">数量</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">金额</div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">积分</div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 IntegralTableContent">
+                            <table class="table table-hover table-responsive">
+                                <tbody>
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nullIntegral">
+                        <p>尚未获取积分</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

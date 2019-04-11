@@ -1,0 +1,148 @@
+
+    <link rel="stylesheet" href="../css/Integral.css">
+
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>我的积分</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myIntegral">
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 allIntegral">
+                        <p>我的积分</p>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myScoreContent">
+                            <p>您好，会员，您已累计积分为 <span class="allorderPoint"></span> 积分。</p>
+                            <p>第一步：在本站购买商品，即可累计积分。<a href="#" >开始购物</a></p>
+                            <p>第二步：凭积分可在本站微信公众号上兑换多种积分商品。</p>
+                            <p>第三步：查看更多会员权益。<a href="#" >积分说明</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 IntegralTable">
+                        <%if(data[0]==false){%>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 IntegralTableContent">
+                                <table class="table table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>消费日期</th>
+                                            <th>商品名称</th>
+                                            <th>数量</th>
+                                            <th>金额</th>
+                                            <th>积分</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table> 
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nullIntegral">
+                                <p>尚未获取积分</p>
+                            </div>
+                        <%}else{%>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 IntegralTableContent">
+                                <table class="table table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>消费日期</th>
+                                            <th>商品名称</th>
+                                            <th>数量</th>
+                                            <th>金额</th>
+                                            <th>积分</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table> 
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <ul class="pagination clickPage">
+                                    <li class="previousPage">
+                                        <a aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="Next">
+                                        <a aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    var allData = '<%- JSON.stringify(data) %>'
+    allData = JSON.parse(allData)
+    var allPoint = 0
+    for(let i=0;i<allData.length;i++){
+        allPoint += allData[i].order_point
+    }
+    $('.allorderPoint').text(allPoint)
+    var pageNum = 1;
+    const constNum = 5;
+
+    function pointTable(arr,countNum){
+        for(let i=countNum;i<countNum+constNum;i++){
+            if(i<arr.length){
+                $('table tbody').append(`
+                <tr>
+                    <td>${arr[i].pay_time}</td>
+                    <td>${arr[i].d_chinese}</td>
+                    <td>${arr[i].order_class_num}</td>
+                    <td>${arr[i].o_money}</td>
+                    <td>${arr[i].order_point}</td>
+                </tr>
+                `)
+            } 
+        }
+    }
+    //分页的计算
+    function thisPageNum(){
+        //有多少页的部分
+        for(let i=0;i<Math.ceil(allData.length/constNum);i++){
+            $('.Next').before(
+                `<li class="toPage"><a>${i+1}</a></li>`
+            )
+        }
+    }
+    //点击分页
+$('.clickPage').on('click','.toPage',function(){
+    pageNum = $(this).text();
+    //清除数据
+    $("table tbody tr").remove();
+    //渲染数据
+    pointTable(allData,(parseInt(pageNum)-1)*constNum); 
+})
+//点击上一页
+$('.clickPage').on('click','.previousPage',function(){
+    if(pageNum > 1){
+        pageNum = parseInt(pageNum)-1;
+        //清除数据
+        $("table tbody tr").remove();
+        //渲染数据
+        pointTable(allData,(parseInt(page)-1)*constNum);
+    }else{
+        pageNum =parseInt(pageNum)
+    }
+})
+//点击下一页
+$('.clickPage').on('click','.Next',function(){
+    if(pageNum > 0&&pageNum<Math.ceil(allData.length/constNum)){
+        pageNum = parseInt(pageNum)+1;
+        //清除数据
+        $("table tbody tr").remove();
+        //渲染数据
+        pointTable(allData,(parseInt(page)-1)*constNum);
+    }else{
+        pageNum=parseInt(pageNum)
+    }
+})
+
+    $(window).ready(function(){
+        pointTable(allData,0)
+        thisPageNum()
+    })
+</script>
+<script src="../js/Integral.js"></script>

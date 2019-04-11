@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../lib/jq22jqzoom2444201801040045/jqzoom/style/jqzoom.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../font/font_6lrec6saxjt/font_6lrec6saxjt/iconfont.css">-->
+
+</head>
+<body>
+      <div class="container-fluid">
+          <div class="row">
+              <%-include("common/header.ejs")%>
+          </div>
+          <div class="">
+              <p>恭喜<span><%=user.u_nickname%>></span>>支付成功。<span id="mytime"></span>秒后返回个人中心</p>
+          </div>
+           <div class="row">
+
+               <%- include("common/footer.ejs")%>
+           </div>
+      </div>
+      <script>
+          var num = document.getElementById('mytime');
+          var i = 3;
+          num.innerHTML = i;
+          timer = setInterval(function(){
+                  if(i<=0){
+                      num.innerHTML = i ;
+                      clearInterval(timer)
+                      location.href = 'order'
+                      console.log(i);
+                  }else{
+                      console.log(i);
+                      num.innerHTML = i ;
+                      i--;}
+
+              },1000)
+
+      </script>
+</body>
+</html>

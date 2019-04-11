@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery商城商品放大镜插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" /><!--CSS RESET-->
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css"><!--演示页面样式，使用时可以不引用-->
+	<link href="src/jquery.exzoom.css" rel="stylesheet" type="text/css"/>
+	<style>
+	    #exzoom {
+	        width: 400px;
+	        /*height: 400px;*/
+	        margin: 20px auto;
+	    }
+	</style>
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>jquery商城商品放大镜插件 <span>Product Carousel With Magnifying Glass Effect</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Image-Effects/201807245242.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div class="exzoom" id="exzoom">
+		    <!--大图区域-->
+		    <div class="exzoom_img_box">
+		        <ul class='exzoom_img_ul'>
+		            <li><img src="images/photos/3473311141002-min.jpg"/></li>
+		           <!-- <li><img src="images/photos/img02.jpg"/></li>
+		            <li><img src="images/photos/img03.jpg"/></li>
+		            <li><img src="images/photos/img04.jpg"/></li>
+		            <li><img src="images/photos/img05.jpg"/></li>
+		            <li><img src="images/photos/img06.jpg"/></li>
+		            <li><img src="images/photos/img07.jpg"/></li>
+		            <li><img src="images/photos/img08.jpg"/></li>-->
+		        </ul>
+		    </div>
+		    <!--缩略图导航-->
+		   <!-- <div class="exzoom_nav"></div>
+		    &lt;!&ndash;控制按钮&ndash;&gt;
+		    <p class="exzoom_btn">
+		        <a href="javascript:void(0);" class="exzoom_prev_btn"> &lt; </a>
+		        <a href="javascript:void(0);" class="exzoom_next_btn"> &gt; </a>
+		    </p>-->
+		</div>
+		<!--<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/jQuery/Image-Effects/201805215132.html">
+			  <img src="related/1.jpg" width="300" alt="jQuery图片放大镜插件lightzoom.js"/>
+			  <h3>jQuery图片放大镜插件lightzoom.js</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201712214891.html">
+			  <img src="related/2.jpg" width="300" alt="带放大镜功能的jQuery轮播图插件"/>
+			  <h3>带放大镜功能的jQuery轮播图插件</h3>
+			</a>
+		</div>-->
+	</div>
+	
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="src/jquery.exzoom.js"></script>
+    	<script type="text/javascript">
+	    $("#exzoom").exzoom({
+	        autoPlay: false,
+	    });//方法调用，务必在加载完后执行
+	</script>
+</body>
+</html>

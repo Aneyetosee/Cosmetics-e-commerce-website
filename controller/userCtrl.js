@@ -1,0 +1,728 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    personalCenter(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            resp.redirect('loginDoIt')
+        }else{
+            resp.redirect('index')
+        }
+    },
+    loginDoIt(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        /* console.log(userName,pwd) */
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT u_id,u_nickname,u_sex,u_phone,u_email FROM t_user WHERE u_phone = ? OR u_email = ?',[user.u_phone,user.u_phone])
+                    .then(function(data){
+                        if(data.length>0){
+                            var thisUser = data
+                            /* console.log(thisUser) */
+                            var thisArr = []
+                            thisArr.push(thisUser)
+                            connection.query('SELECT * from t_address where a_u_id = ?',[thisUser[0].u_id])
+                                .then(function(data){
+                                    var thisAddress = data
+                                    /* console.log(thisAddress) */
+                                    thisArr.push(thisAddress)
+                                    connection.query('SELECT * from t_score where l_u_id = ?',[user.u_phone])
+                                        .then(function(data){
+                                            var thisScore = data
+                                            thisArr.push(thisScore)
+                                            connection.query('select d_smallSrc,d_price,g_name,ord_o_id,order_status,ord_ord_id,order_class_num,modified_time from ((order_detail JOIN t_order on ord_ord_id = o_sn)join t_goods on ord_o_id = g_id)join t_details on d_chinese = g_name where o_u_id =?',[thisUser[0].u_id])
+                                                .then(function(data){
+                                                    var thisorder = data
+                                                    thisArr.push(thisorder)
+                                                    resp.render('userView/personalCenter',{data:thisArr,thisPage:''})
+                                                })
+                                        })
+                                })
+                        }else{
+                            resp.redirect('index')
+                        }
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    modify(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT * FROM t_user WHERE u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        data[0].u_date = new Date(data[0].u_date).toLocaleDateString()
+                        let birArr = data[0].u_date.split("-")
+                        if(birArr[1]<10){
+                            birArr[1] = '0'+birArr[1]
+                        }
+                        if(birArr[2]<10){
+                            birArr[2] ='0' + birArr[2]
+                        }
+                        data[0].u_date = birArr.join("-")
+                        resp.render("userView/personalCenter",{data:data,thisPage:'modify'})
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    order(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT d_smallSrc,d_price,d_chinese,ord_o_id,order_status,ord_ord_id,order_class_num,modified_time,o_money FROM (order_detail JOIN t_order ON ord_ord_id = o_sn)JOIN t_details ON ord_o_id = d_id WHERE o_u_id =? and modified_time>DATE_SUB(CURDATE(), INTERVAL 3 MONTH)',[user.u_phone])
+                    .then(function(data){
+                        let orderArr = []
+                        let reNumArr =[]
+                        for(let i=0;i<data.length;i++){
+                            let reNum=0
+                            for(let j=i+1;j<data.length;j++){
+                                if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                    reNum++
+                                }
+                            }
+                            reNumArr.push(reNum+1);
+                        }
+                        for(let i=0;i<data.length;i++){
+                            for(let j=i+1;j<data.length;j++){
+                                if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                    data[j].ord_ord_id =''
+                                }
+                            }
+                        } 
+                        orderArr.push(data)
+                        resp.render("userView/personalCenter",{data:orderArr,thisPage:'order',reNumArr:reNumArr})
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    shippingAddress(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT a_province,a_city,a_area,a_address,a_people,a_phone,a_phone2,setDefault,zipCode,a_id FROM t_user JOIN t_address  ON a_u_id = u_id WHERE u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        let addressArr = [data]
+                        resp.render("userView/personalCenter",{data:addressArr,thisPage:'shippingAddress'})
+                    }).catch(function(err){
+                        console.log(err)
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+        
+    },
+    Integral(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT l_score FROM t_score WHERE l_u_id=?',[user.u_phone])
+                    .then(function(data){
+                        let l_score = data[0].l_score
+                        connection.query('SELECT pay_time,o_money,order_point,order_class_num,d_chinese,ord_ord_id FROM (order_detail JOIN t_order ON ord_ord_id = o_sn)JOIN t_details ON d_id=ord_o_id WHERE t_order.o_u_id =? and order_status != 10',[user.u_phone])
+                            .then(function(data){
+                                //转化时间
+                                for(let i=0;i<data.length;i++){
+                                    data[i].pay_time = data[i].pay_time.toLocaleString()
+                                }
+                                //看相同订单的不同产品
+                                let reNumArr =[]
+                                for(let i=0;i<data.length;i++){
+                                    let reNum=0
+                                    for(let j=i+1;j<data.length;j++){
+                                        if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                            reNum++
+                                        }
+                                    }
+                                    reNumArr.push(reNum+1);
+                                }
+                                for(let i=0;i<data.length;i++){
+                                    for(let j=i+1;j<data.length;j++){
+                                        if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                            data[j].ord_ord_id =''
+                                        }
+                                    }
+                                } 
+                                resp.render("userView/personalCenter",{data:data,thisPage:'Integral',reNumArr:reNumArr,l_score:l_score})
+                            })
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    cancellation(req,resp){
+        var user = {
+            dataType:false,
+            u_nickname:undefined,
+            u_phone:undefined
+        }
+        req.session.data=user
+        resp.redirect('index')
+    },
+    /* 功能拦截 */
+        //改变基本资料
+    changeModify(req,resp){
+        let modifyData = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        console.log(modifyData)
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('UPDATE t_user SET u_sex=?,u_date=?,u_nickname=? WHERE u_phone = ?',[modifyData.sex,modifyData.birthday,modifyData.nickname,user.u_phone])
+                    .then(function(data){
+                        resp.send('1')
+                    }).catch(function(err){
+                        resp.send('0')
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+        //密码修改
+    modifyPassword(req,resp){
+        let {newPassword,originalPasswor} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT * FROM t_user WHERE u_phone=? AND u_pwd = ?',[user.u_phone,originalPasswor])
+                    .then(function(data){
+                        if(data.length>0){
+                            connection.query('UPDATE t_user SET u_pwd = ? WHERE u_phone = ?',[newPassword,user.u_phone])
+                                .then(function(data){
+                                    resp.send('modifySuccessfully')
+                                }).catch(function(err){
+                                    resp.send(['modifyErr',err])
+                                })
+                        }else{
+                            resp.send('passwordErr')
+                        }
+                    }).catch(function(err){
+                        resp.send(['findErr',err])
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+        //增加地址
+    shippingAddressDo(req,resp){
+        var addUserAddress= req.body.addUserAddress
+        addUserAddress = JSON.parse(addUserAddress);
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('select u_id from t_user where u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        let thisUser = data[0].u_id
+                        if(addUserAddress[addUserAddress.length-1]==false){
+                            addUserAddress[addUserAddress.length-3] = '1'
+                        }
+                        if(addUserAddress[addUserAddress.length-3] == '1'){
+                            connection.query('UPDATE t_address SET setDefault = 0 WHERE a_u_id = ?',[thisUser])
+                                .then(function(data){
+                                    let arr = addUserAddress
+                                    arr.unshift(thisUser)
+                                    arr.pop()
+                                    connection.query('INSERT INTO t_address VALUE (NULL,?,?,?,?,?,?,?,?,?,?)',arr)
+                                        .then(function(data){
+                                            connection.query('SELECT * FROM t_address WHERE a_u_id = ?',[arr[0]])
+                                                .then(function(data){
+                                                    resp.send(data)
+                                                })
+                                        }).catch(function(err){
+                                            resp.send('0')
+                                        })
+                                })
+                        }else{
+                            let arr = addUserAddress
+                                arr.unshift(thisUser)
+                                arr.pop()
+                            connection.query('INSERT INTO t_address VALUE (NULL,?,?,?,?,?,?,?,?,?,?)',arr)
+                                .then(function(data){
+                                    connection.query('SELECT * FROM t_address WHERE a_u_id = ?',[arr[0]])
+                                        .then(function(data){
+                                            resp.send(data)
+                                        })
+                                }).catch(function(err){
+                                    resp.send('0')
+                                })
+                        }
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+        
+    },
+    //修改地址
+    chooseAddressDo(req,resp){
+        var chooseUserAddress= req.body.chooseUserAddress
+        chooseUserAddress = JSON.parse(chooseUserAddress);
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        console.log(chooseUserAddress)
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('select u_id from t_user where u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        let thisUser = data[0].u_id
+                        if(chooseUserAddress[chooseUserAddress.length-1]==false){
+                            chooseUserAddress[chooseUserAddress.length-3] = '1'
+                        }
+                        connection.query('DELETE FROM t_address WHERE a_id =?',[chooseUserAddress[0]])
+                            .then(function(data){
+                            if(chooseUserAddress[chooseUserAddress.length-3] == '1'){
+                                connection.query('UPDATE t_address SET setDefault = 0 WHERE a_u_id = ?',[thisUser])
+                                    .then(function(data){
+                                            let arr = chooseUserAddress
+                                            arr.shift()
+                                            arr.unshift(thisUser)
+                                            arr.pop()
+                                            connection.query('INSERT INTO t_address VALUE (NULL,?,?,?,?,?,?,?,?,?,?)',arr)
+                                                .then(function(data){
+                                                    connection.query('SELECT * FROM t_address WHERE a_u_id = ?',[arr[0]])
+                                                        .then(function(data){
+                                                            resp.send(data)
+                                                        })
+                                                }).catch(function(err){
+                                                    resp.send('0')
+                                                })
+                                        })
+                            }else{
+                                let arr = chooseUserAddress
+                                arr.shift()
+                                arr.unshift(thisUser)
+                                arr.pop()
+                                connection.query('INSERT INTO t_address VALUE (NULL,?,?,?,?,?,?,?,?,?,?)',arr)
+                                    .then(function(data){
+                                        connection.query('SELECT * FROM t_address WHERE a_u_id = ?',[arr[0]])
+                                            .then(function(data){
+                                                resp.send(data)
+                                            })
+                                    }).catch(function(err){
+                                        resp.send('0')
+                                    })
+                                    
+                            }
+                        })
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    //删除地址
+    delAddressDo(req,resp){
+        let {delObj} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('DELETE FROM t_address WHERE a_id =?',[delObj])
+                    .then(function(data){
+                        connection.query('SELECT * FROM t_address WHERE a_u_id = (SELECT u_id FROM t_user WHERE u_phone = ?)',[user.u_phone])
+                            .then(function(data){
+                                resp.send(data)
+                            })
+                    }).catch(function(err){
+                        resp.send('0')
+                        console.log(err)
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    //修改默认地址
+    selectTheDefaultDo(req,resp){
+        let {selectDef} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('UPDATE t_address SET setDefault = 0 WHERE a_u_id = (SELECT u_id FROM t_user WHERE u_phone=?)',[user.u_phone])
+                    .then(function(data){
+                        connection.query('UPDATE t_address SET setDefault = 1 WHERE a_id = ?',[selectDef])
+                        .then(function(data){
+                            resp.send('1')
+                        }).catch(function(err){
+                            resp.send('0')
+                        })
+                    }).catch(function(err){
+                        resp.send('0')
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    massageContentDo(req,resp){
+        let {shipId,massageContent} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT g_descript FROM t_goods WHERE g_id = ?',[shipId])
+                    .then(function(data){
+                        let goods = data[0].g_descript
+                        connection.query('SELECT u_nickname FROM t_user WHERE u_phone = ?',[user.u_phone])
+                            .then(function(data){
+                                let massageNickname = data[0].u_nickname
+                                let myDate = new Date()
+                                let times = myDate.toLocaleString()
+                                console.log(times)
+                                connection.query('INSERT INTO t_comment_t VALUE (NULL,?,?,?,?,?)',[shipId,massageNickname,massageContent,times,goods])
+                                    .then(function(data){
+                                        resp.send('1')
+                                    }).catch(function(err){
+                                        resp.send('0')
+                                    })
+                            })
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    //订单搜索
+    searchOrderDo(req,resp){
+        let {searchOrderContent} = req.body
+        searchOrderContent = `%${searchOrderContent}%`
+        console.log(searchOrderContent)
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT ord_ord_id FROM (order_detail JOIN t_order ON ord_ord_id = o_sn)JOIN t_details ON ord_o_id = d_id WHERE o_u_id =? and d_chinese LIKE ?',[user.u_phone,searchOrderContent])
+                    .then(function(data){
+                        console.log(data)
+                        if(data.length>0){
+                            let orderNum =[]
+                            let sql = 'SELECT d_smallSrc,d_price,d_chinese,ord_o_id,order_status,ord_ord_id,order_class_num,modified_time,o_money FROM (order_detail JOIN t_order ON ord_ord_id = o_sn)JOIN t_details ON ord_o_id = d_id WHERE ord_ord_id=?'
+                            for(let i=0;i<data.length;i++){
+                                orderNum.push(data[i].ord_ord_id) 
+                            }
+                            for(let i=1;i<orderNum.length;i++){
+                                sql = sql + 'OR ord_ord_id=?'
+                            }
+                            connection.query(sql,orderNum)
+                                .then(function(data){
+                                    let orderArr = []
+                                    let reNumArr =[]
+                                    for(let i=0;i<data.length;i++){
+                                        let reNum=0
+                                        for(let j=i+1;j<data.length;j++){
+                                            if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                                reNum++
+                                            }
+                                        }
+                                        reNumArr.push(reNum+1);
+                                        i+=reNum
+                                    }
+                                    for(let i=0;i<data.length;i++){
+                                        for(let j=i+1;j<data.length;j++){
+                                            if(data[i].ord_ord_id==data[j].ord_ord_id){
+                                                data[j].ord_ord_id =''
+                                            }
+                                        }
+                                    } 
+                                    orderArr.push(data)
+                                    resp.send({arr:orderArr,reNumArr:reNumArr})
+                            })
+                        }else{
+                            resp.send('0')
+                        }
+                    }).catch(function(Err){
+                        console.log(Err)
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    //确认收货
+    makeSureDo(req,resp){
+        let {orderNum} = req.body
+        console.log(orderNum)
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT order_point FROM t_order WHERE o_sn=?',[orderNum])
+                    .then(function(data){
+                        let newPoint = data[0].order_point
+                        connection.query('SELECT l_score FROM t_score WHERE l_u_id=?',[user.u_phone])
+                            .then(function(data){
+                                let point = []
+                                let oldpoint = data[0].l_score
+                                point.push(Number(newPoint)+Number(oldpoint))
+                                point.push(user.u_phone)
+                                console.log(point)
+                                connection.query('UPDATE t_score SET l_score = ? WHERE l_u_id= ?',point)
+                                    .then(function(data){
+                                        if(data){
+                                        connection.query('UPDATE t_order SET order_status = 40 WHERE o_sn = ?',[orderNum])
+                                            .then(function(data){
+                                                resp.send('1')
+                                            }).catch(function(err){
+                                                resp.send('0')
+                                                console.log(err)
+                                            })
+                                        }
+                                    })
+                            })
+                    })
+            })
+        }
+    },
+    detailsDo(req,resp){
+        let {orderNum} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT d_smallSrc,d_chinese,ord_ord_id,o_money,o_user,o_province,o_city,o_area,o_address,o_phone,shipping_comp_name FROM (order_detail JOIN t_order ON ord_ord_id = o_sn)JOIN t_details ON ord_o_id = d_id WHERE ord_ord_id =? and modified_time>DATE_SUB(CURDATE(), INTERVAL 3 MONTH)',[orderNum])
+                    .then(function(data){
+                        if(data.length>0){
+                            resp.send(data)
+                        }
+                    })
+            })
+        }
+    },
+    clearOrderDo(req,resp){
+        let {orderNum} = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('UPDATE t_order SET order_status = 50 WHERE o_sn= ?',[orderNum])
+                    .then(function(data){
+                        resp.send('1')
+                    }).catch(function(err){
+                        resp.send('0')
+                    })
+            })
+        }
+    },
+    //常见问题页面
+    question(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        resp.render('view/question',{user:user})
+    }
+}

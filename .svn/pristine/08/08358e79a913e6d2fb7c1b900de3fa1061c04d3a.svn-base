@@ -1,0 +1,210 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    personalCenter(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            resp.redirect('loginDoIt')
+        }else{
+            resp.redirect('index')
+        }
+    },
+    loginDoIt(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        /* console.log(userName,pwd) */
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT u_id,u_nickname,u_sex,u_phone,u_email FROM t_user WHERE u_phone = ? OR u_email = ?',[user.u_phone,user.u_phone])
+                    .then(function(data){
+                        if(data.length>0){
+                            var thisUser = data
+                            /* console.log(thisUser) */
+                            var thisArr = []
+                            thisArr.push(thisUser)
+                            connection.query('SELECT * from t_address where a_u_id = ?',[thisUser[0].u_id])
+                                .then(function(data){
+                                    var thisAddress = data
+                                    /* console.log(thisAddress) */
+                                    thisArr.push(thisAddress)
+                                    connection.query('SELECT * from t_score where l_u_id = ?',[thisUser[0].u_id])
+                                        .then(function(data){
+                                            var thisScore = data
+                                            thisArr.push(thisScore)
+                                            connection.query('SELECT t_order.o_id,o_sn,order_status,g_name FROM ((order_detail JOIN t_order ON ord_ord_id = t_order.o_id)JOIN order_cart ON ord_o_id = order_cart.o_id)join t_goods on g_id=o_g_id WHERE t_order.o_u_id =?',[thisUser[0].u_id])
+                                                .then(function(data){
+                                                    var thisorder = data
+                                                    thisArr.push(thisorder)
+                                                    resp.render('userView/personalCenter',{data:thisArr,thisPage:''})
+                                                })
+                                        })
+                                })
+                        }else{
+                            resp.redirect('index')
+                        }
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    modify(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT * FROM t_user WHERE u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        data[0].u_date = new Date(data[0].u_date).toLocaleDateString()
+                        let birArr = data[0].u_date.split("-")
+                        if(birArr[1]<10){
+                            birArr[1] = '0'+birArr[1]
+                        }
+                        if(birArr[2]<10){
+                            birArr[2] ='0' + birArr[2]
+                        }
+                        data[0].u_date = birArr.join("-")
+                        resp.render("userView/personalCenter",{data:data,thisPage:'modify'})
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    /* 未完成 */
+    order(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT * FROM t_user WHERE u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        resp.render("userView/personalCenter",{data:[[]],thisPage:'order'})
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+    shippingAddress(req,resp){
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT a_province,a_city,a_area,a_address,a_people,a_phone,a_phone2,setDefault,zipCode FROM t_user JOIN t_address  ON a_u_id = u_id WHERE u_phone = ?',[user.u_phone])
+                    .then(function(data){
+                        let addressArr = [data]
+                        resp.render("userView/personalCenter",{data:addressArr,thisPage:'shippingAddress'})
+                    }).catch(function(err){
+                        console.log(err)
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+        
+    },
+    Integral(req,resp){
+        resp.render("userView/personalCenter",{data:'',thisPage:'Integral'})
+    },
+    cancellation(req,resp){
+        var user = {
+            dataType:false,
+            u_nickname:undefined,
+            u_phone:undefined
+        }
+        req.session.data=user
+        resp.redirect('index')
+    },
+    /* 功能拦截 */
+        //改变基本资料
+    changeModify(req,resp){
+        let modifyData = req.body
+        if(!req.session.data){
+            var user = {
+                dataType:false,
+                u_nickname:undefined,
+                u_phone:undefined
+            }
+        }else{
+            var user = {
+                dataType:req.session.data.dataType,
+                u_nickname:req.session.data.u_nickname,
+                u_phone:req.session.data.u_phone
+            }
+        }
+        console.log(modifyData)
+        if(user.dataType){
+            userDao.userDao().then(function(connection){
+                connection.query('UPDATE t_user SET u_sex=?,u_date=?,u_nickname=? WHERE u_phone = ?',[modifyData.sex,modifyData.birthday,modifyData.nickname,user.u_phone])
+                    .then(function(data){
+                        resp.send('1')
+                    }).catch(function(err){
+                        resp.send('0')
+                    })
+            })
+        }else{
+            resp.redirect('index')
+        }
+    },
+        //增加地址
+    shippingAddressDo(req,resp){
+        resp.send('1')
+    }
+}

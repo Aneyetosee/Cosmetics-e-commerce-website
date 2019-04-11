@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="../js/area.js"></script>
+    <style>
+        body{
+            background: url("../images/b413f1c448f99f5c1b1e8bd360ae6c15.jpg") fixed;
+            background-size: 100% 100%;
+        }
+        .address,.order{
+          font-size: 25px;
+          font-family: "Droid Sans Mono";
+        }
+        .addressTable,
+        .orderTable{
+            background-color: #fff;
+        }
+        .orderTable tbody img{
+            width: 40px;
+            height: 40px;
+        }
+        .pay{
+            width: 80px;
+            height: 36px;
+            color: white;
+            border: 1px rosybrown solid;
+            background-color: red;
+            line-height: 36px;
+            text-align: center;
+            margin-left: 50%;
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+        .totalPrices p{
+            font-size: 20px;
+        }
+        .totalPrices p span{
+            font-size: 20px;
+            color: red;
+        }
+        .zhifu{
+            margin-left: 80%;
+        }
+        #addAddress{
+            cursor: pointer;
+        }
+        .chooseAddressPrompt{
+            opacity: 0;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <%console.log(data)%>
+<%-include("common/header.ejs")%>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-1 address">
+            <p>请选择收获地址:</p>
+        </div>
+        <div class="col-lg-2" id="addAddress" onclick="addAddress()">添加收货地址</div>
+    </div>
+    <!--渲染地址、、、、、、、、、、、、、、、、-->
+    <div class="row">
+        <div class="col-lg-12 addressTable">
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr class="dizhiHead">
+                        <th>选中</th>
+                        <th>地址</th>
+                        <th>收货人</th>
+                        <th>联系电话</th>
+                        <th>邮编</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%data[0].forEach((item,index)=>{%>
+                    <tr>
+                        <%if (data[0][index].setDefault==1){ %>
+                            <td><input type="radio" name="zx"checked></td>
+                        <%}else {%>
+                                <td><input type="radio" name="zx"></td>
+                            <%}%>
+                        <td>
+                            <span><%=data[0][index].a_province%></span>
+                            <span><%=data[0][index].a_city%></span>
+                            <span><%=data[0][index].a_area%></span>
+                            <span><%=data[0][index].a_address%></span>
+                        </td>
+                        <td><%=data[0][index].a_people%></td>
+                        <td><%=data[0][index].a_phone%></td>
+                        <td><%=data[0][index].zipCode%></td>
+                    </tr>
+                <%})%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-1 order">
+            <p>请确认订单：</p>
+        </div>
+    </div>
+    <div class="col-lg-12 orderTable">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>商品信息</th>
+                    <th>单价(元)</th>
+                    <th>数量</th>
+                    <th>小计(元)</th>
+                    <th>订单号</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%var price=0%>
+            <%data[1].forEach((item,index)=>{%>
+            <%price+=data[1][index].d_price*data[1][index].order_class_num%>
+            <%})%>
+            <%data[1].forEach((item,index)=>{%>
+            <tr>
+                <td>
+                    <span><img src="./images/<%=data[1][index].d_smallSrc%>" alt=""></span>
+                    <span><%=data[1][index].d_chinese%></span>
+                </td>
+                <td><%=data[1][index].d_price%></td>
+                <td><%=data[1][index].order_class_num%></td>
+                <td><%=data[1][index].d_price*data[1][index].order_class_num%></td>
+                <td><%=data[1][index].ord_ord_id%></td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+        <div class="zhifu">
+            <div class="totalPrices">
+                <p>商品总额：￥<span id="totalpricesBox"><%=price%></span>元</p>
+            </div>
+            <div class="pay" onclick="pay()">立即购买</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addressModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加地址</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <span>*省：</span>
+                            <select name="province" id="province">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*市：</span>
+                            <select name="city" id="city">
+                                <option value="请选择">请选择</option>
+                            </select>
+                            <span>*地区：</span>
+                            <select name="town" id="town">
+                                <option value="请选择">请选择</option>
+                            </select>
+                        </div>
+                        <div class="detailedAddress">
+                            <p>*详细地址：</p>
+                            <div><input type="text" class="particularAddress"></div>
+                        </div>
+                        <div class="recipientName clear">
+                            <div class="fl">
+                                <p>*收件人姓名：</p>
+                                <div><input type="text" class="addressee" maxlength="20"></div>
+                            </div>
+                            <div class="fl">
+                                <p>邮编：</p>
+                                <div><input type="text" value="000000" class="zipCode" maxlength="6"></div>
+                            </div>
+                        </div>
+                        <div class="recipientPhone">
+                            <p>*收件人手机号：</p>
+                            <div><input type="text" class="addresseePhone" maxlength="11"></div>
+                        </div>
+                        <div class="fixedPhone">
+                            <p>固定电话：</p>
+                            <div><input type="text" class="fixedTelephone" maxlength="13"></div>
+                        </div>
+                        <div class="defaultAdress">
+                            <input type="checkbox" class="setDefault">
+                            <span>设为默认地址</span>
+                        </div>
+                        <p class="chooseAddressPrompt">资料未填完整，请填完整</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="closeAddressBtn">关闭</button>
+                    <button type="button" class="btn btn-primary" id="saveAddressBtn">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<%- include("common/footer.ejs")%>
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script>
+        function addAddress() {
+            $('#addressModal').modal('show')
+        }
+        //省市地区选择
+        var province=$("#province"),city=$("#city"),town=$("#town");
+        for(var i=0;i<provinceList.length;i++){
+            addEle(province,provinceList[i].name);
+        }
+        function addEle(ele,value){
+            var optionStr="";
+            optionStr="<option value="+value+">"+value+"</option>";
+            ele.append(optionStr);
+        }
+        function removeEle(ele){
+            ele.find("option").remove();
+            var optionStar="<option value="+"请选择"+">"+"请选择"+"</option>";
+            ele.append(optionStar);
+        }
+        var provinceText,cityText,cityItem;
+        province.on("change",function(){
+            provinceText=$(this).val();
+            $.each(provinceList,function(i,item){
+                if(provinceText == item.name){
+                    cityItem=i;
+                    return cityItem
+                }
+            });
+            removeEle(city);
+            removeEle(town);
+            $.each(provinceList[cityItem].cityList,function(i,item){
+                addEle(city,item.name)
+            })
+        });
+        city.on("change",function(){
+            cityText=$(this).val();
+            removeEle(town);
+            $.each(provinceList,function(i,item){
+                if(provinceText == item.name){
+                    cityItem=i;
+                    return cityItem
+                }
+            });
+            $.each(provinceList[cityItem].cityList,function(i,item){
+                if(cityText == item.name){
+                    for(var n=0;n<item.areaList.length;n++){
+                        addEle(town,item.areaList[n])
+                    }
+                }
+            });
+        });
+        //添加地址
+        var whichBtn;
+        $('#addAddress').on('click',function(){
+            console.log($('.serialNumber').last().text())
+            if($('.serialNumber').last().text()>=10){
+                $('#modificationTitle').text('超出地址编辑上限，请删除一个地址后再操作')
+                $('#modification').modal()
+            }else if($('.serialNumber').last().text()!=10){
+                $('#addressModal').modal()
+                province.val('请选择')
+                city.val('请选择')
+                town.val('请选择')
+                $('.particularAddress').val('')
+                $('.addressee').val('')
+                $('.addresseePhone').val('')
+                $('.fixedTelephone').val('')
+                $('.setDefault').removeProp('checked','checked')
+                whichBtn = 'add';
+            }
+        })
+        //点击保存
+        $('#saveAddressBtn').on('click',function(){
+            if(whichBtn == 'add') {
+                if (province.val() != '请选择' && city.val() != '请选择' && town.val() != '请选择' && $('.particularAddress').val() != '' && $('.addressee').val() != '' && $('.addresseePhone').val() != '') {
+                    $('.chooseAddressPrompt').css('opacity', '0')
+                    let phone = /^1(3|4|5|7|8)\d{9}$/
+                    let fixedPhone = /0\d{2,3}-\d{7,8}/
+                    if (phone.test($('.addresseePhone').val())) {
+                        $('.chooseAddressPrompt').css('opacity', '0')
+                        let addUserAddress = [];
+                        addUserAddress.push(province.val())
+                        addUserAddress.push(city.val())
+                        addUserAddress.push(town.val())
+                        addUserAddress.push($('.particularAddress').val())
+                        addUserAddress.push($('.addressee').val())
+                        addUserAddress.push($('.addresseePhone').val())
+                        if (fixedPhone.test($('.fixedTelephone').val()) && $('.fixedTelephone').val() != '' && $('.fixedTelephone').val() != 'NULL') {
+                            addUserAddress.push($('.fixedTelephone').val())
+                        } else if ($('.fixedTelephone').val() != '' && $('.fixedTelephone').val() != 'NULL') {
+                            $('.chooseAddressPrompt').css('opacity', '1').text('固定号码输入有误')
+                            addUserAddress.push('NULL')
+                        } else {
+                            addUserAddress.push('NULL')
+                        }
+                        if ($('.setDefault').is(':checked')) {
+                            addUserAddress.push('1')
+                        } else {
+                            addUserAddress.push('0')
+                        }
+                        addUserAddress.push($('.zipCode').val())
+                        addUserAddress.push($('.serialNumber').last().text())
+                        console.log(addUserAddress)
+                        $.ajax({
+                            type: 'post',
+                            url: '/shippingAddress.do',
+                            data: {
+                                'addUserAddress': JSON.stringify(addUserAddress)
+                            },
+                            success(data) {
+                                if (data == '0') {
+                                    $('#modificationTitle').text('添加失败，请稍后再试')
+                                    $('#modification').modal()
+                                } else {
+                                    $('#modificationTitle').text('添加成功')
+                                    $('#modification').modal()
+                                    $('#closeAddressBtn').click()
+                                    tablePage(data)
+                                    $('.addressAllNum').text($('.serialNumber').last().text())
+                                }
+                            }
+                        })
+                    } else {
+                        $('.chooseAddressPrompt').css('opacity', '1').text('手机号码输入有误，请重新输入')
+                    }
+                } else {
+                    $('.chooseAddressPrompt').css('opacity', '1').text('资料未填完整，请填写完整')
+                }
+            } })
+        //地址增加后出现的函数
+        function tablePage(arr){
+            //清空表身
+             $('.addressTable tbody tr').remove()
+            for(let i=0;i<arr.length;i++){
+                $('.addressTable tbody').append(`
+        <tr>
+            <td>
+                <span>${arr[i].a_province}</span>
+                <span>${arr[i].a_area}</span>
+                <span>${arr[i].a_city}</span>
+                <span>${arr[i].a_address}</span>
+            </td>
+            <td>${arr[i].a_people}</td>
+            <td>${arr[i].a_phone}</td>
+            <td>${arr[i].zipCode}</td>
+        </tr>
+        `)
+                if(arr[i].setDefault==1){
+                    $('.addressTable tbody tr').prepend(`<td><input type="radio" name="zx" checked></td>`)
+                }else{
+                    $('.addressTable tbody tr').prepend(`<td><input type="radio" name="zx"></td>`)
+                }
+            }
+        }
+        var dates={
+            date:new Date(),
+            year:function(){
+                return this.date.getFullYear();
+            },
+            month:function(){
+                return this.date.getMonth()+1;
+            },
+            day:function(){
+                return this.date.getDate();
+            },
+            week:function(){
+                return this.date.getDay();
+            },
+            hour:function(){
+                return this.date.getHours();
+            },
+            minute:function(){
+                return this.date.getMinutes();
+            },
+            second:function(){
+                return this.date.getSeconds();
+            }
+        }
+
+        function pay() {
+            let province = $(".addressTable tbody tr td:nth-of-type(2) span:nth-of-type(1)").text()
+            let city = $(".addressTable tbody tr td:nth-of-type(2) span:nth-of-type(2)").text()
+            let area = $(".addressTable tbody tr td:nth-of-type(2) span:nth-of-type(3)").text()
+            let address = $(".addressTable tbody tr td:nth-of-type(2) span:nth-of-type(4)").text()
+            let people = $(".addressTable tbody tr td:nth-of-type(3)").text()
+            let phone = $(".addressTable tbody tr td:nth-of-type(4)").text()
+            let totprice = $("#totalpricesBox").text()
+            var timer=dates.year()+'-'+dates.month()+'-'+dates.day()+' '+dates.hour()+":"+dates.minute();
+            let ord_ord_id=$(".orderTable tbody tr td:nth-of-type(5)").text()
+            $.ajax({
+                type: "post",
+                url: "getPayData.do",
+                async: false,
+                data: {province, city, area, address, people,phone,totprice,timer,ord_ord_id},
+                success: function (data) {
+                    if (data=='1') {//根据返回值进行跳转
+                        window.location.href = "/chengg";
+                    }else{
+                        console.log('222')
+                    }
+                }
+            })
+            return false;
+        }
+    </script>
+</body>
+</html>

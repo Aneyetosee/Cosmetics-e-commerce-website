@@ -1,0 +1,21 @@
+const express = require('express')
+const router = express.Router()
+const userCtrl = require('../controller/userCtrl')
+
+//模拟登陆
+router.get('/login.ejs',userCtrl.login)
+router.get('/login',userCtrl.login)
+router.post('/loginDoIt',userCtrl.loginDoIt)
+
+// 页面拦截
+router.get('/personalCenter',userCtrl.personalCenter)
+router.get('/modify',userCtrl.modify)
+router.get('/order',userCtrl.order)
+router.get('/shippingAddress',userCtrl.shippingAddress)
+router.get('/Integral',userCtrl.Integral)
+
+//资料修改拦截
+router.post('/changeModify.do',userCtrl.changeModify)
+
+
+module.exports = router

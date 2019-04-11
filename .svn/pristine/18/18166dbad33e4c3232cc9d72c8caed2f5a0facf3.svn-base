@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/modify.css">
+<%console.log(data)%>
+<section>
+    <div class="container-fluid">
+        <div clss="row">
+            <h2>个人信息</h2>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modifyContent">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sexChoose">
+                    <p>称谓：</p>
+                    <div class="select_box">
+                        <div class="select_showbox"><%=data[0].u_sex%></div>
+                        <ul class="select_option">
+                            <li>请选择</li>
+                            <li>男</li>
+                            <li>女</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 otherInput clear">
+                    <div class="fl">
+                        <p>*昵称:</p>
+                        <div><input type="text" value="<%=data[0].u_nickname%>" id="nickname"></div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 otherInput clear">
+                    <div class="fl">
+                        <p>*电子邮件:</p>
+                        <div><input type="text" value="<%=data[0].u_email%>" disabled="disabled"></div>
+                    </div>
+                    <div class="fl">
+                        <p>*手机号:</p>
+                        <div><input type="text" value="<%=data[0].u_phone%>" disabled="disabled"></div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 birDay">
+                    <p>出生日期:</p>
+                    <div>
+                        <input type="date" value="<%=data[0].u_date%>" id="birdayDate">
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modalModify">
+                    <div>
+                        <span class="modifyPassword">修改密码</span>
+                        <span class="modifyPhone">修改手机号</span>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 saveData clear">
+                    <div class="fl"><span>*为必填项</span></div>
+                    <div class="fl"><div class="savebtn">保存</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="../js/modify.js"></script>

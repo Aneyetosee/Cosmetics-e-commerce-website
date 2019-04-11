@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        section{
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+        .footer_icon{
+            overflow: hidden;
+            border-bottom: 1px silver solid;
+            border-top: 1px silver solid;
+        }
+        #myicon span{
+            margin: 5px  20px;
+        }
+        .footer_icon span{
+            float: left;
+            text-align: center;
+        }
+        .footer_icon i{
+            display: block;
+        }
+        .footer_icon span .iconfont{
+            font-size: 26px;
+            padding: 10px 44.3px;
+        }
+        .footer_icon span a{
+            text-decoration: none;
+            color: black;
+        }
+        #icon{
+            font-size: 12px;
+        }
+        .footer_icon a:hover{
+            color: rgba(1,1,1,0.53);
+        }
+        section>p{
+            font-size: 12px;
+            margin: 5px auto;
+        }
+        section>p:nth-of-type(1){
+            font-size: 18px;
+            margin: 20px auto 50px auto;
+        }
+        section>p:nth-last-of-type(1){
+            margin-bottom: 50px;
+        }
+        #help{
+            width: 100%;
+            border: 5px silver solid;
+            position: relative;
+            margin: auto;
+            margin-bottom: 50px;
+            height: 120px;
+        }
+        #email{
+            line-height: 100px;
+            border-left: 1px silver solid;
+        }
+        #help>p{
+            font-size: 18px;
+            background-color: white;
+            padding: 2px 10px;
+            position: absolute;
+            top: -18px;
+            left: 45.5%;
+        }
+    </style>
+</head>
+<body>
+<%- include("common/header.ejs")%>
+<section>
+    <h2>希思黎服务</h2>
+    <div class="footer_icon" id="myicon">
+            <span>
+                <a href="/service">
+                    <i class="iconfont" id="icon">MY<br>SISLEY</i>
+                    满意或退款
+                </a>
+            </span>
+        <span>
+                <a href="/safetyPay">
+                    <i class="iconfont icon-suo"></i>
+                     安全支付
+                </a>
+            </span>
+        <span>
+                <a href="/service">
+                    <i class="iconfont icon-c-huoche"></i>
+                    发货
+                </a>
+            </span>
+        <span>
+                <a href="/service">
+                    <i class="iconfont icon-fanhui"></i>
+                    退换货条款
+                </a>
+            </span>
+        <span>
+                <a href="/service">
+                    <i class="iconfont icon-gantanhao"></i>
+                    免费试用装
+                </a>
+            </span>
+        <span>
+                <a href="/service">
+                    <i class="iconfont icon-lihe"></i>
+                    尊贵礼盒
+                </a>
+            </span>
+    </div>
+    <p>7天无理由退货</p>
+    <p>希思黎官网暨网上商城销售的每张订单均享有退货保障，请妥善保管希思黎送货时的送货单、发票（如有）、赠品、包装等，并在退货时一并寄回，如有遗失将不予以办理退货（如确实未能提供送货单，请以纸条写明需退货的订单号一并寄回）。</p>
+    <p>Please note that all products should be returned complete and in good condition, where possible in the original packaging. If any free or multi-purchase discount products were included in the cancelled order, these must also be returned with the other returned products.</p>
+    <p>You can check the status of your return online by consulting the section "Your Returns" under the heading "Your Account".</p>
+    <p>You will be reimbursed for returned products within 7 days following our receipt of the products.</p>
+    <div id="help" class="row">
+        <p>帮助中心</p>
+        <div id="phone" class="col-md-6">
+            <p>希思黎客服代表为您服务</p>
+            <em><b>400 821 1280</b></em>
+            <p>周一到周五：9:00-21:00 </p>
+            <p>周六：9:00-18:00 法定节假日除外 </p>
+        </div>
+        <div id="email" class="col-md-6">
+            <p>通过邮件联系我们:cs@sisley.com.cn</p>
+        </div>
+    </div>
+</section>
+
+<%- include("common/footer.ejs")%>
+</body>
+</html>

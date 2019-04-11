@@ -1,0 +1,62 @@
+
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <section>
+        <div class="container-fluid">
+            <div clss="row">
+                <h2>我的订单</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myOrder">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 myOrderContent">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nullOrder">
+                            <%console.log(data,'order')%>
+                            <%if(data[0]==false){%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 orderTableContent">
+                                    <table class="table table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>商品</th>
+                                                <th>状态</th>
+                                                <th>金额</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div>
+                                    <p>您还没有下订单哦！</p>
+                                    <div class="backIndex"><a href="index">立即开始购物</a></div>
+                                </div>
+                            <%}else{%>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 orderTableContent">
+                                    <table class="table table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>商品</th>
+                                                <th>状态</th>
+                                                <th>金额</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%data[0].forEach((item,index)=>{%>
+                                                <tr>
+                                                    <td><%=data[0][index].o_sn%></td>
+                                                    <td><%=data[0][index].g_name%></td>
+                                                    <td><%=data[0][index].order_status%></td>
+                                                    <td><%=data[0][index].o_money%></td>
+                                                </tr>
+                                            <%})%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+    <script src="../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <script src="../js/order.js"></script>

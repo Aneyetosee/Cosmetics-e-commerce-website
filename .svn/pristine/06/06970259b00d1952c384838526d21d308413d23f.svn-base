@@ -1,0 +1,9 @@
+const express = require('express')
+const router = express.Router()
+const messageCtrl = require('../controller/messageCtrl')
+
+router.post("/sms.do",messageCtrl.smsPhone)
+router.post("/verifyCode.do",messageCtrl.verifyCode)
+
+
+module.exports = router

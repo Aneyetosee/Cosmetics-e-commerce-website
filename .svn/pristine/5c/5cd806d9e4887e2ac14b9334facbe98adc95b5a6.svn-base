@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../lib/bootstrap-3.3.5-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/header.css">
+</head>
+<body>
+<script src="../../lib/bootstrap-3.3.5-dist/js/jquery-1.11.3.js"></script>
+<script src="../../lib/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+<script src="../../js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+<script src="../../js/birthday.js" type="text/javascript"></script>
+<div class="row" id="nav_one">
+    <div class="col-md-3 vip">希思黎会员</div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4 list">
+        <ul>
+            <li><i class="glyphicon glyphicon-envelope"></i>订阅电子邮件 |</li>
+            <li>专柜导航 |</li>
+            <li>激活线下会员 |</li>
+            <li>客服咨询热线</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <input type="text" id="search">
+        <i class="glyphicon glyphicon-search"></i>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 vip"></div>
+    <div class="col-md-4 logo">
+        <a href="/index"><img src="../../images/logo.jpg" alt=""></a>
+    </div>
+    <div class="col-md-4 login">
+        <span onclick="login()" id="myName">登录|注册</span>
+        <i class="glyphicon glyphicon-shopping-cart"></i>
+        <span>您的购物车</span>
+        <span>￥0.00</span>
+    </div>
+</div>
+<nav>
+    <div class="nav_two">
+        <ul class="menu">
+            <li>
+                <a href="#">护肤</a>
+                <ul class="submenu">
+                    <li><a href="#">面部</a></li>
+                    <li><a href="#">身体护理</a></li>
+                    <li><a href="#">防嗮</a></li>
+                    <li><a href="#">肌肤问题</a></li>
+                </ul>
+            </li>
+            <li><a href="#">彩妆</a>
+                <ul class="submenu">
+                    <li><a href="#">脸部彩妆</a></li>
+                    <li><a href="#">唇部</a></li>
+                    <li><a href="#">眼部彩妆</a></li>
+                    <li><a href="#">妆容问题</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="#s2">香氛</a>
+                <ul class="submenu">
+                    <li><a href="#">女士香氛</a></li>
+                    <li><a href="#">情侣香水</a></li>
+                    <li><a href="#">男士</a></li>
+                    <li><a href="#">香氛蜡烛</a></li>
+                </ul>
+            </li>
+            <li><a href="#">男士</a>
+                <ul class="submenu">
+                    <li><a href="#">脸部保养</a></li>
+                </ul>
+            </li>
+            <li><a href="#">官网专享</a></li>
+            <li><a href="#">美丽期刊</a></li>
+            <li><a href="#">美丽订阅</a></li>
+            <li><a href="#">星品推荐</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="loginDiv">
+    <form class="myAccount_login">
+        <div class="myinput">
+            <p onclick="message()">短信验证码登录</p>
+            <input type="text" name="userName" id="userName" placeholder="手机号/邮箱">
+            <input type="password" name="pwd" id="pwd" placeholder="密码"><br>
+            <span>忘记密码？</span>
+            <span onclick="register()">立即注册</span>  <!--注册-->
+            <%console.log(data)%>
+            <%if(!data){%>
+                <p style="color:red;font-size:12px;">账户或密码输入有误，请重新输入</p>
+            <%}%>
+            <div id="login">登录</div>
+        </div>
+    </form>
+    <!--验证码登录-->
+    <form action="/message.do" method="post" class="mySms_login">
+        <div class="myinput">
+            <p onclick="account()">账号密码登录</p>
+            <input type="text" name="phone" placeholder="手机号">
+            <input type="text" name="verification" placeholder="验证码"><br>
+            <span>获取验证码</span>
+            <button>登录</button>
+        </div>
+    </form>
+    <!--注册-->
+    <form action="/register.do" method="post" class="myregister">
+        <div class="myinput">
+            <table id="mytable">
+                <tr><td><input type="text" name="nickname" placeholder="昵称"><br></td></tr>
+                <tr><td id="phoneTestTd"><input id="userPhone" type="text" name="userName" placeholder="手机号" onblur="registerPhoneTest()">
+                        <p id="phoneTestBox"></p></td></tr>
+                <span id="sendMsg"></span>
+                <tr><td><input id="verification" type="text" name="verification" placeholder="验证码"><span onclick="sendClick()">获取验证码</span></td></tr>
+                <tr><td><input type="password" name="pwd" placeholder="密码"></td></tr>
+                <tr><td><input type="password" name="pwd" placeholder="确认密码"></td></tr>
+                <tr>
+                    <td id="emailTestTd"><input id="email" type="text" name="email" placeholder="邮箱" onblur="testEmail()">
+                        <p id="emailTestBox"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>出生日期</label>
+                        <select id="sel_year" rel="2000"></select><label for="sel_year">年</label>
+                        <select id="sel_month" rel="2"></select><label for="sel_month">月</label>
+                        <select id="sel_day" rel="14"></select><label for="sel_day">日</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>性别：</label>
+                        <input type="radio" name="sex" id="nan"><label for="nan">男</label>&nbsp;
+                        <input type="radio" name="sex" id="nv"><label for="nv">女</label>
+                    </td>
+                </tr>
+                <tr><td><button>注册</button></td></tr>
+            </table>
+        </div>
+    </form>
+</div>
+<script>
+    $("#login").click(function () {
+        var userName = $("#userName").val()
+        var pwd = $("#pwd").val()
+        $.ajax({
+            type: "post",
+            url: "login.do",
+            data: {userName,pwd},
+            success(data){
+                console.log(typeof(data))
+                $("#myName").text(data.u_nickname)
+            }
+        })
+    })
+    window.onscroll=function () {
+        var myScroll=document.documentElement.scrollTop||document.body.scrollTop;
+        if (myScroll>184){
+            $("nav").addClass("navbar-fixed-top")
+            $(".navbar-fixed-top").autoHidingNavbar();//向下滚动时隐藏导航条
+        }else {
+            $("nav").removeClass("navbar-fixed-top")
+        }
+    }
+    function login() {
+        $("#loginDiv").css({
+            display:"block"
+        })
+    }
+    /*出生日期下拉框*/
+    $(function () {
+        $.ms_DatePicker({
+            YearSelector: ".sel_year",
+            MonthSelector: ".sel_month",
+            DaySelector: ".sel_day"
+        });
+        $.ms_DatePicker();
+    });
+    /*短信登录*/
+    function message() {
+        $(".myAccount_login").css({
+            display:"none"
+        })
+        $(".myregister").css({
+            display:"none"
+        })
+        $(".mySms_login").css({
+            display:"block"
+        })
+    }
+    /*账号登录*/
+    function account() {
+        $(".mySms_login").css({
+            display:"none"
+        })
+        $(".myAccount_login").css({
+            display:"block"
+        })
+        $(".myregister").css({
+            display:"none"
+        })
+    }
+    /*注册*/
+    /*正则判断邮箱账号*/
+    function testEmail() {
+        $("#emailTestBox").html("")
+        let regEmail=/^[\w]{4,16}[@][\w]{1,5}[.][a-zA-Z]{2,3}$/
+        if (regEmail.test($("#email").val())) {
+            $("#emailTestBox").append("<i class='iconfont icon-zhengque'></i>")
+        }
+        else {
+            $("#emailTestBox").append("<i class='iconfont icon-cuowuguanbi-'></i>")
+        }
+    }
+    /*正则判断手机号*/
+    function registerPhoneTest() {
+        $("#phoneTestBox").html("")
+        let regPhone=/^[0-9]{11,11}/
+        if (regPhone.test($("#userPhone").val())){
+            $("#phoneTestBox").append("<i class='iconfont icon-zhengque'></i>")
+        }
+        else {
+            $("#phoneTestBox").append("<i class='iconfont icon-cuowuguanbi-'></i>")
+        }
+    }
+    /*注册*/
+    function register() {
+        $(".mySms_login").css({
+            display:"none"
+        })
+        $(".myAccount_login").css({
+            display:"none"
+        })
+        $(".myregister").css({
+            display:"block"
+        })
+    }
+    /*发送验证码*/
+    function sendClick() {
+        let userPhone = $("#userPhone").val()
+        console.log(userPhone)
+        $.ajax({
+            type:"post",
+            url:"/sms.do",
+            data:{userPhone},
+            success(data){
+                $("#sendMsg").text(data)
+            }
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+    login(req,resp){
+        resp.render('userView/login',{data:true})
+    },
+    loginDo(req,resp){
+        let {userName,pwd} = req.body
+        /* console.log(userName,pwd) */
+        userDao.userDao().then(function(connection){
+            connection.query('SELECT u_id,u_nickname,u_sex,u_phone,u_email FROM t_user WHERE u_pwd = ? AND u_phone = ? OR u_email = ?',[pwd,userName,userName])
+                .then(function(data){
+                    if(data.length>0){
+                        var thisUser = data
+                        var user = {
+                            dataType:true,
+                            u_phone:data[0].u_phone
+                        } 
+                        req.session.data = user
+                        /* console.log(thisUser) */
+                        var thisArr = []
+                        thisArr.push(thisUser)
+                        connection.query('SELECT * from t_address where a_u_id = ?',[thisUser[0].u_id])
+                            .then(function(data){
+                                var thisAddress = data
+                                /* console.log(thisAddress) */
+                                thisArr.push(thisAddress)
+                                connection.query('SELECT * from t_score where l_u_id = ?',[thisUser[0].u_id])
+                                    .then(function(data){
+                                        var thisScore = data
+                                        thisArr.push(thisScore)
+                                        connection.query('SELECT t_order.o_id,o_sn,o_g_name,order_status FROM (order_detail JOIN t_order ON ord_ord_id = t_order.o_id)JOIN order_cart ON ord_o_id = order_cart.o_id  WHERE t_order.o_u_id =?',[thisUser[0].u_id])
+                                            .then(function(data){
+                                                var thisorder = data
+                                                thisArr.push(thisorder)
+                                                resp.render('userView/personalCenter',{data:thisArr})
+                                            })
+                                    })
+                            })
+                    }else{
+                        resp.render('userView/login',{data:false})
+                    }
+                })
+        })
+    },
+    personalCenter(req,resp){
+        resp.render('userView/personalCenter',{})
+    },
+    modify(req,resp){
+        let phone = req.session.data
+        if(phone){
+            userDao.userDao().then(function(connection){
+                connection.query('SELECT * FROM t_user WHERE u_phone = ?',[phone.u_phone])
+                    .then(function(data){
+                        data[0].u_date = new Date(data[0].u_date).toLocaleDateString()
+                        let birArr = data[0].u_date.split("-")
+                        if(birArr[1]<10){
+                            birArr[1] = '0'+birArr[1]
+                        }
+                        if(birArr[2]<10){
+                            birArr[2] ='0' + birArr[2]
+                        }
+                        data[0].u_date = birArr.join("-")
+                        resp.render("userView/modify",{data:data})
+                    })
+            })
+        }else{
+            resp.send('userView/login')
+        }
+    },
+    order(req,resp){
+        resp.redirect("order.html")
+    }
+}

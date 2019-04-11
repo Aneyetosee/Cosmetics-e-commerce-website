@@ -1,0 +1,21 @@
+const userDao = require('../dao/userDao')
+
+module.exports = {
+
+    details(req,resp){
+
+        userDao.userDao().then(function (connection) {
+
+            connection.query("SELECT * FROM t_details",[])
+                .then(function (data) {
+
+                 resp.render("view/details",{details:data})
+                })
+
+        })
+
+    },
+
+
+
+}
